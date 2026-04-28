@@ -1,15 +1,16 @@
-
 const express = require("express");
 const path = require("path");
 
 const app = express();
 const PORT = process.env.PORT || 10000;
 
+// Middleware
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-// Static files
-app.use(express.static(path.join(__dirname, "public")));
+// IMPORTANT: safe static path handling
+const publicPath = path.join(__dirname, "public");
+app.use(express.static(publicPath));
 
 // Dummy blog data
 const articles = [
@@ -49,24 +50,35 @@ app.get("/api/articles", (req, res) => {
 // API: single article
 app.get("/api/article/:id", (req, res) => {
   const article = articles.find(a => a.id == req.params.id);
-  if (!article) return res.status(404).json({ error: "Not found" });
+  if (!article) {
+    return res.status(404).json({ error: "Not found" });
+  }
   res.json(article);
 });
 
 // contact API
 app.post("/api/contact", (req, res) => {
   const { name, email, message } = req.body;
+
   if (!name || !email || !message) {
-    return res.status(400).json({ success: false });
+    return res.status(400).json({
+      success: false,
+      message: "All fields required"
+    });
   }
-  return res.json({ success: true });
+
+  return res.json({
+    success: true,
+    message: "Message received"
+  });
 });
 
-// fallback
+// FIX: correct fallback (Render safe)
 app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname, "public", "index.html"));
+  res.sendFile(path.join(publicPath, "index.html"));
 });
 
+// Start server
 app.listen(PORT, () => {
-  console.log("TechNexis running on port", PORT);
+  console.log(`TechNexis running on port ${PORT}`);
 });
