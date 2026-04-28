@@ -1,84 +1,153 @@
 const express = require("express");
 const path = require("path");
+const fs = require("fs");
 
 const app = express();
 const PORT = process.env.PORT || 10000;
 
-// Middleware
+// ===================== MIDDLEWARE =====================
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-// IMPORTANT: safe static path handling
+// SAFE PUBLIC PATH
 const publicPath = path.join(__dirname, "public");
 app.use(express.static(publicPath));
 
-// Dummy blog data
-const articles = [
+// ===================== BASIC SITE DATA =====================
+const siteData = {
+  name: "TechNexis",
+  tagline: "AI Tools + Tech Blog",
+  description: "Modern AI tools and tech blog for developers and creators."
+};
+
+// ===================== REAL BLOG POSTS (STRUCTURED) =====================
+const posts = [
   {
     id: 1,
-    title: "Best AI Tools in 2026",
-    category: "AI",
-    content: "AI tools are growing fast. This article explains top tools."
+    slug: "ai-tools-2026-guide",
+    title: "AI Tools Guide 2026 - Complete Overview",
+    category: "AI Tools",
+    content: "This guide explains how AI tools are changing productivity, automation, and online work in 2026.",
+    date: "2026-01-01"
   },
   {
     id: 2,
-    title: "How to Start Tech Blog",
+    slug: "modern-tech-blogging-strategy",
+    title: "Modern Tech Blogging Strategy That Works",
     category: "Blogging",
-    content: "Step by step guide to start tech blog with SEO."
+    content: "Learn how modern tech blogs grow using SEO, content clusters, and user intent targeting.",
+    date: "2026-01-05"
   },
   {
     id: 3,
-    title: "Make Money with Tech Website",
-    category: "Earning",
-    content: "Learn how to monetize tech blogs with AdSense."
+    slug: "how-to-build-saas-website",
+    title: "How to Build a SaaS Website from Scratch",
+    category: "Development",
+    content: "Step-by-step SaaS architecture guide using Node.js, APIs, and deployment strategies.",
+    date: "2026-01-10"
   }
 ];
 
-// API: site info
+// ===================== API ROUTES =====================
+
+// Site Info
 app.get("/api/site", (req, res) => {
-  res.json({
-    name: "TechNexis",
-    tagline: "AI Tools + Tech Blog"
-  });
+  res.json(siteData);
 });
 
-// API: articles list
-app.get("/api/articles", (req, res) => {
-  res.json(articles);
+// All Posts
+app.get("/api/posts", (req, res) => {
+  res.json(posts);
 });
 
-// API: single article
-app.get("/api/article/:id", (req, res) => {
-  const article = articles.find(a => a.id == req.params.id);
-  if (!article) {
-    return res.status(404).json({ error: "Not found" });
-  }
-  res.json(article);
+// Single Post by ID
+app.get("/api/post/:id", (req, res) => {
+  const post = posts.find(p => p.id == req.params.id);
+  if (!post) return res.status(404).json({ error: "Post not found" });
+  res.json(post);
 });
 
-// contact API
+// Single Post by SLUG (SEO friendly)
+app.get("/api/post/slug/:slug", (req, res) => {
+  const post = posts.find(p => p.slug === req.params.slug);
+  if (!post) return res.status(404).json({ error: "Post not found" });
+  res.json(post);
+});
+
+// ===================== STATIC PAGES ROUTES =====================
+
+app.get("/about", (req, res) => {
+  res.sendFile(path.join(publicPath, "about.html"));
+});
+
+app.get("/contact", (req, res) => {
+  res.sendFile(path.join(publicPath, "contact.html"));
+});
+
+app.get("/terms", (req, res) => {
+  res.sendFile(path.join(publicPath, "terms.html"));
+});
+
+app.get("/privacy-policy", (req, res) => {
+  res.sendFile(path.join(publicPath, "privacy-policy.html"));
+});
+
+app.get("/rules", (req, res) => {
+  res.sendFile(path.join(publicPath, "rules.html"));
+});
+
+// ===================== CONTACT API =====================
+const contactFile = path.join(__dirname, "data", "contacts.json");
+
 app.post("/api/contact", (req, res) => {
   const { name, email, message } = req.body;
 
   if (!name || !email || !message) {
     return res.status(400).json({
       success: false,
-      message: "All fields required"
+      message: "All fields are required"
     });
   }
 
-  return res.json({
+  let data = [];
+
+  try {
+    if (fs.existsSync(contactFile)) {
+      data = JSON.parse(fs.readFileSync(contactFile));
+    }
+  } catch (err) {
+    data = [];
+  }
+
+  data.push({
+    name,
+    email,
+    message,
+    date: new Date().toISOString()
+  });
+
+  fs.writeFileSync(contactFile, JSON.stringify(data, null, 2));
+
+  res.json({
     success: true,
-    message: "Message received"
+    message: "Message received successfully"
   });
 });
 
-// FIX: correct fallback (Render safe)
+// ===================== HEALTH CHECK =====================
+app.get("/api/status", (req, res) => {
+  res.json({
+    status: "running",
+    name: siteData.name
+  });
+});
+
+// ===================== FALLBACK =====================
 app.get("*", (req, res) => {
   res.sendFile(path.join(publicPath, "index.html"));
 });
 
-// Start server
+// ===================== SERVER START =====================
 app.listen(PORT, () => {
-  console.log(`TechNexis running on port ${PORT}`);
+  console.log(`${siteData.name} running on port ${PORT}`);
 });
