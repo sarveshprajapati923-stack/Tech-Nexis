@@ -1,38 +1,231 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="TechNexis blog." />
-  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
-  <title>Blog — TechNexis</title>
-  <link rel="stylesheet" href="/css/style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pro Blog System V2</title>
+
+<style>
+body{
+  margin:0;
+  font-family:Arial,sans-serif;
+  background:linear-gradient(135deg,#0f172a,#111827);
+  color:white;
+}
+
+/* HEADER */
+header{
+  padding:18px;
+  text-align:center;
+  background:#0b1220;
+  position:sticky;
+  top:0;
+}
+
+h1{
+  margin:0;
+  font-size:22px;
+}
+
+/* CONTAINER */
+.container{
+  max-width:1100px;
+  margin:auto;
+  padding:15px;
+}
+
+/* INPUTS */
+input, select, textarea{
+  width:100%;
+  padding:10px;
+  margin:6px 0;
+  border-radius:10px;
+  border:none;
+  outline:none;
+}
+
+/* BUTTON */
+.btn{
+  border:2px solid #38bdf8;
+  background:transparent;
+  color:#38bdf8;
+  padding:10px 14px;
+  border-radius:10px;
+  cursor:pointer;
+  transition:0.3s;
+  margin-top:5px;
+}
+
+.btn:hover{
+  background:#38bdf8;
+  color:black;
+  transform:scale(1.05);
+}
+
+/* GRID */
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  gap:12px;
+  margin-top:15px;
+}
+
+/* CARD */
+.card{
+  background:#1e293b;
+  padding:15px;
+  border-radius:12px;
+  border:1px solid #334155;
+  transition:0.3s;
+}
+
+.card:hover{
+  transform:translateY(-5px);
+}
+
+/* BLOG AREA */
+.blog{
+  background:white;
+  color:black;
+  padding:20px;
+  border-radius:12px;
+  margin-top:15px;
+}
+
+/* TOP BAR */
+.topbar{
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+}
+
+</style>
 </head>
+
 <body>
-  <div class="shell">
-    <header class="topbar">
-      <a class="brand" href="/"><img src="/assets/logo.svg" alt="TechNexis logo"><span>TechNexis</span></a>
-      <nav class="nav">
-        <a href="/">Home</a><a href="/blog.html">Blog</a><a href="/about.html">About</a><a href="/contact.html">Contact</a><a href="/privacy-policy.html">Privacy</a>
-      </nav>
-    </header>
 
-    <section class="panel hero-main">
-      <span class="badge">Blog</span>
-      <h1>Featured AI tools and tech articles</h1>
-      <p class="lede">This page shows the blog category preview. The main site still serves full dynamic article pages at /blog/:slug.</p>
-    </section>
+<header>
+  <h1>🚀 PRO BLOG SYSTEM V2</h1>
+</header>
 
-    <section class="panel section">
-      <div class="section-head">
-        <div><h2>Latest posts</h2><p>Click any card to open the article route.</p></div>
-      </div>
-      <div id="blog-list" class="grid"></div>
-    </section>
+<div class="container">
 
-    <footer class="footer"><span>© <span id="year"></span> TechNexis</span><a href="/">Home</a></footer>
-  </div>
-  <script src="/js/main.js"></script>
-  <script src="/js/blog.js"></script>
+<!-- CREATE BLOG -->
+<div class="card">
+  <h2>⚡ Create New Blog</h2>
+
+  <input id="title" placeholder="Blog Title">
+  <input id="keyword" placeholder="Main Keyword">
+
+  <select id="category">
+    <option>AI</option>
+    <option>Finance</option>
+    <option>Tech</option>
+    <option>Education</option>
+    <option>Make Money</option>
+  </select>
+
+  <textarea id="content" placeholder="Write blog content..." rows="4"></textarea>
+
+  <button class="btn" onclick="addBlog()">+ Publish Blog</button>
+</div>
+
+<!-- SEARCH -->
+<div class="card">
+  <h2>🔍 Search Blogs</h2>
+  <input id="search" onkeyup="renderBlogs()" placeholder="Search blog...">
+</div>
+
+<!-- BLOG LIST -->
+<div class="grid" id="blogList"></div>
+
+<!-- BLOG VIEW -->
+<div id="view"></div>
+
+</div>
+
+<script>
+
+let blogs = JSON.parse(localStorage.getItem("blogs")) || [];
+
+// ADD BLOG
+function addBlog(){
+let title = document.getElementById("title").value;
+let keyword = document.getElementById("keyword").value;
+let category = document.getElementById("category").value;
+let content = document.getElementById("content").value;
+
+if(!title || !content){
+alert("Fill required fields");
+return;
+}
+
+blogs.push({
+id:Date.now(),
+title,
+keyword,
+category,
+content
+});
+
+localStorage.setItem("blogs",JSON.stringify(blogs));
+
+document.getElementById("title").value="";
+document.getElementById("keyword").value="";
+document.getElementById("content").value="";
+
+renderBlogs();
+}
+
+// DELETE BLOG
+function deleteBlog(id){
+blogs = blogs.filter(b=>b.id!==id);
+localStorage.setItem("blogs",JSON.stringify(blogs));
+renderBlogs();
+}
+
+// VIEW BLOG
+function viewBlog(id){
+let b = blogs.find(x=>x.id===id);
+
+document.getElementById("view").innerHTML = `
+<div class="blog">
+<h2>${b.title}</h2>
+<p><b>Category:</b> ${b.category}</p>
+<p><b>Keyword:</b> ${b.keyword}</p>
+<hr>
+<p>${b.content}</p>
+</div>
+`;
+}
+
+// RENDER
+function renderBlogs(){
+let search = document.getElementById("search").value.toLowerCase();
+
+let html = "";
+
+blogs
+.filter(b=>b.title.toLowerCase().includes(search) || b.category.toLowerCase().includes(search))
+.reverse()
+.forEach(b=>{
+html += `
+<div class="card">
+<h3>${b.title}</h3>
+<p>${b.category}</p>
+
+<button class="btn" onclick="viewBlog(${b.id})">Read</button>
+<button class="btn" onclick="deleteBlog(${b.id})">Delete</button>
+</div>
+`;
+});
+
+document.getElementById("blogList").innerHTML = html;
+}
+
+renderBlogs();
+
+</script>
+
 </body>
 </html>
