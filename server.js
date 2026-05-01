@@ -49,15 +49,32 @@ const posts = [
 ];
 
 // ===================== API ROUTES =====================
-
-// Site Info
 app.get("/api/site", (req, res) => {
-  res.json(siteData);
+  res.json({
+    site: siteData
+  });
 });
 
-// All Posts
-app.get("/api/posts", (req, res) => {
-  res.json(posts);
+app.get("/api/articles", (req, res) => {
+  res.json({
+    articles: posts.map(p => ({
+      id: p.id,
+      slug: p.slug,
+      title: p.title,
+      category: p.category,
+      excerpt: p.content,
+      cover: p.content,
+      tag: "Tech",
+      readingTime: "5 min read",
+      date: p.date,
+      sections: [
+        "Introduction to topic",
+        "Main concept explained",
+        "Practical use case",
+        "Conclusion and future scope"
+      ]
+    }))
+  });
 });
 
 // Single Post by ID
