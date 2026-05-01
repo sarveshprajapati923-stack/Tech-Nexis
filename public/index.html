@@ -294,6 +294,26 @@
 <header style="padding:15px;background:#0b1220;color:white;text-align:center">
   <h2>TechNexis</h2>
 </header>
+  <div id="createPostPanel" style="padding:15px;display:none">
+
+  <h2>Create New Post</h2>
+
+  <input id="title" placeholder="Title"><br><br>
+  <textarea id="intro" placeholder="Intro"></textarea><br><br>
+  <textarea id="what" placeholder="What is this?"></textarea><br><br>
+
+  <input id="features" placeholder="Features (comma separated)"><br><br>
+  <input id="pros" placeholder="Pros"><br><br>
+  <input id="cons" placeholder="Cons"><br><br>
+  <input id="best" placeholder="Best options (comma separated)"><br><br>
+  <input id="comparison" placeholder="Comparison"><br><br>
+  <input id="faqs" placeholder="FAQs (comma separated)"><br><br>
+  <input id="conclusion" placeholder="Conclusion"><br><br>
+
+  <button onclick="addPost()">Publish Post</button>
+  <button onclick="showHome()">Cancel</button>
+
+  </div>
 
 <!-- HOME VIEW -->
 <div id="home"></div>
@@ -332,6 +352,9 @@ document.getElementById("article").style.display="none";
 document.getElementById("home").style.display="block";
 
 let html = "<h3 style='padding:10px'>Latest Articles</h3>";
+  html += `<button onclick="openCreate()" style="margin:10px;padding:10px;background:#38bdf8;border:none;border-radius:8px;color:black;cursor:pointer">
++ Create Post
+</button>`;
 
 posts.forEach((p,i)=>{
 html += `
@@ -377,11 +400,39 @@ function openPostBySlug(slug){
     <h2>🔚 Conclusion</h2>
     <p>${post.conclusion || ""}</p>
   `;
-  }                    
+  }    
+  function openCreate(){
+  document.getElementById("home").style.display="none";
+  document.getElementById("article").style.display="none";
+  document.getElementById("createPostPanel").style.display="block";
+}
+
+function addPost(){
+
+let post = {
+  title: document.getElementById("title").value,
+  intro: document.getElementById("intro").value,
+  what: document.getElementById("what").value,
+
+  features: document.getElementById("features").value.split(","),
+  pros: document.getElementById("pros").value,
+  cons: document.getElementById("cons").value,
+
+  best: document.getElementById("best").value.split(","),
+  comparison: document.getElementById("comparison").value,
+  faqs: document.getElementById("faqs").value.split(","),
+  conclusion: document.getElementById("conclusion").value,
+
+  slug: slugify(document.getElementById("title").value)
+};
+
+posts.push(post);
+
+showHome();
+  }
 
 /* INIT */
 showHome();
-
 </script>
   function router(){
   const hash = location.hash;
