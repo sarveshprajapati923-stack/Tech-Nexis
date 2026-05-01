@@ -290,29 +290,104 @@
   </style>
 </head>
 <body>
-  <h1>Title (Main Keyword)</h1>
 
-<p><b>Intro:</b> 3-4 lines problem + solution hook</p>
+<header style="padding:15px;background:#0b1220;color:white;text-align:center">
+  <h2>TechNexis</h2>
+</header>
+
+<!-- HOME VIEW -->
+<div id="home"></div>
+
+<!-- ARTICLE VIEW -->
+<div id="article" style="display:none;padding:15px;"></div>
+
+<footer style="text-align:center;padding:15px;color:#94a3b8">
+© 2026 TechNexis
+</footer>
+
+<script>
+
+/* SAMPLE POST FORMAT */
+let posts = [
+{
+title:"AI Tools Guide 2026",
+intro:"AI tools productivity badha rahe hain aur kaam ko fast bana rahe hain.",
+what:"AI tools software hote hain jo automation aur smart output dete hain.",
+features:["Automation","Speed","Accuracy"],
+pros:"Fast aur efficient",
+cons:"Internet required",
+best:["ChatGPT","Gemini","Claude"],
+comparison:"ChatGPT vs Gemini vs Claude comparison table yaha show hoga",
+faqs:["AI kya hai?","Kya AI free hai?"],
+conclusion:"AI future ka base hai aur sab industries me use hoga"
+}
+];
+
+/* SHOW HOME */
+function showHome(){
+document.getElementById("article").style.display="none";
+document.getElementById("home").style.display="block";
+
+let html = "<h3 style='padding:10px'>Latest Articles</h3>";
+
+posts.forEach((p,i)=>{
+html += `
+<div onclick="openPost(${i})" style="margin:10px;padding:10px;border:1px solid #334155;border-radius:10px;cursor:pointer">
+<h3>${p.title}</h3>
+<p>${p.intro.slice(0,60)}...</p>
+</div>
+`;
+});
+
+document.getElementById("home").innerHTML = html;
+}
+
+/* OPEN ARTICLE */
+function openPost(i){
+
+let p = posts[i];
+
+document.getElementById("home").style.display="none";
+document.getElementById("article").style.display="block";
+
+document.getElementById("article").innerHTML = `
+
+<button onclick="showHome()">⬅ Back</button>
+
+<h1>${p.title}</h1>
+
+<p><b>Intro:</b> ${p.intro}</p>
 
 <h2>🔥 What is this?</h2>
-<p>Simple explanation</p>
+<p>${p.what}</p>
 
 <h2>💡 Key Features</h2>
-<ul>
-<li>Point 1</li>
-<li>Point 2</li>
-<li>Point 3</li>
-</ul>
+<ul>${p.features.map(f=>`<li>${f}</li>`).join("")}</ul>
 
 <h2>⚖️ Pros & Cons</h2>
+<p><b>Pros:</b> ${p.pros}</p>
+<p><b>Cons:</b> ${p.cons}</p>
 
 <h2>🏆 Best Options List</h2>
+<ul>${p.best.map(b=>`<li>${b}</li>`).join("")}</ul>
 
 <h2>📊 Comparison Table</h2>
+<p>${p.comparison}</p>
 
 <h2>❓ FAQs</h2>
+<ul>${p.faqs.map(q=>`<li>${q}</li>`).join("")}</ul>
 
 <h2>🔚 Conclusion</h2>
+<p>${p.conclusion}</p>
+
+`;
+
+}
+
+/* INIT */
+showHome();
+
+</script>
 
 </body>
   <div class="shell">
