@@ -358,11 +358,12 @@ let html = "<h3 style='padding:10px'>Latest Articles</h3>";
 
 posts.forEach((p)=>{
 html += `
-<div onclick="history.pushState({}, '', '/blog/' + p.slug); openPostBySlug(p.slug)"
-style="margin:10px;padding:10px;border:1px solid #334155;border-radius:10px;cursor:pointer">
-<h3>${p.title}</h3>
-<p>${p.intro.slice(0,60)}...</p>
-</div>
+<a href="#/post/${p.slug}" style="text-decoration:none;color:inherit">
+  <div style="margin:10px;padding:10px;border:1px solid #334155;border-radius:10px;cursor:pointer">
+    <h3>${p.title}</h3>
+    <p>${p.intro.slice(0,60)}...</p>
+  </div>
+</a>
 `;
 });
 
