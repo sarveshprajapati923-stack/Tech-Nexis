@@ -306,6 +306,9 @@
 </footer>
 
 <script>
+  function slugify(text){
+  return text.toLowerCase().trim().replace(/\s+/g,"-");
+  }
 
 /* SAMPLE POST FORMAT */
 let posts = [
@@ -343,51 +346,63 @@ document.getElementById("home").innerHTML = html;
 }
 
 /* OPEN ARTICLE */
-function openPost(i){
+function openPostBySlug(slug){
 
-let p = posts[i];
+  let post = posts.find(p => p.slug === slug);
 
-document.getElementById("home").style.display="none";
-document.getElementById("article").style.display="block";
+  if(!post) return;
 
-document.getElementById("article").innerHTML = `
+  document.getElementById("article").style.display = "block";
+  document.getElementById("home").style.display = "none";
 
-<button onclick="showHome()">⬅ Back</button>
+  document.getElementById("article").innerHTML = `
+    <button onclick="location.hash='#/'">⬅ Back</button>
 
-<h1>${p.title}</h1>
+    <h1>${post.title}</h1>
 
-<p><b>Intro:</b> ${p.intro}</p>
+    <p><b>Intro:</b> ${post.intro || ""}</p>
 
-<h2>🔥 What is this?</h2>
-<p>${p.what}</p>
+    <h2>🔥 What is this?</h2>
+    <p>${post.what || post.content}</p>
 
-<h2>💡 Key Features</h2>
-<ul>${p.features.map(f=>`<li>${f}</li>`).join("")}</ul>
+    <h2>💡 Key Features</h2>
+    <ul>${(post.features||[]).map(f=>`<li>${f}</li>`).join("")}</ul>
 
-<h2>⚖️ Pros & Cons</h2>
-<p><b>Pros:</b> ${p.pros}</p>
-<p><b>Cons:</b> ${p.cons}</p>
+    <h2>⚖️ Pros & Cons</h2>
+    <p>${post.pros || ""}</p>
 
-<h2>🏆 Best Options List</h2>
-<ul>${p.best.map(b=>`<li>${b}</li>`).join("")}</ul>
+    <h2>🏆 Best Options</h2>
+    <ul>${(post.best||[]).map(b=>`<li>${b}</li>`).join("")}</ul>
 
-<h2>📊 Comparison Table</h2>
-<p>${p.comparison}</p>
-
-<h2>❓ FAQs</h2>
-<ul>${p.faqs.map(q=>`<li>${q}</li>`).join("")}</ul>
-
-<h2>🔚 Conclusion</h2>
-<p>${p.conclusion}</p>
-
-`;
-
-}
+    <h2>🔚 Conclusion</h2>
+    <p>${post.conclusion || ""}</p>
+  `;
+  }                    
 
 /* INIT */
 showHome();
 
 </script>
+  function router(){
+  const hash = location.hash;
+
+  document.getElementById("home").style.display = "none";
+  document.getElementById("article").style.display = "none";
+  document.getElementById("admin").style.display = "none";
+
+  if(hash.startsWith("#/post/")){
+    const slug = hash.replace("#/post/","");
+    openPostBySlug(slug);
+  }
+  else if(hash === "#/admin"){
+    document.getElementById("admin").style.display = "block";
+  }
+  else{
+    document.getElementById("home").style.display = "block";
+  }
+}
+
+window.addEventListener("hashchange",router);
 
 </body>
   <div class="shell">
