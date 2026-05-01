@@ -374,14 +374,15 @@ document.getElementById("home").innerHTML = html;
 function openPostBySlug(slug){
 
   let post = posts.find(p => p.slug === slug);
-
   if(!post) return;
+
+  window.scrollTo(0, 0);
 
   document.getElementById("article").style.display = "block";
   document.getElementById("home").style.display = "none";
 
   document.getElementById("article").innerHTML = `
-    <button onclick="location.hash='#/'">⬅ Back</button>
+    <button onclick="history.pushState({}, '', '/'); router();">⬅ Back</button>
 
     <h1>${post.title}</h1>
 
@@ -402,7 +403,7 @@ function openPostBySlug(slug){
     <h2>🔚 Conclusion</h2>
     <p>${post.conclusion || ""}</p>
   `;
-  }    
+  }
   function openCreate(){
   document.getElementById("home").style.display="none";
   document.getElementById("article").style.display="none";
