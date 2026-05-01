@@ -17,7 +17,8 @@ app.use(express.static(publicPath));
 const siteData = {
   name: "TechNexis",
   tagline: "AI Tools + Tech Blog",
-  description: "Modern AI tools and tech blog for developers and creators."
+  description: "Modern AI tools and tech blog for developers and creators.",
+  url: "https://tech-nexis.onrender.com"
 };
 
 // ===================== REAL BLOG POSTS (STRUCTURED) =====================
@@ -52,6 +53,18 @@ const posts = [
 app.get("/api/site", (req, res) => {
   res.json({
     site: siteData
+  });
+});
+app.get("/api/meta/:slug", (req, res) => {
+  const post = posts.find(p => p.slug === req.params.slug);
+
+  if (!post) return res.json({});
+
+  res.json({
+    title: post.title,
+    description: post.content,
+    url: `https://tech-nexis.onrender.com/blog/${post.slug}`,
+    image: "https://tech-nexis.onrender.com/og.png"
   });
 });
 app.get("/sitemap.xml", (req, res) => {
