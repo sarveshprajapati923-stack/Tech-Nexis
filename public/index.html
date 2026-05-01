@@ -356,9 +356,10 @@ let html = "<h3 style='padding:10px'>Latest Articles</h3>";
 + Create Post
 </button>`;
 
-posts.forEach((p,i)=>{
+posts.forEach((p)=>{
 html += `
-<div onclick="openPost(${i})" style="margin:10px;padding:10px;border:1px solid #334155;border-radius:10px;cursor:pointer">
+<div onclick="history.pushState({}, '', '/blog/' + p.slug); openPostBySlug(p.slug)"
+style="margin:10px;padding:10px;border:1px solid #334155;border-radius:10px;cursor:pointer">
 <h3>${p.title}</h3>
 <p>${p.intro.slice(0,60)}...</p>
 </div>
