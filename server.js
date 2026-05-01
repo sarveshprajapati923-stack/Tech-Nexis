@@ -54,6 +54,34 @@ app.get("/api/site", (req, res) => {
     site: siteData
   });
 });
+app.get("/sitemap.xml", (req, res) => {
+  const baseUrl = "https://tech-nexis.onrender.com";
+
+  const urls = posts.map(p => `
+    <url>
+      <loc>${baseUrl}/blog/${p.slug}</loc>
+      <lastmod>${p.date}</lastmod>
+    </url>
+  `).join("");
+
+  const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>${baseUrl}/</loc>
+    <lastmod>2026-01-01</lastmod>
+  </url>
+  <url>
+    <loc>${baseUrl}/about</loc>
+  </url>
+  <url>
+    <loc>${baseUrl}/contact</loc>
+  </url>
+  ${urls}
+</urlset>`;
+
+  res.header("Content-Type", "application/xml");
+  res.send(sitemap);
+});
 
 app.get("/api/articles", (req, res) => {
   res.json({
