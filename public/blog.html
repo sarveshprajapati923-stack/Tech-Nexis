@@ -3,227 +3,342 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Pro Blog System V2</title>
+<title>AI Blog SaaS Pro</title>
 
 <style>
 body{
-  margin:0;
-  font-family:Arial,sans-serif;
-  background:linear-gradient(135deg,#0f172a,#111827);
-  color:white;
+margin:0;
+font-family:Arial;
+background:linear-gradient(135deg,#0f172a,#0b1220);
+color:white;
 }
 
-/* HEADER */
-header{
-  padding:18px;
-  text-align:center;
-  background:#0b1220;
-  position:sticky;
-  top:0;
+.container{max-width:1000px;margin:auto;padding:15px;}
+
+.card{
+background:#1e293b;
+padding:15px;
+border-radius:12px;
+margin:10px 0;
 }
 
-h1{
-  margin:0;
-  font-size:22px;
-}
-
-/* CONTAINER */
-.container{
-  max-width:1100px;
-  margin:auto;
-  padding:15px;
-}
-
-/* INPUTS */
-input, select, textarea{
-  width:100%;
-  padding:10px;
-  margin:6px 0;
-  border-radius:10px;
-  border:none;
-  outline:none;
+input,textarea,select{
+width:100%;
+padding:10px;
+margin:6px 0;
+border-radius:10px;
+border:none;
+outline:none;
 }
 
 /* BUTTON */
 .btn{
-  border:2px solid #38bdf8;
-  background:transparent;
-  color:#38bdf8;
-  padding:10px 14px;
-  border-radius:10px;
-  cursor:pointer;
-  transition:0.3s;
-  margin-top:5px;
+border:2px solid #38bdf8;
+background:transparent;
+color:#38bdf8;
+padding:10px;
+border-radius:10px;
+cursor:pointer;
+transition:0.3s;
+margin:5px 0;
 }
-
 .btn:hover{
-  background:#38bdf8;
-  color:black;
-  transform:scale(1.05);
+background:#38bdf8;
+color:black;
+transform:scale(1.05);
 }
 
 /* GRID */
 .grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-  gap:12px;
-  margin-top:15px;
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+gap:10px;
 }
 
-/* CARD */
-.card{
-  background:#1e293b;
-  padding:15px;
-  border-radius:12px;
-  border:1px solid #334155;
-  transition:0.3s;
+.box{
+background:#0f172a;
+padding:10px;
+border-radius:10px;
+border:1px solid #334155;
 }
 
-.card:hover{
-  transform:translateY(-5px);
+img{
+max-width:100%;
+border-radius:10px;
+margin-top:8px;
 }
 
-/* BLOG AREA */
-.blog{
-  background:white;
-  color:black;
-  padding:20px;
-  border-radius:12px;
-  margin-top:15px;
-}
-
-/* TOP BAR */
-.topbar{
-  display:flex;
-  gap:10px;
-  flex-wrap:wrap;
-}
-
+.hidden{display:none;}
 </style>
 </head>
 
 <body>
 
-<header>
-  <h1>🚀 PRO BLOG SYSTEM V2</h1>
-</header>
-
 <div class="container">
 
-<!-- CREATE BLOG -->
+<h2>🚀 AI BLOG SaaS PRO (WordPress Ready)</h2>
+
+<!-- WP SETTINGS -->
 <div class="card">
-  <h2>⚡ Create New Blog</h2>
+<h3>🔗 WordPress Connect</h3>
+<input id="wpUrl" placeholder="https://your-site.com">
+<input id="wpUser" placeholder="Username">
+<input id="wpPass" placeholder="App Password">
+<button class="btn" onclick="saveWP()">Save WP</button>
+</div>
 
-  <input id="title" placeholder="Blog Title">
-  <input id="keyword" placeholder="Main Keyword">
+<!-- LOGIN -->
+<div id="auth" class="card">
+<h3>Login / Register</h3>
+<input id="user" placeholder="Username">
+<input id="pass" type="password" placeholder="Password">
 
-  <select id="category">
-    <option>AI</option>
-    <option>Finance</option>
-    <option>Tech</option>
-    <option>Education</option>
-    <option>Make Money</option>
-  </select>
+<button class="btn" onclick="register()">Register</button>
+<button class="btn" onclick="login()">Login</button>
+</div>
 
-  <textarea id="content" placeholder="Write blog content..." rows="4"></textarea>
+<!-- APP -->
+<div id="app" class="hidden">
 
-  <button class="btn" onclick="addBlog()">+ Publish Blog</button>
+<div class="card">
+<h3>👤 User: <span id="cu"></span></h3>
+<button class="btn" onclick="logout()">Logout</button>
+</div>
+
+<!-- CREATE -->
+<div class="card">
+<h3>Create Blog</h3>
+
+<input id="title" placeholder="Title">
+<input id="keyword" placeholder="Keyword">
+
+<select id="cat">
+<option>AI</option>
+<option>Tech</option>
+<option>Finance</option>
+<option>Education</option>
+</select>
+
+<textarea id="content" rows="5"></textarea>
+
+<input type="file" id="img">
+
+<button class="btn" onclick="ai()">🤖 AI Generate</button>
+<button class="btn" onclick="saveBlog()">Save Draft</button>
+<button class="btn" onclick="exportXML()">⬇ Export XML</button>
 </div>
 
 <!-- SEARCH -->
 <div class="card">
-  <h2>🔍 Search Blogs</h2>
-  <input id="search" onkeyup="renderBlogs()" placeholder="Search blog...">
+<input id="search" onkeyup="render()" placeholder="Search blog...">
 </div>
 
-<!-- BLOG LIST -->
-<div class="grid" id="blogList"></div>
+<!-- DASHBOARD -->
+<div class="card">
+<p>📊 Blogs: <span id="count">0</span></p>
+<p>👁 Views: <span id="views">0</span></p>
+</div>
 
-<!-- BLOG VIEW -->
-<div id="view"></div>
+<!-- LIST -->
+<div class="grid" id="list"></div>
+
+</div>
 
 </div>
 
 <script>
 
-let blogs = JSON.parse(localStorage.getItem("blogs")) || [];
+let users = JSON.parse(localStorage.getItem("users")) || {};
+let wp = JSON.parse(localStorage.getItem("wp")) || {};
+let cu = localStorage.getItem("cu");
 
-// ADD BLOG
-function addBlog(){
-let title = document.getElementById("title").value;
-let keyword = document.getElementById("keyword").value;
-let category = document.getElementById("category").value;
-let content = document.getElementById("content").value;
-
-if(!title || !content){
-alert("Fill required fields");
-return;
+/* WP SAVE */
+function saveWP(){
+wp={
+url:wpUrl.value,
+user:wpUser.value,
+pass:wpPass.value
+};
+localStorage.setItem("wp",JSON.stringify(wp));
+alert("Saved");
 }
 
-blogs.push({
+/* REGISTER */
+function register(){
+users[user.value]={pass:pass.value,blogs:[]};
+localStorage.setItem("users",JSON.stringify(users));
+alert("Done");
+}
+
+/* LOGIN */
+function login(){
+if(users[user.value] && users[user.value].pass===pass.value){
+cu=user.value;
+localStorage.setItem("cu",cu);
+show();
+}
+}
+
+/* LOGOUT */
+function logout(){
+localStorage.removeItem("cu");
+location.reload();
+}
+
+/* SHOW */
+function show(){
+auth.classList.add("hidden");
+app.classList.remove("hidden");
+cuEl.innerText=cu;
+render();
+}
+
+/* AI */
+function ai(){
+content.value=
+`🔥 ${keyword.value} in ${cat.value}
+
+🚀 Trending topic with high potential.
+
+💡 Benefits:
+- Growth
+- Income
+- Demand
+
+📊 Conclusion: Focus on ${keyword.value} for success.`;
+}
+
+/* SAVE BLOG */
+function saveBlog(){
+
+let file=document.getElementById("img").files[0];
+let reader=new FileReader();
+
+reader.onload=()=>{
+let img=reader.result;
+
+users[cu].blogs.push({
 id:Date.now(),
-title,
-keyword,
-category,
-content
+title:title.value,
+keyword:keyword.value,
+category:cat.value,
+content:content.value,
+image:img,
+views:0,
+status:"draft"
 });
 
-localStorage.setItem("blogs",JSON.stringify(blogs));
+localStorage.setItem("users",JSON.stringify(users));
+render();
+};
 
-document.getElementById("title").value="";
-document.getElementById("keyword").value="";
-document.getElementById("content").value="";
-
-renderBlogs();
+if(file) reader.readAsDataURL(file);
+else {
+users[cu].blogs.push({
+id:Date.now(),
+title:title.value,
+keyword:keyword.value,
+category:cat.value,
+content:content.value,
+image:"",
+views:0,
+status:"draft"
+});
+localStorage.setItem("users",JSON.stringify(users));
+render();
+}
 }
 
-// DELETE BLOG
-function deleteBlog(id){
-blogs = blogs.filter(b=>b.id!==id);
-localStorage.setItem("blogs",JSON.stringify(blogs));
-renderBlogs();
+/* DELETE */
+function del(id){
+users[cu].blogs=users[cu].blogs.filter(b=>b.id!==id);
+localStorage.setItem("users",JSON.stringify(users));
+render();
 }
 
-// VIEW BLOG
-function viewBlog(id){
-let b = blogs.find(x=>x.id===id);
+/* PUBLISH WP */
+async function publish(b){
 
-document.getElementById("view").innerHTML = `
-<div class="blog">
-<h2>${b.title}</h2>
-<p><b>Category:</b> ${b.category}</p>
-<p><b>Keyword:</b> ${b.keyword}</p>
-<hr>
-<p>${b.content}</p>
-</div>
-`;
+if(!wp.url) return alert("Set WP");
+
+let auth=btoa(wp.user+":"+wp.pass);
+
+await fetch(wp.url+"/wp-json/wp/v2/posts",{
+method:"POST",
+headers:{
+"Authorization":"Basic "+auth,
+"Content-Type":"application/json"
+},
+body:JSON.stringify({
+title:b.title,
+content:b.content,
+status:"publish"
+})
+});
+
+alert("Published");
 }
 
-// RENDER
-function renderBlogs(){
-let search = document.getElementById("search").value.toLowerCase();
+/* XML EXPORT */
+function exportXML(){
+let blogs=users[cu].blogs;
 
-let html = "";
+let xml=`<?xml version="1.0"?><rss><channel>`;
 
-blogs
-.filter(b=>b.title.toLowerCase().includes(search) || b.category.toLowerCase().includes(search))
-.reverse()
-.forEach(b=>{
-html += `
-<div class="card">
+blogs.forEach(b=>{
+xml+=`
+<item>
+<title>${b.title}</title>
+<content>${b.content}</content>
+</item>`;
+});
+
+xml+=`</channel></rss>`;
+
+let blob=new Blob([xml],{type:"text/xml"});
+let a=document.createElement("a");
+a.href=URL.createObjectURL(blob);
+a.download="export.xml";
+a.click();
+}
+
+/* RENDER */
+function render(){
+
+let blogs=users[cu].blogs||[];
+
+let search=document.getElementById("search")?.value?.toLowerCase()||"";
+
+let html="";
+
+let filtered=blogs.filter(b=>
+b.title.toLowerCase().includes(search)||
+b.category.toLowerCase().includes(search)
+);
+
+count.innerText=filtered.length;
+views.innerText=filtered.reduce((a,b)=>a+(b.views||0),0);
+
+filtered.slice().reverse().forEach(b=>{
+
+html+=`
+<div class="box">
 <h3>${b.title}</h3>
-<p>${b.category}</p>
+<p>${b.category} | ${b.status}</p>
 
-<button class="btn" onclick="viewBlog(${b.id})">Read</button>
-<button class="btn" onclick="deleteBlog(${b.id})">Delete</button>
+${b.image?`<img src="${b.image}">`:""}
+
+<button class="btn" onclick="del(${b.id})">Delete</button>
+<button class="btn" onclick="publish(${JSON.stringify(b)})">WP Publish</button>
 </div>
 `;
 });
 
-document.getElementById("blogList").innerHTML = html;
+list.innerHTML=html;
 }
 
-renderBlogs();
+/* INIT */
+if(cu) show();
 
 </script>
 
