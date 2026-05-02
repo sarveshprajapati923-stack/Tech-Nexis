@@ -1,451 +1,84 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="google-site-verification" content="JpQG47xefNmuCK-cBh7IVr_SahtBHGR2aW42jEffZNc" />
-  <meta name="description" content="TechNexis is an AI tools and tech blog..." />
-<title>AI Blog SaaS Pro</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TechNexis Blog</title>
+
+  <!-- CSS LINK -->
   <link rel="stylesheet" href="style.css">
-
-</head>
-
-<style>
-  .dark {
-  --bg: #0f172a;
-  --text: #f8fafc;
-  --card: #1e293b;
-  --border: #334155;
-  }
-  :root {
-  --bg: #ffffff;
-  --text: #0f172a;
-  --muted: #64748b;
-  --card: #f8fafc;
-  --border: #e2e8f0;
-  --primary: #2563eb;
-}
-
-/* Reset */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  transition: all 0.2s ease-in-out;
-}
-
-body {
-  background: var(--bg);
-  color: var(--text);
-  font-family: 'Inter', sans-serif;
-}
-
-/* Navbar */
-.navbar {
-  background: white;
-  border-bottom: 1px solid var(--border);
-  padding: 14px 20px;
-  display: flex;
-  justify-content: space-between;
-}
-
-/* Cards */
-.card {
-  background: var(--card);
-  border: 1px solid var(--border);
-  border-radius: 16px;
-  padding: 18px;
-  margin: 10px;
-}
-
-.card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 10px 25px rgba(0,0,0,0.08);
-}
-
-/* Buttons */
-button {
-  background: transparent;
-  border: 2px solid var(--primary);
-  color: var(--primary);
-  padding: 10px 18px;
-  border-radius: 8px;
-  cursor: pointer;
-}
-
-button:hover {
-  background: var(--primary);
-  color: white;
-  transform: scale(1.05);
-}
-
-/* Inputs */
-input, textarea {
-  background: #f1f5f9;
-  border: 1px solid var(--border);
-  padding: 10px;
-  border-radius: 8px;
-  width: 100%;
-  margin: 6px 0;
-}
-
-/* Hero */
-.hero {
-  background: linear-gradient(to right, #f8fafc, #e2e8f0);
-  padding: 40px;
-  border-radius: 20px;
-  margin: 20px;
-}
-
-/* Grid */
-.grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px,1fr));
-  gap: 15px;
-  padding: 20px;
-}
-
-/* Footer */
-.footer {
-  text-align: center;
-  padding: 20px;
-  color: var(--muted);
-  }
-body{
-margin:0;
-font-family:Arial;
-background:linear-gradient(135deg,#0f172a,#0b1220);
-color:white;
-}
-
-.container{max-width:1000px;margin:auto;padding:15px;}
-
-.card{
-background:#1e293b;
-padding:15px;
-border-radius:12px;
-margin:10px 0;
-}
-
-input,textarea,select{
-width:100%;
-padding:10px;
-margin:6px 0;
-border-radius:10px;
-border:none;
-outline:none;
-}
-
-/* BUTTON */
-.btn{
-border:2px solid #38bdf8;
-background:transparent;
-color:#38bdf8;
-padding:10px;
-border-radius:10px;
-cursor:pointer;
-transition:0.3s;
-margin:5px 0;
-}
-.btn:hover{
-background:#38bdf8;
-color:black;
-transform:scale(1.05);
-}
-
-/* GRID */
-.grid{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-gap:10px;
-}
-
-.box{
-background:#0f172a;
-padding:10px;
-border-radius:10px;
-border:1px solid #334155;
-}
-
-img{
-max-width:100%;
-border-radius:10px;
-margin-top:8px;
-}
-
-.hidden{display:none;}
-</style>
 </head>
 
 <body>
 
-<div class="container">
+  <!-- NAVBAR -->
+  <div class="topbar shell">
+    <div class="brand">TechNexis</div>
 
-<h2>🚀 AI BLOG SaaS PRO (WordPress Ready)</h2>
+    <div class="nav">
+      <a href="index.html">Home</a>
+      <a href="#">AI Tools</a>
+      <a href="#">Blogging</a>
+      <a href="#">Development</a>
+      <button class="btn">Create Post</button>
+    </div>
+  </div>
 
-<!-- WP SETTINGS -->
-<div class="card">
-<h3>🔗 WordPress Connect</h3>
-<input id="wpUrl" placeholder="https://your-site.com">
-<input id="wpUser" placeholder="Username">
-<input id="wpPass" placeholder="App Password">
-<button class="btn" onclick="saveWP()">Save WP</button>
-</div>
+  <!-- HERO -->
+  <div class="shell">
+    <div class="hero">
+      <h1>Best AI Tools in 2026</h1>
+      <p class="lede">
+        Discover the latest AI tools that help you boost productivity,
+        automate tasks, and earn online in 2026.
+      </p>
+    </div>
+  </div>
 
-<!-- LOGIN -->
-<div id="auth" class="card">
-<h3>Login / Register</h3>
-<input id="user" placeholder="Username">
-<input id="pass" type="password" placeholder="Password">
+  <!-- BLOG CONTENT -->
+  <div class="shell">
+    <div class="article">
 
-<button class="btn" onclick="register()">Register</button>
-<button class="btn" onclick="login()">Login</button>
-</div>
+      <h2>What are AI Tools?</h2>
+      <p>
+        AI tools are software applications that use artificial intelligence
+        to automate tasks, generate content, and improve efficiency.
+      </p>
 
-<!-- APP -->
-<div id="app" class="hidden">
+      <h2>Top Features</h2>
+      <ul>
+        <li>AI content generation</li>
+        <li>Automation workflows</li>
+        <li>Video creation</li>
+        <li>SEO optimization</li>
+      </ul>
 
-<div class="card">
-<h3>👤 User: <span id="cu"></span></h3>
-<button class="btn" onclick="logout()">Logout</button>
-</div>
+      <h2>Best AI Tools</h2>
+      <p>
+        ChatGPT, Midjourney, Runway ML, Jasper AI, Pictory AI, and Copy.ai
+        are among the best tools available in 2026.
+      </p>
 
-<!-- CREATE -->
-<div class="card">
-<h3>Create Blog</h3>
+      <h2>How to Use</h2>
+      <p>
+        Start by choosing one tool, learn its basics, and apply it to your
+        workflow. For example, use AI tools for blogging, YouTube automation,
+        or content marketing.
+      </p>
 
-<input id="title" placeholder="Title">
-<input id="keyword" placeholder="Keyword">
+      <h2>Conclusion</h2>
+      <p>
+        AI tools are transforming the way we work online. Start using them
+        today to stay ahead in the digital world.
+      </p>
 
-<select id="cat">
-<option>AI</option>
-<option>Tech</option>
-<option>Finance</option>
-<option>Education</option>
-</select>
+    </div>
+  </div>
 
-<textarea id="content" rows="5"></textarea>
+  <!-- FOOTER -->
+  <div class="footer">
+    © 2026 TechNexis · AI Tools & Tech Blog
+  </div>
 
-<input type="file" id="img">
-
-<button class="btn" onclick="ai()">🤖 AI Generate</button>
-<button class="btn" onclick="saveBlog()">Save Draft</button>
-<button class="btn" onclick="exportXML()">⬇ Export XML</button>
-</div>
-
-<!-- SEARCH -->
-<div class="card">
-<input id="search" onkeyup="render()" placeholder="Search blog...">
-</div>
-
-<!-- DASHBOARD -->
-<div class="card">
-<p>📊 Blogs: <span id="count">0</span></p>
-<p>👁 Views: <span id="views">0</span></p>
-</div>
-
-<!-- LIST -->
-<div class="grid" id="list"></div>
-
-</div>
-
-</div>
-
-<script>
-
-let users = JSON.parse(localStorage.getItem("users")) || {};
-let wp = JSON.parse(localStorage.getItem("wp")) || {};
-let cu = localStorage.getItem("cu");
-
-/* WP SAVE */
-function saveWP(){
-wp={
-url:wpUrl.value,
-user:wpUser.value,
-pass:wpPass.value
-};
-localStorage.setItem("wp",JSON.stringify(wp));
-alert("Saved");
-}
-
-/* REGISTER */
-function register(){
-users[user.value]={pass:pass.value,blogs:[]};
-localStorage.setItem("users",JSON.stringify(users));
-alert("Done");
-}
-
-/* LOGIN */
-function login(){
-if(users[user.value] && users[user.value].pass===pass.value){
-cu=user.value;
-localStorage.setItem("cu",cu);
-show();
-}
-}
-
-/* LOGOUT */
-function logout(){
-localStorage.removeItem("cu");
-location.reload();
-}
-
-/* SHOW */
-function show(){
-auth.classList.add("hidden");
-app.classList.remove("hidden");
-cuEl.innerText=cu;
-render();
-}
-
-/* AI */
-function ai(){
-content.value=
-`🔥 ${keyword.value} in ${cat.value}
-
-🚀 Trending topic with high potential.
-
-💡 Benefits:
-- Growth
-- Income
-- Demand
-
-📊 Conclusion: Focus on ${keyword.value} for success.`;
-}
-
-/* SAVE BLOG */
-function saveBlog(){
-
-let file=document.getElementById("img").files[0];
-let reader=new FileReader();
-
-reader.onload=()=>{
-let img=reader.result;
-
-users[cu].blogs.push({
-id:Date.now(),
-title:title.value,
-keyword:keyword.value,
-category:cat.value,
-content:content.value,
-image:img,
-views:0,
-status:"draft"
-});
-
-localStorage.setItem("users",JSON.stringify(users));
-render();
-};
-
-if(file) reader.readAsDataURL(file);
-else {
-users[cu].blogs.push({
-id:Date.now(),
-title:title.value,
-keyword:keyword.value,
-category:cat.value,
-content:content.value,
-image:"",
-views:0,
-status:"draft"
-});
-localStorage.setItem("users",JSON.stringify(users));
-render();
-}
-}
-
-/* DELETE */
-function del(id){
-users[cu].blogs=users[cu].blogs.filter(b=>b.id!==id);
-localStorage.setItem("users",JSON.stringify(users));
-render();
-}
-
-/* PUBLISH WP */
-async function publish(b){
-
-if(!wp.url) return alert("Set WP");
-
-let auth=btoa(wp.user+":"+wp.pass);
-
-await fetch(wp.url+"/wp-json/wp/v2/posts",{
-method:"POST",
-headers:{
-"Authorization":"Basic "+auth,
-"Content-Type":"application/json"
-},
-body:JSON.stringify({
-title:b.title,
-content:b.content,
-status:"publish"
-})
-});
-
-alert("Published");
-}
-
-/* XML EXPORT */
-function exportXML(){
-let blogs=users[cu].blogs;
-
-let xml=`<?xml version="1.0"?><rss><channel>`;
-
-blogs.forEach(b=>{
-xml+=`
-<item>
-<title>${b.title}</title>
-<content>${b.content}</content>
-</item>`;
-});
-
-xml+=`</channel></rss>`;
-
-let blob=new Blob([xml],{type:"text/xml"});
-let a=document.createElement("a");
-a.href=URL.createObjectURL(blob);
-a.download="export.xml";
-a.click();
-}
-
-/* RENDER */
-function render(){
-
-let blogs=users[cu].blogs||[];
-
-let search=document.getElementById("search")?.value?.toLowerCase()||"";
-
-let html="";
-
-let filtered=blogs.filter(b=>
-b.title.toLowerCase().includes(search)||
-b.category.toLowerCase().includes(search)
-);
-
-count.innerText=filtered.length;
-views.innerText=filtered.reduce((a,b)=>a+(b.views||0),0);
-
-filtered.slice().reverse().forEach(b=>{
-
-html+=`
-<div class="box">
-<h3>${b.title}</h3>
-<p>${b.category} | ${b.status}</p>
-
-${b.image?`<img src="${b.image}">`:""}
-
-<button class="btn" onclick="del(${b.id})">Delete</button>
-<button class="btn" onclick="publish(${JSON.stringify(b)})">WP Publish</button>
-</div>
-`;
-});
-
-list.innerHTML=html;
-}
-
-/* INIT */
-if(cu) show();
-
-</script>
-
-</body>
+  </body>
 </html>
