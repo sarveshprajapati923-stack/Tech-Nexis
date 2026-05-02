@@ -235,6 +235,12 @@ document.getElementById("searchInput")?.addEventListener("input", showHome);
 
 /* INIT */
 showHome();
+  document.querySelector("input")?.addEventListener("input",(e)=>{
+  const val = e.target.value.toLowerCase();
+  document.querySelectorAll(".card").forEach(card=>{
+    card.style.display = card.innerText.toLowerCase().includes(val) ? "block":"none";
+  });
+});
 
 </script>
                                   
