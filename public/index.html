@@ -15,6 +15,106 @@
 <meta property="og:type" content="website">
   <title>TechNexis — AI Tools + Tech Blog</title>
   <style>
+    .dark {
+  --bg: #0f172a;
+  --text: #f8fafc;
+  --card: #1e293b;
+  --border: #334155;
+    }
+    :root {
+  --bg: #ffffff;
+  --text: #0f172a;
+  --muted: #64748b;
+  --card: #f8fafc;
+  --border: #e2e8f0;
+  --primary: #2563eb;
+}
+
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  transition: all 0.2s ease-in-out;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Inter', sans-serif;
+}
+
+/* Navbar */
+.navbar {
+  background: white;
+  border-bottom: 1px solid var(--border);
+  padding: 14px 20px;
+  display: flex;
+  justify-content: space-between;
+}
+
+/* Cards */
+.card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 18px;
+  margin: 10px;
+}
+
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+}
+
+/* Buttons */
+button {
+  background: transparent;
+  border: 2px solid var(--primary);
+  color: var(--primary);
+  padding: 10px 18px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+button:hover {
+  background: var(--primary);
+  color: white;
+  transform: scale(1.05);
+}
+
+/* Inputs */
+input, textarea {
+  background: #f1f5f9;
+  border: 1px solid var(--border);
+  padding: 10px;
+  border-radius: 8px;
+  width: 100%;
+  margin: 6px 0;
+}
+
+/* Hero */
+.hero {
+  background: linear-gradient(to right, #f8fafc, #e2e8f0);
+  padding: 40px;
+  border-radius: 20px;
+  margin: 20px;
+}
+
+/* Grid */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px,1fr));
+  gap: 15px;
+  padding: 20px;
+}
+
+/* Footer */
+.footer {
+  text-align: center;
+  padding: 20px;
+  color: var(--muted);
+    }
     :root{
       --bg:#070b14;
       --bg2:#0b1020;
@@ -296,6 +396,42 @@
   </style>
 </head>
 <body>
+  <div class="navbar">
+  <h2>TechNexis</h2>
+    <button onclick="toggleMode()">🌗 Toggle</button>
+  <button>Create Post</button>
+  </div>
+
+  <div class="hero">
+  <h1>AI Tools + Tech Blog</h1>
+  <p>Modern blog for AI tools, guides and online earning</p>
+</div>
+
+<div class="grid">
+
+  <div class="card">
+    <h3>Best AI Tools in 2026</h3>
+    <p>Boost productivity with latest AI tools...</p>
+    <button>Read More</button>
+  </div>
+
+  <div class="card">
+    <h3>AI Tools Guide 2026</h3>
+    <p>Complete overview of AI tools...</p>
+    <button>Read More</button>
+  </div>
+
+  <div class="card">
+    <h3>Blogging Strategy</h3>
+    <p>Grow your blog using SEO...</p>
+    <button>Read More</button>
+  </div>
+
+</div>
+
+<div class="footer">
+  © 2026 TechNexis
+</div>
 
 <header style="padding:15px;background:#0b1220;color:white;text-align:center">
   <h2>TechNexis</h2>
@@ -330,6 +466,12 @@
 <footer style="text-align:center;padding:15px;color:#94a3b8">
 © 2026 TechNexis
 </footer>
+
+  <script>
+function toggleMode() {
+  document.body.classList.toggle("dark");
+}
+  </script>
 
 <script>
   function slugify(text){
