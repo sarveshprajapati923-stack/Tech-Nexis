@@ -4,245 +4,976 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="TechNexis is an AI tools and tech blog with modern tutorials, prompt guides, reviews, and productivity articles." />
-  <meta name="theme-color" content="#0f172a" />
-  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml" />
-  <link rel="apple-touch-icon" href="/assets/favicon.svg" />
-  <meta name="robots" content="index, follow">
-
-<meta property="og:title" content="TechNexis AI Blog">
-<meta property="og:description" content="AI Tools + Tech Blog">
-<meta property="og:url" content="https://tech-nexis.onrender.com">
-<meta property="og:type" content="website">
+  <meta name="theme-color" content="#f8fafc" />
+  <meta name="robots" content="index, follow" />
+  <meta property="og:title" content="TechNexis AI Blog" />
+  <meta property="og:description" content="AI Tools + Tech Blog" />
+  <meta property="og:url" content="https://technexiss.in" />
+  <meta property="og:type" content="website" />
   <title>TechNexis — AI Tools + Tech Blog</title>
-  <link rel="stylesheet" href="style.css">
+
+  <style>
+    :root{
+      --bg:#f5f7fb;
+      --bg2:#eef3ff;
+      --panel:#ffffff;
+      --panel2:#f8fafc;
+      --text:#0f172a;
+      --muted:#64748b;
+      --line:#e2e8f0;
+      --accent:#2563eb;
+      --accent2:#7c3aed;
+      --accent3:#0ea5e9;
+      --shadow:0 18px 45px rgba(15,23,42,.08);
+      --radius:22px;
+      --radius2:16px;
+      --max:1180px;
+    }
+
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+      background:
+        radial-gradient(circle at top left, rgba(37,99,235,.10), transparent 26%),
+        radial-gradient(circle at top right, rgba(124,58,237,.08), transparent 22%),
+        linear-gradient(180deg, #f8fbff 0%, #f5f7fb 60%, #eef4ff 100%);
+      color:var(--text);
+      min-height:100vh;
+    }
+    body.soft-mode{
+      --bg:#f8fafc;
+      --bg2:#eef2ff;
+      --panel:#ffffff;
+      --panel2:#f8fafc;
+      --text:#0f172a;
+      --muted:#64748b;
+      --line:#dbe4f0;
+      --accent:#0f766e;
+      --accent2:#7c3aed;
+      --accent3:#2563eb;
+    }
+
+    a{color:inherit;text-decoration:none}
+    button,input,textarea,select{font:inherit}
+    button{
+      border:1px solid var(--line);
+      background:#fff;
+      color:var(--text);
+      padding:10px 15px;
+      border-radius:999px;
+      cursor:pointer;
+      transition:.22s ease;
+      box-shadow:0 1px 0 rgba(15,23,42,.03);
+    }
+    button:hover{
+      transform:translateY(-1px);
+      border-color:rgba(37,99,235,.35);
+      box-shadow:0 10px 25px rgba(37,99,235,.10);
+    }
+    button.primary{
+      background:linear-gradient(135deg, var(--accent), var(--accent2));
+      color:#fff;
+      border-color:transparent;
+    }
+    button.primary:hover{
+      transform:translateY(-1px) scale(1.01);
+    }
+    .wrap{max-width:var(--max);margin:0 auto;padding:18px}
+    .topbar{
+      position:sticky;top:0;z-index:50;
+      display:flex;align-items:center;justify-content:space-between;gap:14px;
+      padding:14px 18px;
+      border:1px solid rgba(226,232,240,.88);
+      border-radius:24px;
+      background:rgba(255,255,255,.80);
+      backdrop-filter:blur(14px);
+      box-shadow:0 10px 30px rgba(15,23,42,.05);
+    }
+    .brand{
+      display:flex;align-items:center;gap:12px;font-weight:900;
+      letter-spacing:.2px;
+      min-width:0;
+    }
+    .mark{
+      width:42px;height:42px;border-radius:14px;
+      display:grid;place-items:center;
+      color:#fff;
+      background:linear-gradient(135deg,var(--accent),var(--accent2));
+      box-shadow:0 12px 28px rgba(37,99,235,.22);
+      flex:0 0 auto;
+    }
+    .brand h1{
+      font-size:18px;margin:0;line-height:1.1;
+    }
+    .brand span{
+      display:block;font-size:12px;color:var(--muted);font-weight:600;margin-top:2px;
+    }
+    .nav{
+      display:flex;align-items:center;gap:8px;flex-wrap:wrap;justify-content:flex-end;
+    }
+    .nav a{
+      padding:10px 12px;border-radius:999px;
+      color:#334155;
+    }
+    .nav a:hover{
+      background:#f1f5ff;
+    }
+
+    .hero{
+      margin-top:18px;
+      padding:28px;
+      border-radius:var(--radius);
+      background:
+        linear-gradient(180deg, rgba(255,255,255,.94), rgba(255,255,255,.88)),
+        radial-gradient(circle at top right, rgba(37,99,235,.08), transparent 28%);
+      border:1px solid rgba(226,232,240,.92);
+      box-shadow:var(--shadow);
+      overflow:hidden;
+      position:relative;
+    }
+    .hero::after{
+      content:"";
+      position:absolute;inset:auto -20px -40px auto;
+      width:220px;height:220px;border-radius:50%;
+      background:radial-gradient(circle, rgba(124,58,237,.10), transparent 68%);
+      pointer-events:none;
+    }
+    .badge{
+      display:inline-flex;align-items:center;gap:8px;
+      padding:8px 12px;border-radius:999px;
+      border:1px solid rgba(37,99,235,.14);
+      background:rgba(37,99,235,.06);
+      color:#1d4ed8;
+      font-size:13px;font-weight:700;
+    }
+    .hero h2{
+      margin:14px 0 10px;
+      font-size:clamp(2rem,4.8vw,4.1rem);
+      line-height:1.04;
+      letter-spacing:-.04em;
+      max-width:12ch;
+    }
+    .hero p{
+      margin:0;
+      max-width:70ch;
+      color:var(--muted);
+      line-height:1.8;
+      font-size:1.02rem;
+    }
+    .hero-grid{
+      display:grid;
+      grid-template-columns:repeat(3, minmax(0, 1fr));
+      gap:12px;
+      margin-top:22px;
+    }
+    .stat{
+      padding:14px 16px;
+      border:1px solid var(--line);
+      border-radius:18px;
+      background:linear-gradient(180deg,#fff,#f8fbff);
+    }
+    .stat b{
+      display:block;font-size:1.1rem;margin-bottom:4px;
+    }
+    .stat span{color:var(--muted);font-size:.92rem}
+
+    .toolbar{
+      margin-top:18px;
+      padding:16px;
+      border-radius:var(--radius);
+      border:1px solid rgba(226,232,240,.92);
+      background:rgba(255,255,255,.92);
+      box-shadow:var(--shadow);
+      display:grid;
+      gap:12px;
+    }
+    .search-row{
+      display:flex;gap:10px;flex-wrap:wrap;
+      align-items:center;
+    }
+    .search-row input{
+      flex:1 1 280px;
+      padding:13px 16px;
+      border-radius:14px;
+      border:1px solid var(--line);
+      background:#fff;
+      color:var(--text);
+      outline:none;
+    }
+    .search-row input:focus,
+    .input:focus,
+    .textarea:focus,
+    .field:focus{
+      border-color:rgba(37,99,235,.6);
+      box-shadow:0 0 0 4px rgba(37,99,235,.08);
+    }
+    .filters{
+      display:flex;gap:8px;flex-wrap:wrap;
+    }
+    .chip{
+      padding:8px 12px;
+      border-radius:999px;
+      border:1px solid var(--line);
+      background:#fff;
+      color:#334155;
+      font-size:13px;
+    }
+    .chip.active{
+      background:linear-gradient(135deg, rgba(37,99,235,.12), rgba(124,58,237,.12));
+      border-color:rgba(37,99,235,.22);
+      color:#1d4ed8;
+    }
+
+    .section-title{
+      margin:22px 2px 10px;
+      display:flex;align-items:end;justify-content:space-between;gap:10px;flex-wrap:wrap;
+    }
+    .section-title h3{
+      margin:0;
+      font-size:1.2rem;
+      letter-spacing:-.02em;
+    }
+    .section-title p{
+      margin:0;color:var(--muted);font-size:.94rem;
+    }
+
+    .grid{
+      display:grid;
+      grid-template-columns:repeat(3, minmax(0, 1fr));
+      gap:16px;
+      margin-top:14px;
+    }
+    .card{
+      background:linear-gradient(180deg, #ffffff 0%, #fbfcff 100%);
+      border:1px solid rgba(226,232,240,.96);
+      border-radius:22px;
+      overflow:hidden;
+      box-shadow:var(--shadow);
+      cursor:pointer;
+      transition:.24s ease;
+      min-height:100%;
+      display:flex;
+      flex-direction:column;
+    }
+    .card:hover{
+      transform:translateY(-4px);
+      border-color:rgba(37,99,235,.22);
+      box-shadow:0 18px 45px rgba(37,99,235,.10);
+    }
+    .card-top{
+      padding:18px 18px 14px;
+      border-bottom:1px solid rgba(226,232,240,.88);
+      background:
+        linear-gradient(180deg, rgba(37,99,235,.06), rgba(255,255,255,.04));
+    }
+    .tag{
+      display:inline-flex;align-items:center;gap:8px;
+      font-size:12px;font-weight:700;
+      color:#1d4ed8;
+      background:rgba(37,99,235,.08);
+      border:1px solid rgba(37,99,235,.12);
+      padding:7px 10px;
+      border-radius:999px;
+      margin-bottom:12px;
+    }
+    .card h4{
+      margin:0;
+      font-size:1.12rem;
+      line-height:1.35;
+      letter-spacing:-.02em;
+    }
+    .card p{
+      margin:10px 0 0;
+      color:var(--muted);
+      line-height:1.75;
+      font-size:.97rem;
+    }
+    .card-body{
+      padding:14px 18px 18px;
+      display:flex;
+      flex-direction:column;
+      gap:12px;
+      flex:1;
+    }
+    .meta{
+      display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;
+      font-size:12px;color:var(--muted);
+      margin-top:auto;
+    }
+    .card-actions{
+      display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;
+    }
+    .link{
+      color:#1d4ed8;
+      font-weight:700;
+    }
+
+    .panel{
+      margin-top:18px;
+      padding:22px;
+      border-radius:var(--radius);
+      border:1px solid rgba(226,232,240,.94);
+      background:#fff;
+      box-shadow:var(--shadow);
+    }
+    .article{
+      max-width:860px;
+      margin:18px auto 0;
+    }
+    .article h1{
+      margin:10px 0 10px;
+      font-size:clamp(1.9rem,4.2vw,3.2rem);
+      line-height:1.08;
+      letter-spacing:-.04em;
+    }
+    .article h2{
+      margin:26px 0 10px;
+      font-size:1.2rem;
+      letter-spacing:-.02em;
+    }
+    .article p, .article li{
+      color:#475569;
+      line-height:1.9;
+      font-size:1.02rem;
+    }
+    .article ul{
+      padding-left:20px;
+      margin:10px 0 0;
+    }
+    .notice{
+      margin:16px 0;
+      padding:14px 16px;
+      border-radius:16px;
+      background:linear-gradient(180deg, rgba(37,99,235,.08), rgba(124,58,237,.05));
+      border:1px solid rgba(37,99,235,.12);
+      color:#1e3a8a;
+    }
+
+    .create-panel{
+      max-width:860px;
+      margin:18px auto 0;
+    }
+    .form-grid{
+      display:grid;
+      grid-template-columns:repeat(2, minmax(0, 1fr));
+      gap:12px;
+      margin-top:12px;
+    }
+    .field{
+      width:100%;
+      padding:13px 14px;
+      border:1px solid var(--line);
+      border-radius:14px;
+      background:#fff;
+      color:var(--text);
+      outline:none;
+    }
+    .textarea{
+      width:100%;
+      min-height:110px;
+      resize:vertical;
+      padding:13px 14px;
+      border:1px solid var(--line);
+      border-radius:14px;
+      background:#fff;
+      color:var(--text);
+      outline:none;
+      line-height:1.7;
+    }
+    .create-actions{
+      margin-top:12px;
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+    }
+    .full{grid-column:1/-1}
+
+    .footer{
+      margin:22px 0 14px;
+      padding:20px 0 6px;
+      color:var(--muted);
+      border-top:1px solid rgba(226,232,240,.95);
+      display:flex;
+      justify-content:space-between;
+      gap:12px;
+      flex-wrap:wrap;
+    }
+    .footer a{
+      color:#1d4ed8;
+      font-weight:600;
+    }
+
+    .empty{
+      padding:24px;
+      text-align:center;
+      color:var(--muted);
+      border:1px dashed var(--line);
+      border-radius:18px;
+      background:#fff;
+    }
+
+    @media (max-width: 1024px){
+      .grid{grid-template-columns:repeat(2, minmax(0, 1fr))}
+    }
+    @media (max-width: 780px){
+      .wrap{padding:14px}
+      .topbar{
+        flex-direction:column;
+        align-items:flex-start;
+      }
+      .nav{justify-content:flex-start}
+      .hero{padding:22px}
+      .hero-grid{grid-template-columns:1fr}
+      .grid{grid-template-columns:1fr}
+      .form-grid{grid-template-columns:1fr}
+      .article{padding:18px}
+      .create-panel{padding:18px}
+    }
+  </style>
 </head>
+
 <body>
-  <div class="navbar">
-  <h2>TechNexis</h2>
-    <button onclick="toggleMode()">🌗 Toggle</button>
-  <button onclick="openCreate()">Create Post</button>
+  <div class="wrap">
+    <header class="topbar">
+      <div class="brand">
+        <div class="mark">TN</div>
+        <div>
+          <h1>TechNexis</h1>
+          <span>AI Tools + Tech Blog</span>
+        </div>
+      </div>
+
+      <nav class="nav">
+        <a href="/">Home</a>
+        <a href="/about">About</a>
+        <a href="/contact">Contact</a>
+        <a href="/rules">Rules</a>
+        <a href="/terms">Terms</a>
+        <a href="/privacy-policy">Privacy</a>
+        <button onclick="toggleMode()">🌗 Toggle</button>
+        <button class="primary" onclick="openCreate()">Create Post</button>
+      </nav>
+    </header>
+
+    <section class="hero">
+      <span class="badge">⚡ Modern AI blog engine · mobile friendly · SEO ready</span>
+      <h2>AI Tools + Tech Blog that feels easy to read.</h2>
+      <p>
+        Clean article cards, searchable posts, category filters, SEO-friendly URLs, legal pages,
+        and a publishing flow that works for readers without clutter.
+      </p>
+
+      <div class="hero-grid">
+        <div class="stat">
+          <b id="statPosts">0+</b>
+          <span>ready blog posts</span>
+        </div>
+        <div class="stat">
+          <b>4+</b>
+          <span>content categories</span>
+        </div>
+        <div class="stat">
+          <b>100%</b>
+          <span>mobile-first layout</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="toolbar">
+      <div class="search-row">
+        <input id="searchInput" placeholder="Search articles, categories, tags..." />
+        <button onclick="showHome()">Reset</button>
+      </div>
+      <div class="filters">
+        <button class="chip active" data-cat="All">All</button>
+        <button class="chip" data-cat="AI">AI</button>
+        <button class="chip" data-cat="Tech">Tech</button>
+        <button class="chip" data-cat="Blogging">Blogging</button>
+        <button class="chip" data-cat="Development">Development</button>
+      </div>
+    </section>
+
+    <div id="home"></div>
+    <div id="article" class="panel article" style="display:none"></div>
+
+    <section id="createPostPanel" class="panel create-panel" style="display:none">
+      <h2 style="margin:0 0 8px">Create New Post</h2>
+      <p style="margin:0;color:var(--muted);line-height:1.7">
+        Fill the fields below. Post will save through your backend API.
+      </p>
+
+      <div class="form-grid">
+        <div class="full">
+          <input class="field" id="title" placeholder="Title" />
+        </div>
+        <div>
+          <input class="field" id="category" placeholder="Category (AI / Tech / Blogging)" value="AI" />
+        </div>
+        <div>
+          <input class="field" id="tag" placeholder="Tag (Tech / SEO / Tools)" value="Tech" />
+        </div>
+        <div>
+          <input class="field" id="date" type="date" />
+        </div>
+        <div>
+          <input class="field" id="readingTime" placeholder="Reading time (5 min read)" value="5 min read" />
+        </div>
+
+        <div class="full">
+          <textarea class="textarea" id="intro" placeholder="Intro"></textarea>
+        </div>
+        <div class="full">
+          <textarea class="textarea" id="what" placeholder="What is this?"></textarea>
+        </div>
+
+        <div class="full">
+          <input class="field" id="features" placeholder="Features (comma separated)" />
+        </div>
+        <div class="full">
+          <input class="field" id="pros" placeholder="Pros" />
+        </div>
+        <div class="full">
+          <input class="field" id="cons" placeholder="Cons" />
+        </div>
+        <div class="full">
+          <input class="field" id="best" placeholder="Best options (comma separated)" />
+        </div>
+        <div class="full">
+          <textarea class="textarea" id="comparison" placeholder="Comparison"></textarea>
+        </div>
+        <div class="full">
+          <input class="field" id="faqs" placeholder="FAQs (comma separated)" />
+        </div>
+        <div class="full">
+          <textarea class="textarea" id="conclusion" placeholder="Conclusion"></textarea>
+        </div>
+      </div>
+
+      <div class="create-actions">
+        <button class="primary" onclick="addPost()">Publish Post</button>
+        <button onclick="showHome()">Cancel</button>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <div>
+        © <span id="year"></span> TechNexis. All rights reserved.<br>
+        <small>AI Tools, Tech Guides, Blogging & Online Earning Resources.</small>
+      </div>
+      <div style="display:flex;flex-wrap:wrap;gap:10px">
+        <a href="/about">About</a>
+        <a href="/contact">Contact</a>
+        <a href="/rules">Rules</a>
+        <a href="/terms">Terms</a>
+        <a href="/privacy-policy">Privacy Policy</a>
+      </div>
+    </footer>
   </div>
-
-  <div class="toolbar">
-  <input id="searchInput" placeholder="Search articles..." />
-  <div class="filters">
-    <button class="chip active" data-cat="All">All</button>
-    <button class="chip" data-cat="AI">AI</button>
-    <button class="chip" data-cat="Tech">Tech</button>
-    <button class="chip" data-cat="Blogging">Blogging</button>
-  </div>
-  </div>
-
-  <div class="hero">
-  <h1>AI Tools + Tech Blog</h1>
-  <p>Modern blog for AI tools, guides and online earning</p>
-</div>
-
-<div class="grid">
-
-  <div class="card">
-    <h3>Best AI Tools in 2026</h3>
-    <p>Boost productivity with latest AI tools...</p>
-    <button>Read More</button>
-  </div>
-
-  <div class="card">
-    <h3>AI Tools Guide 2026</h3>
-    <p>Complete overview of AI tools...</p>
-    <button>Read More</button>
-  </div>
-
-  <div class="card">
-    <h3>Blogging Strategy</h3>
-    <p>Grow your blog using SEO...</p>
-    <button>Read More</button>
-  </div>
-
-</div>
-
-<div class="footer">
-  © 2026 TechNexis
-</div>
-
-  <div id="createPostPanel" style="padding:15px;display:none">
-
-  <h2>Create New Post</h2>
-
-  <input id="title" placeholder="Title"><br><br>
-  <textarea id="intro" placeholder="Intro"></textarea><br><br>
-  <textarea id="what" placeholder="What is this?"></textarea><br><br>
-
-  <input id="features" placeholder="Features (comma separated)"><br><br>
-  <input id="pros" placeholder="Pros"><br><br>
-  <input id="cons" placeholder="Cons"><br><br>
-  <input id="best" placeholder="Best options (comma separated)"><br><br>
-  <input id="comparison" placeholder="Comparison"><br><br>
-  <input id="faqs" placeholder="FAQs (comma separated)"><br><br>
-  <input id="conclusion" placeholder="Conclusion"><br><br>
-
-  <button onclick="addPost()">Publish Post</button>
-  <button onclick="showHome()">Cancel</button>
-
-  </div>
-
-<!-- HOME VIEW -->
-<div id="home"></div>
-
-<!-- ARTICLE VIEW -->
-<div id="article" style="display:none;padding:15px;"></div>
-
-<footer style="text-align:center;padding:15px;color:#94a3b8">
-© 2026 TechNexis
-</footer>
 
   <script>
-function toggleMode() {
-  document.body.classList.toggle("dark");
-}
+    const seedPosts = [
+      {
+        id: 1,
+        title: "AI Tools Guide 2026 - Complete Overview",
+        slug: "ai-tools-guide-2026-complete-overview",
+        category: "AI",
+        tag: "Tech",
+        date: "2026-01-01",
+        readingTime: "5 min read",
+        intro: "AI tools productivity badha rahe hain aur kaam ko fast bana rahe hain.",
+        what: "AI tools software hote hain jo automation, writing, research, image generation aur smart output dete hain.",
+        features: ["Automation", "Speed", "Accuracy"],
+        pros: "Fast aur efficient, beginners ke liye helpful.",
+        cons: "Internet required aur some tools paid hote hain.",
+        best: ["ChatGPT", "Gemini", "Claude"],
+        comparison: "ChatGPT vs Gemini vs Claude comparison table yaha show hoga.",
+        faqs: ["AI kya hai?", "Kya AI free hai?"],
+        conclusion: "AI future ka base hai aur sab industries me use hoga.",
+        cover: "This guide explains how AI tools are changing productivity, automation, and online work in 2026.",
+        excerpt: "AI tools productivity badha rahe hain aur kaam ko fast bana rahe hain.",
+        sections: [
+          "AI tools kya hote hain aur kaise kaam karte hain",
+          "Top use cases for creators, students, and businesses",
+          "Best tools to start with in 2026",
+          "How to use AI safely and effectively"
+        ]
+      },
+      {
+        id: 2,
+        title: "Modern Tech Blogging Strategy That Works",
+        slug: "modern-tech-blogging-strategy-that-works",
+        category: "Blogging",
+        tag: "SEO",
+        date: "2026-01-05",
+        readingTime: "5 min read",
+        intro: "Tech blog grow karna chahte ho to SEO, content clusters aur intent targeting pe focus karo.",
+        what: "Tech blogging ek long-term content system hai jisme useful posts, SEO, aur trust build hota hai.",
+        features: ["SEO", "Traffic", "Monetization"],
+        pros: "Long term income aur authority build hoti hai.",
+        cons: "Time lagta hai aur consistency chahiye.",
+        best: ["WordPress", "Ghost", "Hashnode"],
+        comparison: "WordPress vs Ghost vs Hashnode comparison.",
+        faqs: ["Blog kaise start kare?", "Traffic kaise laye?"],
+        conclusion: "Consistency aur useful content hi growth laata hai.",
+        cover: "Learn how modern tech blogs grow using SEO, content clusters, and user intent targeting.",
+        excerpt: "Learn how modern tech blogs grow using SEO, content clusters, and user intent targeting.",
+        sections: [
+          "Keyword aur topic research",
+          "Content clusters ka use",
+          "Internal linking strategy",
+          "Update old posts regularly"
+        ]
+      },
+      {
+        id: 3,
+        title: "How to Build a SaaS Website from Scratch",
+        slug: "how-to-build-a-saas-website-from-scratch",
+        category: "Development",
+        tag: "Build",
+        date: "2026-01-10",
+        readingTime: "5 min read",
+        intro: "SaaS website banana ho to UI, backend, routing aur deployment sab clean rakho.",
+        what: "SaaS website ek subscription-based product hota hai jisme features, dashboard aur payments hote hain.",
+        features: ["Routing", "API", "Deployment"],
+        pros: "Scalable aur professional product feel deta hai.",
+        cons: "Planning aur technical setup heavy hota hai.",
+        best: ["Node.js", "Express", "Render"],
+        comparison: "Node.js vs PHP vs Python backend comparison.",
+        faqs: ["SaaS kya hota hai?", "Isko deploy kaise kare?"],
+        conclusion: "Good UX + solid backend = strong SaaS product.",
+        cover: "Step-by-step SaaS architecture guide using Node.js, APIs, and deployment strategies.",
+        excerpt: "Step-by-step SaaS architecture guide using Node.js, APIs, and deployment strategies.",
+        sections: [
+          "Frontend structure and layout",
+          "Backend API design",
+          "Database and persistence",
+          "Deployment best practices"
+        ]
+      }
+    ];
+
+    const state = {
+      posts: [...seedPosts],
+      search: "",
+      category: "All"
+    };
+
+    const yearEl = document.getElementById("year");
+    yearEl.textContent = new Date().getFullYear();
+    document.getElementById("date").value = new Date().toISOString().slice(0, 10);
+
+    const esc = (str = "") => String(str)
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;")
+      .replace(/"/g, "&quot;")
+      .replace(/'/g, "&#39;");
+
+    function slugify(text) {
+      return String(text)
+        .toLowerCase()
+        .trim()
+        .replace(/[^a-z0-9\s-]/g, "")
+        .replace(/\s+/g, "-")
+        .replace(/-+/g, "-");
+    }
+
+    function normalizePost(p) {
+      const title = p.title || "Untitled Post";
+      const slug = p.slug || slugify(title);
+      return {
+        id: p.id || Date.now(),
+        title,
+        slug,
+        category: p.category || "AI",
+        tag: p.tag || "Tech",
+        date: p.date || new Date().toISOString().slice(0, 10),
+        readingTime: p.readingTime || p.read || "5 min read",
+        intro: p.intro || p.excerpt || p.content || "",
+        what: p.what || p.content || "",
+        features: Array.isArray(p.features) ? p.features : String(p.features || "").split(",").map(s => s.trim()).filter(Boolean),
+        pros: p.pros || "",
+        cons: p.cons || "",
+        best: Array.isArray(p.best) ? p.best : String(p.best || "").split(",").map(s => s.trim()).filter(Boolean),
+        comparison: p.comparison || "",
+        faqs: Array.isArray(p.faqs) ? p.faqs : String(p.faqs || "").split(",").map(s => s.trim()).filter(Boolean),
+        conclusion: p.conclusion || "",
+        cover: p.cover || p.excerpt || p.content || "",
+        excerpt: p.excerpt || p.intro || p.content || "",
+        sections: Array.isArray(p.sections) ? p.sections : [
+          "Introduction",
+          "Main idea",
+          "Practical usage",
+          "Conclusion"
+        ]
+      };
+    }
+
+    async function loadPosts() {
+      try {
+        const res = await fetch("/api/articles");
+        if (!res.ok) throw new Error("Failed to load articles");
+        const data = await res.json();
+        if (Array.isArray(data.articles) && data.articles.length) {
+          state.posts = data.articles.map(normalizePost);
+          document.getElementById("statPosts").textContent = `${state.posts.length}+`;
+          showHome();
+        }
+      } catch (e) {
+        document.getElementById("statPosts").textContent = `${state.posts.length}+`;
+        showHome();
+      }
+    }
+
+    function getFilteredPosts() {
+      const q = state.search.trim().toLowerCase();
+      return state.posts.filter(p => {
+        const matchesCategory = state.category === "All" || p.category === state.category;
+        const blob = [p.title, p.category, p.tag, p.intro, p.excerpt, p.cover].join(" ").toLowerCase();
+        const matchesQuery = !q || blob.includes(q);
+        return matchesCategory && matchesQuery;
+      });
+    }
+
+    function renderCard(p) {
+      return `
+        <article class="card" onclick="openPostBySlug('${esc(p.slug)}')">
+          <div class="card-top">
+            <div class="tag">${esc(p.category)} · ${esc(p.tag)}</div>
+            <h4>${esc(p.title)}</h4>
+            <p>${esc((p.excerpt || p.intro || "").slice(0, 120))}${(p.excerpt || p.intro || "").length > 120 ? "..." : ""}</p>
+          </div>
+          <div class="card-body">
+            <div class="meta">
+              <span>🗓 ${esc(p.date)}</span>
+              <span>⏱ ${esc(p.readingTime)}</span>
+            </div>
+            <div class="card-actions">
+              <span class="link">Read More →</span>
+              <span style="color:#94a3b8;font-size:12px">SEO friendly</span>
+            </div>
+          </div>
+        </article>
+      `;
+    }
+
+    function showHome() {
+      document.getElementById("article").style.display = "none";
+      document.getElementById("createPostPanel").style.display = "none";
+      document.getElementById("home").style.display = "block";
+
+      const list = getFilteredPosts();
+
+      const html = `
+        <div class="section-title">
+          <div>
+            <h3>Latest Articles</h3>
+            <p>Search by topic, filter by category, and open any post.</p>
+          </div>
+        </div>
+        <div class="grid">
+          ${
+            list.length
+              ? list.map(renderCard).join("")
+              : `<div class="empty" style="grid-column:1/-1">No results found.</div>`
+          }
+        </div>
+      `;
+
+      document.getElementById("home").innerHTML = html;
+      document.querySelectorAll(".chip").forEach(btn => {
+        btn.classList.toggle("active", btn.dataset.cat === state.category);
+      });
+      document.getElementById("statPosts").textContent = `${state.posts.length}+`;
+    }
+
+    function renderArticle(post) {
+      const related = state.posts
+        .filter(p => p.slug !== post.slug && p.category === post.category)
+        .slice(0, 3);
+
+      return `
+        <button onclick="goHome()">⬅ Back</button>
+
+        <div class="notice">${esc(post.cover || post.excerpt || post.intro || "")}</div>
+
+        <h1>${esc(post.title)}</h1>
+        <div class="meta" style="margin-bottom:18px">
+          <span>🗓 ${esc(post.date)}</span>
+          <span>⏱ ${esc(post.readingTime)}</span>
+          <span>${esc(post.category)} · ${esc(post.tag)}</span>
+        </div>
+
+        <p><b>Intro:</b> ${esc(post.intro || "")}</p>
+
+        <h2>What is this?</h2>
+        <p>${esc(post.what || post.content || "")}</p>
+
+        <h2>Features</h2>
+        <ul>${(post.features || []).map(f => `<li>${esc(f)}</li>`).join("")}</ul>
+
+        <h2>Pros</h2>
+        <p>${esc(post.pros || "")}</p>
+
+        <h2>Cons</h2>
+        <p>${esc(post.cons || "")}</p>
+
+        <h2>Best options</h2>
+        <ul>${(post.best || []).map(b => `<li>${esc(b)}</li>`).join("")}</ul>
+
+        <h2>Comparison</h2>
+        <p>${esc(post.comparison || "")}</p>
+
+        <h2>FAQs</h2>
+        <ul>${(post.faqs || []).map(q => `<li>${esc(q)}</li>`).join("")}</ul>
+
+        <h2>Conclusion</h2>
+        <p>${esc(post.conclusion || "")}</p>
+
+        <div class="panel" style="margin-top:26px;background:#f8fbff">
+          <h2 style="margin-top:0">Related posts</h2>
+          <div class="grid" style="margin-top:12px">
+            ${
+              related.length
+                ? related.map(renderCard).join("")
+                : `<div class="empty" style="grid-column:1/-1">No related posts yet.</div>`
+            }
+          </div>
+        </div>
+      `;
+    }
+
+    function goHome() {
+      history.pushState({}, "", "/");
+      document.getElementById("createPostPanel").style.display = "none";
+      showHome();
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+
+    function openPostBySlug(slug) {
+      const post = state.posts.find(p => p.slug === slug);
+      if (!post) return;
+
+      history.pushState({}, "", `/blog/${slug}`);
+      document.getElementById("home").style.display = "none";
+      document.getElementById("createPostPanel").style.display = "none";
+      document.getElementById("article").style.display = "block";
+      document.getElementById("article").innerHTML = renderArticle(post);
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+
+    function openCreate() {
+      document.getElementById("home").style.display = "none";
+      document.getElementById("article").style.display = "none";
+      document.getElementById("createPostPanel").style.display = "block";
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+
+    async function addPost() {
+      const title = document.getElementById("title").value.trim();
+      if (!title) {
+        alert("Title required");
+        return;
+      }
+
+      const payload = {
+        title,
+        category: document.getElementById("category").value.trim() || "AI",
+        tag: document.getElementById("tag").value.trim() || "Tech",
+        date: document.getElementById("date").value || new Date().toISOString().slice(0, 10),
+        readingTime: document.getElementById("readingTime").value.trim() || "5 min read",
+        intro: document.getElementById("intro").value.trim(),
+        what: document.getElementById("what").value.trim(),
+        features: document.getElementById("features").value,
+        pros: document.getElementById("pros").value.trim(),
+        cons: document.getElementById("cons").value.trim(),
+        best: document.getElementById("best").value,
+        comparison: document.getElementById("comparison").value.trim(),
+        faqs: document.getElementById("faqs").value,
+        conclusion: document.getElementById("conclusion").value.trim()
+      };
+
+      try {
+        const res = await fetch("/api/posts", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(payload)
+        });
+
+        const data = await res.json();
+        if (!res.ok) {
+          alert(data.message || "Could not save post");
+          return;
+        }
+
+        state.posts.unshift(normalizePost(data.post));
+        clearCreateForm();
+        goHome();
+      } catch (err) {
+        alert("Network error while saving post");
+      }
+    }
+
+    function clearCreateForm() {
+      ["title","intro","what","features","pros","cons","best","comparison","faqs","conclusion"].forEach(id => {
+        const el = document.getElementById(id);
+        if (el) el.value = "";
+      });
+      document.getElementById("category").value = "AI";
+      document.getElementById("tag").value = "Tech";
+      document.getElementById("readingTime").value = "5 min read";
+      document.getElementById("date").value = new Date().toISOString().slice(0, 10);
+    }
+
+    function toggleMode() {
+      document.body.classList.toggle("soft-mode");
+    }
+
+    document.getElementById("searchInput").addEventListener("input", (e) => {
+      state.search = e.target.value;
+      showHome();
+    });
+
+    document.addEventListener("click", (e) => {
+      const chip = e.target.closest(".chip");
+      if (!chip) return;
+      state.category = chip.dataset.cat || "All";
+      showHome();
+    });
+
+    window.addEventListener("popstate", () => {
+      const path = window.location.pathname.replace(/\/+$/, "") || "/";
+      const slugMatch = path.match(/^\/blog\/([^/]+)$/);
+      if (slugMatch) {
+        const post = state.posts.find(p => p.slug === slugMatch[1]);
+        if (post) {
+          document.getElementById("home").style.display = "none";
+          document.getElementById("createPostPanel").style.display = "none";
+          document.getElementById("article").style.display = "block";
+          document.getElementById("article").innerHTML = renderArticle(post);
+          return;
+        }
+      }
+      showHome();
+    });
+
+    loadPosts().then(() => {
+      const path = window.location.pathname.replace(/\/+$/, "") || "/";
+      const slugMatch = path.match(/^\/blog\/([^/]+)$/);
+      if (slugMatch) {
+        const post = state.posts.find(p => p.slug === slugMatch[1]);
+        if (post) {
+          document.getElementById("home").style.display = "none";
+          document.getElementById("createPostPanel").style.display = "none";
+          document.getElementById("article").style.display = "block";
+          document.getElementById("article").innerHTML = renderArticle(post);
+          return;
+        }
+      }
+      showHome();
+    });
   </script>
-
-<script>
-  function slugify(text){
-  return text.toLowerCase().trim().replace(/\s+/g,"-");
-  }
-
-/* SAMPLE POST FORMAT */
-let posts = [
-{
-title:"AI Tools Guide 2026",
-intro:"AI tools productivity badha rahe hain aur kaam ko fast bana rahe hain.",
-what:"AI tools software hote hain jo automation aur smart output dete hain.",
-features:["Automation","Speed","Accuracy"],
-pros:"Fast aur efficient",
-cons:"Internet required",
-best:["ChatGPT","Gemini","Claude"],
-comparison:"ChatGPT vs Gemini vs Claude comparison table yaha show hoga",
-faqs:["AI kya hai?","Kya AI free hai?"],
-conclusion:"AI future ka base hai aur sab industries me use hoga",
-  category:"AI",
-date:"2026-01-01",
-read:"5 min",
-tag:"Tech"
-}
-];
-
-/* SHOW HOME */
-function showHome(){
-document.getElementById("article").style.display="none";
-document.getElementById("home").style.display="block";
-
-let search = document.getElementById("searchInput")?.value?.toLowerCase() || "";
-let activeCat = document.querySelector(".chip.active")?.dataset.cat || "All";
-
-let filtered = posts.filter(p=>{
-let matchSearch = p.title.toLowerCase().includes(search);
-let matchCat = activeCat==="All" || p.category===activeCat;
-return matchSearch && matchCat;
-});
-
-let html = "";
-
-filtered.forEach(p=>{
-html += `
-<div class="card" onclick="openPostBySlug('${p.slug}')">
-  <div class="tag">${p.category} • ${p.tag}</div>
-  <h3>${p.title}</h3>
-  <p>${p.intro.slice(0,70)}...</p>
-
-  <div class="meta">
-    <span>🗓 ${p.date}</span>
-    <span>⏱ ${p.read}</span>
-  </div>
-</div>
-`;
-});
-
-document.getElementById("home").innerHTML = html || "<p style='padding:20px'>No results...</p>";
-  }
-
-/* OPEN ARTICLE */
-function openPostBySlug(slug){
-
-  let post = posts.find(p => p.slug === slug);
-  if(!post) return;
-
-  window.scrollTo(0, 0);
-
-  document.getElementById("article").style.display = "block";
-  document.getElementById("home").style.display = "none";
-
-  document.getElementById("article").innerHTML = `
-    <button onclick="history.pushState({}, '', '/'); router();">⬅ Back</button>
-
-    <h1>${post.title}</h1>
-
-    <p><b>Intro:</b> ${post.intro || ""}</p>
-
-    <h2>🔥 What is this?</h2>
-    <p>${post.what || post.content}</p>
-
-    <h2>💡 Key Features</h2>
-    <ul>${(post.features||[]).map(f=>`<li>${f}</li>`).join("")}</ul>
-
-    <h2>⚖️ Pros & Cons</h2>
-    <p>${post.pros || ""}</p>
-
-    <h2>🏆 Best Options</h2>
-    <ul>${(post.best||[]).map(b=>`<li>${b}</li>`).join("")}</ul>
-
-    <h2>🔚 Conclusion</h2>
-    <p>${post.conclusion || ""}</p>
-  `;
-  }
-  function openCreate(){
-  document.getElementById("home").style.display="none";
-  document.getElementById("article").style.display="none";
-  document.getElementById("createPostPanel").style.display="block";
-}
-function addPost() {
-  let post = {
-    title: document.getElementById("title").value,
-    intro: document.getElementById("intro").value,
-    what: document.getElementById("what").value,
-
-    features: document.getElementById("features").value.split(","),
-    pros: document.getElementById("pros").value,
-    cons: document.getElementById("cons").value,
-
-    best: document.getElementById("best").value.split(","),
-    comparison: document.getElementById("comparison").value,
-    faqs: document.getElementById("faqs").value.split(","),
-    conclusion: document.getElementById("conclusion").value,
-
-    slug: slugify(document.getElementById("title").value)
-  };
-
-  posts.push(post);
-
-  showHome();
-}
-
-/* STEP 4 — FILTER CLICK LOGIC */
-document.addEventListener("click", (e) => {
-  if (e.target.classList.contains("chip")) {
-    document.querySelectorAll(".chip").forEach(c => c.classList.remove("active"));
-    e.target.classList.add("active");
-    showHome();
-  }
-});
-
-document.getElementById("searchInput")?.addEventListener("input", showHome);
-
-/* INIT */
-showHome();
-  document.querySelector("input")?.addEventListener("input",(e)=>{
-  const val = e.target.value.toLowerCase();
-  document.querySelectorAll(".card").forEach(card=>{
-    card.style.display = card.innerText.toLowerCase().includes(val) ? "block":"none";
-  });
-});
-
-</script>
-                                  
 </body>
 </html>
