@@ -566,3 +566,23 @@ footer {
   .brand p { display: none; }
   .thumb { height: 190px; }
   }
+
+.logo{
+  display:flex;
+  align-items:center;
+  gap:12px;
+}
+
+.logo img{
+  width:48px;
+  height:48px;
+  border-radius:12px;
+}
+
+.logo span{
+  font-size:28px;
+  font-weight:800;
+  background:linear-gradient(90deg,#0077ff,#00d4ff);
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+}
