@@ -1,0 +1,1004 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Technexiss is a modern Tech News and AI blog homepage template built for fast traffic, SEO, and AdSense-ready content publishing." />
+  <meta name="theme-color" content="#ffffff" />
+  <title>Technexiss — Tech News & AI Blog</title>  <style>
+    :root {
+      --bg: #ffffff;
+      --surface: #ffffff;
+      --surface-2: #f8fafc;
+      --text: #0f172a;
+      --muted: #64748b;
+      --border: rgba(15, 23, 42, 0.08);
+      --shadow: 0 18px 50px rgba(15, 23, 42, 0.08);
+      --primary: #2563eb;
+      --primary-2: #7c3aed;
+      --primary-soft: rgba(37, 99, 235, 0.08);
+      --good: #16a34a;
+      --radius-xl: 28px;
+      --radius-lg: 22px;
+      --radius-md: 16px;
+      --radius-sm: 12px;
+      --max: 1240px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: radial-gradient(circle at top, rgba(37,99,235,0.03), transparent 30%), var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
+    button, input { font: inherit; }
+
+    .wrap {
+      width: min(calc(100% - 32px), var(--max));
+      margin: 0 auto;
+    }
+
+    .topbar {
+      background: linear-gradient(90deg, rgba(37,99,235,0.08), rgba(124,58,237,0.08));
+      border-bottom: 1px solid var(--border);
+    }
+    .topbar .wrap {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 10px 0;
+      font-size: 14px;
+      color: var(--muted);
+      overflow: hidden;
+    }
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 7px 12px;
+      border: 1px solid rgba(37,99,235,0.18);
+      border-radius: 999px;
+      color: var(--primary);
+      background: rgba(37,99,235,0.04);
+      font-weight: 700;
+      white-space: nowrap;
+      flex: 0 0 auto;
+    }
+    .ticker {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      flex: 1;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      backdrop-filter: blur(16px);
+      background: rgba(255,255,255,0.82);
+      border-bottom: 1px solid rgba(15,23,42,0.06);
+    }
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 16px 0;
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      min-width: max-content;
+    }
+    .mark {
+      width: 46px;
+      height: 46px;
+      border-radius: 16px;
+      background: linear-gradient(135deg, var(--primary), var(--primary-2));
+      box-shadow: 0 14px 28px rgba(37,99,235,0.24);
+      display: grid;
+      place-items: center;
+      color: #fff;
+      font-weight: 900;
+      letter-spacing: 0.5px;
+    }
+    .brand h1 {
+      margin: 0;
+      font-size: 20px;
+      line-height: 1.1;
+    }
+    .brand p {
+      margin: 2px 0 0;
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    .navlinks {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .navlinks a {
+      padding: 10px 14px;
+      border-radius: 999px;
+      color: #334155;
+      font-weight: 600;
+      transition: 0.25s ease;
+    }
+    .navlinks a:hover,
+    .navlinks a.active {
+      background: var(--primary-soft);
+      color: var(--primary);
+    }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      min-width: max-content;
+    }
+
+    .icon-btn,
+    .btn,
+    .btn-outline,
+    .chip {
+      border-radius: 999px;
+      border: 2px solid var(--primary);
+      padding: 12px 18px;
+      background: transparent;
+      color: var(--primary);
+      cursor: pointer;
+      font-weight: 800;
+      transition: transform .18s ease, box-shadow .18s ease, background .18s ease, color .18s ease;
+      position: relative;
+      overflow: hidden;
+    }
+    .icon-btn { width: 46px; height: 46px; padding: 0; display: grid; place-items: center; }
+    .btn:hover, .btn-outline:hover, .icon-btn:hover, .chip:hover {
+      transform: translateY(-2px);
+      background: var(--primary);
+      color: #fff;
+      box-shadow: 0 14px 28px rgba(37,99,235,0.18);
+    }
+    .btn:active, .btn-outline:active, .icon-btn:active, .chip:active {
+      transform: translateY(0) scale(0.98);
+    }
+    .btn.filled {
+      background: linear-gradient(135deg, var(--primary), var(--primary-2));
+      border-color: transparent;
+      color: #fff;
+    }
+    .btn.filled:hover { box-shadow: 0 16px 36px rgba(37,99,235,0.24); }
+
+    .hero {
+      padding: 44px 0 18px;
+    }
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.4fr 0.9fr;
+      gap: 26px;
+      align-items: stretch;
+    }
+    .hero-card,
+    .side-card,
+    .section-card,
+    .post-card,
+    .mini-card,
+    .stat-card,
+    .newsletter,
+    .about-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-xl);
+      box-shadow: var(--shadow);
+    }
+    .hero-card {
+      padding: 28px;
+      min-height: 100%;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-card::before {
+      content: "";
+      position: absolute;
+      inset: auto -80px -100px auto;
+      width: 240px;
+      height: 240px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(37,99,235,0.14), transparent 68%);
+      pointer-events: none;
+    }
+    .eyebrow {
+      display: inline-flex;
+      gap: 8px;
+      align-items: center;
+      padding: 8px 14px;
+      border-radius: 999px;
+      background: rgba(37,99,235,0.06);
+      color: var(--primary);
+      font-weight: 800;
+      font-size: 13px;
+      border: 1px solid rgba(37,99,235,0.12);
+    }
+    .hero h2 {
+      margin: 16px 0 14px;
+      font-size: clamp(34px, 5vw, 64px);
+      line-height: 1.03;
+      letter-spacing: -0.04em;
+    }
+    .hero p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 17px;
+      max-width: 60ch;
+    }
+    .hero-actions {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 24px;
+    }
+    .hero-stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+      margin-top: 26px;
+    }
+    .stat-card {
+      padding: 18px;
+      box-shadow: none;
+      background: linear-gradient(180deg, #fff, #fbfdff);
+    }
+    .stat-card strong {
+      display: block;
+      font-size: 22px;
+      line-height: 1;
+      margin-bottom: 6px;
+    }
+    .stat-card span { color: var(--muted); font-size: 13px; }
+
+    .side-stack {
+      display: grid;
+      gap: 16px;
+    }
+    .side-card { padding: 20px; }
+    .side-card h3, .section-head h3 { margin: 0 0 8px; font-size: 22px; }
+    .side-card p, .section-head p { margin: 0; color: var(--muted); }
+    .feature-list {
+      list-style: none;
+      padding: 0;
+      margin: 16px 0 0;
+      display: grid;
+      gap: 12px;
+    }
+    .feature-list li {
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+      padding: 12px;
+      border-radius: 16px;
+      background: var(--surface-2);
+      border: 1px solid rgba(15,23,42,0.05);
+    }
+    .feature-list b { display: block; margin-bottom: 2px; }
+    .feature-list small { color: var(--muted); }
+    .dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--primary), var(--primary-2));
+      margin-top: 6px;
+      flex: 0 0 auto;
+    }
+
+    .searchbar {
+      margin-top: 18px;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 10px;
+    }
+    .searchbar input,
+    .newsletter input,
+    .contact input,
+    .contact textarea {
+      width: 100%;
+      padding: 15px 16px;
+      border-radius: 16px;
+      border: 1px solid rgba(15,23,42,0.12);
+      outline: none;
+      background: #fff;
+      color: var(--text);
+      transition: 0.2s ease;
+    }
+    .searchbar input:focus,
+    .newsletter input:focus,
+    .contact input:focus,
+    .contact textarea:focus {
+      border-color: rgba(37,99,235,0.45);
+      box-shadow: 0 0 0 4px rgba(37,99,235,0.08);
+    }
+
+    section {
+      padding: 24px 0;
+    }
+    .section-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      gap: 16px;
+      margin-bottom: 16px;
+      flex-wrap: wrap;
+    }
+    .section-head .left {
+      max-width: 700px;
+    }
+    .section-head .right { display: flex; gap: 10px; flex-wrap: wrap; }
+
+    .chips {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    .chip {
+      padding: 10px 14px;
+      font-weight: 700;
+      border-color: rgba(37,99,235,0.18);
+      color: #334155;
+      background: #fff;
+    }
+    .chip.active { background: var(--primary); color: #fff; }
+
+    .content-grid {
+      display: grid;
+      grid-template-columns: 1.6fr 0.8fr;
+      gap: 20px;
+      align-items: start;
+    }
+
+    .post-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+    }
+    .post-card {
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      min-height: 100%;
+      transition: transform .2s ease, box-shadow .2s ease;
+    }
+    .post-card:hover { transform: translateY(-4px); box-shadow: 0 20px 50px rgba(15,23,42,0.10); }
+    .thumb {
+      height: 210px;
+      background: linear-gradient(135deg, rgba(37,99,235,0.15), rgba(124,58,237,0.12));
+      position: relative;
+      overflow: hidden;
+    }
+    .thumb img { width: 100%; height: 100%; object-fit: cover; }
+    .post-body { padding: 18px; display: grid; gap: 10px; }
+    .meta {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      align-items: center;
+      color: var(--muted);
+      font-size: 13px;
+    }
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: rgba(37,99,235,0.07);
+      color: var(--primary);
+      font-weight: 700;
+    }
+    .post-body h4 {
+      margin: 0;
+      font-size: 20px;
+      line-height: 1.25;
+    }
+    .post-body p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 15px;
+    }
+    .post-actions { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; margin-top: 4px; }
+
+    .sidebar {
+      display: grid;
+      gap: 16px;
+    }
+    .mini-card { padding: 18px; box-shadow: none; }
+    .mini-list {
+      display: grid;
+      gap: 12px;
+      margin-top: 14px;
+    }
+    .mini-item {
+      display: grid;
+      grid-template-columns: 78px 1fr;
+      gap: 12px;
+      align-items: center;
+      padding: 10px;
+      border-radius: 16px;
+      background: var(--surface-2);
+      border: 1px solid rgba(15,23,42,0.04);
+    }
+    .mini-item img { width: 78px; height: 64px; object-fit: cover; border-radius: 12px; }
+    .mini-item strong { display: block; line-height: 1.25; margin-bottom: 4px; }
+    .mini-item small { color: var(--muted); }
+
+    .newsletter {
+      padding: 26px;
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 18px;
+      align-items: center;
+      background: linear-gradient(180deg, #fff, #fbfdff);
+    }
+    .newsletter h3 { margin: 0 0 8px; font-size: 28px; }
+    .newsletter p { margin: 0; color: var(--muted); }
+    .newsletter form { display: grid; gap: 10px; }
+    .newsletter .row { display: grid; grid-template-columns: 1fr auto; gap: 10px; }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+      align-items: stretch;
+    }
+    .about-card { padding: 22px; }
+    .about-card h3 { margin-top: 0; }
+    .bullets {
+      margin: 0;
+      padding-left: 18px;
+      color: var(--muted);
+      display: grid;
+      gap: 8px;
+    }
+    .contact {
+      display: grid;
+      gap: 12px;
+      margin-top: 14px;
+    }
+    .contact textarea { min-height: 130px; resize: vertical; }
+
+    footer {
+      padding: 28px 0 42px;
+      color: var(--muted);
+    }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 1fr 1fr;
+      gap: 18px;
+      padding-top: 18px;
+      border-top: 1px solid var(--border);
+    }
+    .footer-grid h4 { margin: 0 0 12px; color: var(--text); }
+    .footer-grid a { display: block; color: var(--muted); margin: 8px 0; }
+    .copyright {
+      margin-top: 18px;
+      display: flex;
+      justify-content: space-between;
+      gap: 14px;
+      flex-wrap: wrap;
+      align-items: center;
+      font-size: 14px;
+    }
+
+    .backtop {
+      position: fixed;
+      right: 18px;
+      bottom: 18px;
+      width: 52px;
+      height: 52px;
+      display: grid;
+      place-items: center;
+      z-index: 999;
+      opacity: 0;
+      pointer-events: none;
+      transform: translateY(10px);
+      transition: 0.25s ease;
+    }
+    .backtop.show {
+      opacity: 1;
+      pointer-events: auto;
+      transform: translateY(0);
+    }
+
+    .toast {
+      position: fixed;
+      left: 50%;
+      bottom: 18px;
+      transform: translateX(-50%) translateY(20px);
+      background: #0f172a;
+      color: #fff;
+      padding: 12px 16px;
+      border-radius: 999px;
+      font-size: 14px;
+      box-shadow: 0 16px 40px rgba(15,23,42,0.18);
+      opacity: 0;
+      pointer-events: none;
+      transition: 0.25s ease;
+      z-index: 1001;
+    }
+    .toast.show {
+      opacity: 1;
+      transform: translateX(-50%) translateY(0);
+    }
+
+    .mobile-nav { display: none; }
+    .menu-toggle { display: none; }
+
+    @media (max-width: 1100px) {
+      .hero-grid, .content-grid, .newsletter, .about-grid, .footer-grid { grid-template-columns: 1fr; }
+      .post-grid { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 860px) {
+      .nav { flex-wrap: wrap; }
+      .navlinks, .nav-actions { width: 100%; }
+      .navlinks { display: none; }
+      .menu-toggle { display: inline-flex; }
+      .navlinks.mobile-open {
+        display: flex;
+        width: 100%;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 6px;
+        padding-bottom: 10px;
+      }
+      .navlinks a { width: 100%; text-align: center; }
+      .hero-stats { grid-template-columns: 1fr; }
+      .searchbar, .newsletter .row { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 560px) {
+      .wrap { width: min(calc(100% - 22px), var(--max)); }
+      .hero-card, .side-card, .mini-card, .about-card, .newsletter, .section-card { border-radius: 22px; }
+      .hero h2 { font-size: 30px; }
+      .brand h1 { font-size: 18px; }
+      .brand p { display: none; }
+      .thumb { height: 190px; }
+    }
+  </style>  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "NewsMediaOrganization",
+    "name": "Technexiss",
+    "url": "https://example.com",
+    "logo": "https://example.com/logo.png",
+    "sameAs": []
+  }
+  </script></head>
+<body>
+  <div class="topbar">
+    <div class="wrap">
+      <span class="badge">LIVE</span>
+      <div class="ticker" id="ticker">Breaking: AI tools, smartphone launches, and creator economy updates are trending today.</div>
+    </div>
+  </div>  <header>
+    <div class="wrap nav">
+      <a class="brand" href="#home" aria-label="Technexiss Home">
+        <div class="mark">T</div>
+        <div>
+          <h1>Technexiss</h1>
+          <p>Tech News • AI • Guides</p>
+        </div>
+      </a><nav class="navlinks" id="navlinks">
+    <a href="#home" class="active">Home</a>
+    <a href="#latest">Latest</a>
+    <a href="#categories">Categories</a>
+    <a href="#about">About</a>
+    <a href="#contact">Contact</a>
+  </nav>
+
+  <div class="nav-actions">
+    <button class="icon-btn menu-toggle" id="menuToggle" aria-label="Open menu">☰</button>
+    <button class="icon-btn" id="themeButton" aria-label="Light theme">☼</button>
+    <a class="btn filled" href="#latest">Read News</a>
+  </div>
+</div>
+
+  </header>  <main id="home" class="wrap">
+    <section class="hero">
+      <div class="hero-grid">
+        <article class="hero-card">
+          <span class="eyebrow">⚡ Daily Tech News & Smart Guides</span>
+          <h2>Build a blog people actually want to visit every day.</h2>
+          <p>
+            A clean white-theme tech news layout designed for fast reading, SEO-friendly publishing, and AdSense-ready content sections.
+            Use it for AI news, mobile updates, apps, gaming, tutorials, and evergreen how-to posts.
+          </p><div class="searchbar" role="search">
+        <input id="searchInput" type="search" placeholder="Search posts like AI tools, mobile news, WhatsApp, ChatGPT..." />
+        <button class="btn filled" id="searchBtn">Search</button>
+      </div>
+
+      <div class="hero-actions">
+        <a class="btn filled" href="#latest">Explore Latest</a>
+        <a class="btn-outline" href="#categories">Browse Categories</a>
+      </div>
+
+      <div class="hero-stats">
+        <div class="stat-card">
+          <strong>6+</strong>
+          <span>Post formats per day</span>
+        </div>
+        <div class="stat-card">
+          <strong>SEO</strong>
+          <span>Structured for ranking</span>
+        </div>
+        <div class="stat-card">
+          <strong>AdSense</strong>
+          <span>Clean content layout</span>
+        </div>
+      </div>
+    </article>
+
+    <aside class="side-stack">
+      <section class="side-card">
+        <h3>Why readers return</h3>
+        <p>Mix news with useful explainers so the site gets both trending traffic and long-tail search traffic.</p>
+        <ul class="feature-list">
+          <li><span class="dot"></span><div><b>AI & Tech news</b><small>Short updates with high interest.</small></div></li>
+          <li><span class="dot"></span><div><b>How-to guides</b><small>Evergreen posts for Google traffic.</small></div></li>
+          <li><span class="dot"></span><div><b>Review style articles</b><small>Comparison posts that earn clicks.</small></div></li>
+        </ul>
+      </section>
+
+      <section class="side-card">
+        <h3>Trending now</h3>
+        <div class="chips" id="trendChips">
+          <button class="chip active" data-filter="all">All</button>
+          <button class="chip" data-filter="ai">AI</button>
+          <button class="chip" data-filter="mobile">Mobile</button>
+          <button class="chip" data-filter="apps">Apps</button>
+          <button class="chip" data-filter="gaming">Gaming</button>
+        </div>
+      </section>
+    </aside>
+  </div>
+</section>
+
+<section id="categories">
+  <div class="section-head">
+    <div class="left">
+      <h3>Popular Categories</h3>
+      <p>Use these as your main content buckets for consistent publishing.</p>
+    </div>
+    <div class="right">
+      <button class="btn-outline">AI News</button>
+      <button class="btn-outline">Tech Updates</button>
+      <button class="btn-outline">How-to Guides</button>
+    </div>
+  </div>
+
+  <div class="content-grid">
+    <div class="post-grid" id="postGrid">
+      <article class="post-card" data-category="ai" data-title="best free ai tools for creators">
+        <div class="thumb"><img alt="AI tools" src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=1200&q=80" /></div>
+        <div class="post-body">
+          <div class="meta"><span class="tag">AI</span><span>• 5 min read</span><span>• Today</span></div>
+          <h4>Best Free AI Tools for Creators in 2026</h4>
+          <p>List tools for writing, image generation, voice, video, and productivity with simple use cases.</p>
+          <div class="post-actions"><button class="btn-outline read-btn">Read More</button><button class="btn-outline save-btn">Save</button></div>
+        </div>
+      </article>
+
+      <article class="post-card" data-category="mobile" data-title="best smartphones under 20000">
+        <div class="thumb"><img alt="Smartphone" src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&w=1200&q=80" /></div>
+        <div class="post-body">
+          <div class="meta"><span class="tag">Mobile</span><span>• 4 min read</span><span>• Today</span></div>
+          <h4>Best Smartphones Under ₹20,000</h4>
+          <p>A comparison post that helps users choose budget phones with strong search demand.</p>
+          <div class="post-actions"><button class="btn-outline read-btn">Read More</button><button class="btn-outline save-btn">Save</button></div>
+        </div>
+      </article>
+
+      <article class="post-card" data-category="apps" data-title="whatsapp new features explained">
+        <div class="thumb"><img alt="Apps" src="https://images.unsplash.com/photo-1512941937669-90a1b58e7e9d?auto=format&fit=crop&w=1200&q=80" /></div>
+        <div class="post-body">
+          <div class="meta"><span class="tag">Apps</span><span>• 3 min read</span><span>• This week</span></div>
+          <h4>WhatsApp New Features Explained Simply</h4>
+          <p>Short news article plus benefits, screenshots, and what users should know right away.</p>
+          <div class="post-actions"><button class="btn-outline read-btn">Read More</button><button class="btn-outline save-btn">Save</button></div>
+        </div>
+      </article>
+
+      <article class="post-card" data-category="gaming" data-title="top gaming updates this month">
+        <div class="thumb"><img alt="Gaming" src="https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&w=1200&q=80" /></div>
+        <div class="post-body">
+          <div class="meta"><span class="tag">Gaming</span><span>• 6 min read</span><span>• Trending</span></div>
+          <h4>Top Gaming Updates to Watch This Month</h4>
+          <p>Game launch stories, patch notes, and esports news can bring repeat visits fast.</p>
+          <div class="post-actions"><button class="btn-outline read-btn">Read More</button><button class="btn-outline save-btn">Save</button></div>
+        </div>
+      </article>
+    </div>
+
+    <aside class="sidebar">
+      <section class="mini-card">
+        <h3>Editor’s Picks</h3>
+        <p>These are the types of posts that usually build traffic over time.</p>
+        <div class="mini-list">
+          <div class="mini-item">
+            <img alt="Guide" src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=600&q=80" />
+            <div><strong>How to Get More Traffic</strong><small>SEO guide for beginners</small></div>
+          </div>
+          <div class="mini-item">
+            <img alt="Laptop" src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=600&q=80" />
+            <div><strong>Best Free Tools for Bloggers</strong><small>Useful roundup article</small></div>
+          </div>
+          <div class="mini-item">
+            <img alt="Android" src="https://images.unsplash.com/photo-1512941937669-90a1b58e7e9d?auto=format&fit=crop&w=600&q=80" />
+            <div><strong>Android Update News</strong><small>Fast-moving tech traffic</small></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="mini-card">
+        <h3>AdSense-friendly tip</h3>
+        <p>Use original summaries, comparison tables, FAQs, and clear navigation. Keep the content helpful, not copied.</p>
+      </section>
+    </aside>
+  </div>
+</section>
+
+<section id="latest">
+  <div class="section-head">
+    <div class="left">
+      <h3>Latest Articles</h3>
+      <p>Filter posts instantly using search and category chips.</p>
+    </div>
+    <div class="right">
+      <button class="btn-outline" id="clearFilter">Clear Filters</button>
+    </div>
+  </div>
+
+  <div class="section-card" style="padding:18px;">
+    <div class="post-grid" id="latestGrid">
+      <article class="post-card" data-category="ai" data-title="chatgpt tips and tricks for students">
+        <div class="thumb"><img alt="ChatGPT" src="https://images.unsplash.com/photo-1526378722484-bd91ca387e72?auto=format&fit=crop&w=1200&q=80" /></div>
+        <div class="post-body">
+          <div class="meta"><span class="tag">AI Guide</span><span>• 7 min read</span></div>
+          <h4>ChatGPT Tips and Tricks for Students</h4>
+          <p>Practical prompts, study workflows, and examples that are easy to rank for search.</p>
+          <div class="post-actions"><button class="btn-outline read-btn">Open Article</button></div>
+        </div>
+      </article>
+
+      <article class="post-card" data-category="mobile" data-title="android latest update explained">
+        <div class="thumb"><img alt="Android" src="https://images.unsplash.com/photo-1592899677977-9c10ca588bbd?auto=format&fit=crop&w=1200&q=80" /></div>
+        <div class="post-body">
+          <div class="meta"><span class="tag">Mobile News</span><span>• 4 min read</span></div>
+          <h4>Android Latest Update Explained</h4>
+          <p>Write what changed, why it matters, and which phones get it first.</p>
+          <div class="post-actions"><button class="btn-outline read-btn">Open Article</button></div>
+        </div>
+      </article>
+
+      <article class="post-card" data-category="apps" data-title="instagram reels growth guide">
+        <div class="thumb"><img alt="Instagram" src="https://images.unsplash.com/photo-1485217988980-11786ced9454?auto=format&fit=crop&w=1200&q=80" /></div>
+        <div class="post-body">
+          <div class="meta"><span class="tag">Apps</span><span>• 6 min read</span></div>
+          <h4>Instagram Reels Growth Guide</h4>
+          <p>Great for evergreen traffic and very useful for creators and marketers.</p>
+          <div class="post-actions"><button class="btn-outline read-btn">Open Article</button></div>
+        </div>
+      </article>
+
+      <article class="post-card" data-category="gaming" data-title="new pc games and launch dates">
+        <div class="thumb"><img alt="PC gaming" src="https://images.unsplash.com/photo-1511512578047-dfb367046420?auto=format&fit=crop&w=1200&q=80" /></div>
+        <div class="post-body">
+          <div class="meta"><span class="tag">Gaming</span><span>• 5 min read</span></div>
+          <h4>New PC Games and Launch Dates</h4>
+          <p>Simple launch calendar posts can pull repeat visits and time-sensitive clicks.</p>
+          <div class="post-actions"><button class="btn-outline read-btn">Open Article</button></div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="newsletter">
+    <div>
+      <span class="eyebrow">📬 Newsletter</span>
+      <h3>Grow your audience with daily updates.</h3>
+      <p>Collect emails and send your best tech news, tools, and guides straight to readers.</p>
+    </div>
+    <form id="subscribeForm">
+      <div class="row">
+        <input type="email" id="emailInput" placeholder="Enter your email address" required />
+        <button class="btn filled" type="submit">Subscribe</button>
+      </div>
+      <small style="color:var(--muted)">No spam. Just useful tech updates.</small>
+    </form>
+  </div>
+</section>
+
+<section id="about">
+  <div class="about-grid">
+    <div class="about-card">
+      <span class="eyebrow">About Technexiss</span>
+      <h3>A clean blog built for trust and clicks.</h3>
+      <p style="color:var(--muted)">
+        The goal is simple: publish useful tech news, add how-to guides, and keep the design easy to read on mobile.
+        That creates better user experience and stronger SEO signals.
+      </p>
+      <ul class="bullets">
+        <li>Fast layout with focused sections.</li>
+        <li>Search and filter interaction.</li>
+        <li>Professional white theme with blue accents.</li>
+        <li>Flexible enough for future pages and categories.</li>
+      </ul>
+    </div>
+
+    <div class="about-card" id="contact">
+      <span class="eyebrow">Contact</span>
+      <h3>Send a message</h3>
+      <p style="color:var(--muted)">Use this form for feedback, article requests, or collaboration.</p>
+      <form class="contact" id="contactForm">
+        <input type="text" id="nameInput" placeholder="Your name" required />
+        <input type="email" id="contactEmail" placeholder="Your email" required />
+        <textarea id="messageInput" placeholder="Write your message" required></textarea>
+        <button class="btn filled" type="submit">Send Message</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+  </main>  <footer>
+    <div class="wrap">
+      <div class="footer-grid">
+        <div>
+          <div class="brand" style="margin-bottom:10px;">
+            <div class="mark">T</div>
+            <div>
+              <h1 style="font-size:20px;margin:0;">Technexiss</h1>
+              <p>Tech News • AI • Guides</p>
+            </div>
+          </div>
+          <p>Professional white-theme tech blog template for fast publishing and clean browsing.</p>
+        </div>
+        <div>
+          <h4>Quick Links</h4>
+          <a href="#latest">Latest</a>
+          <a href="#categories">Categories</a>
+          <a href="#about">About</a>
+          <a href="#contact">Contact</a>
+        </div>
+        <div>
+          <h4>Content Ideas</h4>
+          <a href="#">AI News</a>
+          <a href="#">Mobile Launches</a>
+          <a href="#">App Updates</a>
+          <a href="#">Evergreen Guides</a>
+        </div>
+      </div><div class="copyright">
+    <span>© 2026 Technexiss. All rights reserved.</span>
+    <span>Built for white-theme news publishing.</span>
+  </div>
+</div>
+
+  </footer><button class="backtop btn-filled icon-btn" id="backTop" aria-label="Back to top">↑</button>
+
+  <div class="toast" id="toast">Saved successfully</div>  <script>
+    const navlinks = document.getElementById('navlinks');
+    const menuToggle = document.getElementById('menuToggle');
+    const themeButton = document.getElementById('themeButton');
+    const searchInput = document.getElementById('searchInput');
+    const searchBtn = document.getElementById('searchBtn');
+    const clearFilter = document.getElementById('clearFilter');
+    const backTop = document.getElementById('backTop');
+    const toast = document.getElementById('toast');
+    const posts = [...document.querySelectorAll('[data-category]')];
+    const chips = [...document.querySelectorAll('.chip')];
+    const saveBtns = [...document.querySelectorAll('.save-btn')];
+    const readBtns = [...document.querySelectorAll('.read-btn')];
+    const subscribeForm = document.getElementById('subscribeForm');
+    const contactForm = document.getElementById('contactForm');
+    let currentCategory = 'all';
+
+    function showToast(message) {
+      toast.textContent = message;
+      toast.classList.add('show');
+      clearTimeout(window.toastTimer);
+      window.toastTimer = setTimeout(() => toast.classList.remove('show'), 2200);
+    }
+
+    function applyFilters() {
+      const q = searchInput.value.trim().toLowerCase();
+      posts.forEach((post) => {
+        const text = (post.dataset.title || '').toLowerCase();
+        const cat = post.dataset.category;
+        const matchesQuery = !q || text.includes(q);
+        const matchesCategory = currentCategory === 'all' || cat === currentCategory;
+        post.style.display = matchesQuery && matchesCategory ? '' : 'none';
+      });
+    }
+
+    chips.forEach((chip) => {
+      chip.addEventListener('click', () => {
+        chips.forEach((c) => c.classList.remove('active'));
+        chip.classList.add('active');
+        currentCategory = chip.dataset.filter;
+        applyFilters();
+      });
+    });
+
+    searchBtn.addEventListener('click', applyFilters);
+    searchInput.addEventListener('input', applyFilters);
+
+    clearFilter.addEventListener('click', () => {
+      searchInput.value = '';
+      currentCategory = 'all';
+      chips.forEach((c) => c.classList.toggle('active', c.dataset.filter === 'all'));
+      applyFilters();
+      showToast('Filters cleared');
+    });
+
+    saveBtns.forEach(btn => btn.addEventListener('click', () => showToast('Post saved')));
+    readBtns.forEach(btn => btn.addEventListener('click', () => showToast('Demo article opened')));
+
+    subscribeForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const email = document.getElementById('emailInput').value.trim();
+      if (!email) return;
+      showToast('Subscribed: ' + email);
+      subscribeForm.reset();
+    });
+
+    contactForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      showToast('Message sent successfully');
+      contactForm.reset();
+    });
+
+    menuToggle.addEventListener('click', () => {
+      navlinks.classList.toggle('mobile-open');
+    });
+
+    document.addEventListener('click', (e) => {
+      if (!navlinks.contains(e.target) && !menuToggle.contains(e.target)) {
+        navlinks.classList.remove('mobile-open');
+      }
+    });
+
+    const topbarText = [
+      'Breaking: AI news and new app launches are attracting fast traffic today.',
+      'Trending: How-to guides and comparison articles can bring long-term Google visits.',
+      'Smart publishing tip: combine daily news with evergreen explainers for balance.'
+    ];
+    let tickerIndex = 0;
+    setInterval(() => {
+      tickerIndex = (tickerIndex + 1) % topbarText.length;
+      document.getElementById('ticker').textContent = topbarText[tickerIndex];
+    }, 4500);
+
+    window.addEventListener('scroll', () => {
+      backTop.classList.toggle('show', window.scrollY > 500);
+    });
+
+    backTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+    themeButton.addEventListener('click', () => {
+      showToast('White theme is active');
+    });
+
+    applyFilters();
+  </script></body>
+</html>
