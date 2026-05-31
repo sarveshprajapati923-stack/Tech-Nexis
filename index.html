@@ -1,461 +1,797 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Technexiss is a modern Tech News and AI blog homepage template built for fast traffic, SEO, and AdSense-ready content publishing." />
-  <meta name="theme-color" content="#ffffff" />
-  
-  <title>Technexiss — Tech News & AI Blog</title>
-  
-  <link rel="icon" type="image/png" href="favicon.png">
-  
-  <link rel="stylesheet" href="style.css" />
-  
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "NewsMediaOrganization",
-    "name": "Technexiss",
-    "url": "https://example.com",
-    "logo": "https://example.com/logo.png",
-    "sameAs": []
-  }
-  </script>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<meta name="description" content="TechNexiss — India's trusted portal for Sarkari Yojana, Government Jobs, Exam Results, Admit Cards, Weather Updates and Technology News."/>
+<meta name="theme-color" content="#ffffff"/>
+<title>TechNexiss — Sarkari Yojana, Govt Jobs, Results & Tech News</title>
+<link rel="icon" type="image/png" href="favicon.png"/>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"NewsMediaOrganization","name":"TechNexiss","url":"https://technexiss.in","logo":"https://technexiss.in/favicon.png"}</script>
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+:root{
+  --blue:#1a6ef5;--blue2:#0ea5e9;--orange:#f97316;
+  --dark:#0f172a;--text:#334155;--muted:#64748b;
+  --border:#e2e8f0;--bg:#f8fafc;--white:#fff;
+  --card:#fff;--shadow:0 2px 12px rgba(0,0,0,0.07);
+}
+body{font-family:'Segoe UI',Arial,sans-serif;background:var(--bg);color:var(--text);font-size:15px;line-height:1.6;}
+a{color:var(--blue);text-decoration:none;}
+a:hover{text-decoration:underline;}
+img{max-width:100%;height:auto;display:block;}
+
+/* TOPBAR */
+.topbar{background:var(--dark);padding:0;display:flex;align-items:stretch;overflow:hidden;height:36px;}
+.topbar-left{background:#1e293b;padding:0 16px;display:flex;align-items:center;gap:10px;flex-shrink:0;}
+.breaking-badge{background:#ef4444;color:#fff;font-size:10px;font-weight:900;padding:3px 8px;border-radius:3px;letter-spacing:0.08em;white-space:nowrap;}
+.topbar-ticker{flex:1;overflow:hidden;display:flex;align-items:center;}
+.ticker-inner{display:inline-block;white-space:nowrap;color:#94a3b8;font-size:12px;animation:ticker 55s linear infinite;padding:0 20px;}
+@keyframes ticker{0%{transform:translateX(100vw)}100%{transform:translateX(-100%);}}
+.topbar-right{padding:0 16px;display:flex;align-items:center;gap:12px;flex-shrink:0;}
+.topbar-right span{color:#64748b;font-size:11px;}
+.topbar-right a{color:#64748b;font-size:13px;transition:color 0.2s;}
+.topbar-right a:hover{color:#38bdf8;text-decoration:none;}
+
+/* HEADER */
+header{background:#fff;border-bottom:1px solid var(--border);position:sticky;top:0;z-index:200;box-shadow:0 2px 8px rgba(0,0,0,0.06);}
+.header-wrap{max-width:1280px;margin:0 auto;padding:0 20px;display:flex;align-items:center;height:62px;gap:16px;}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none;flex-shrink:0;}
+.logo img{width:36px;height:36px;border-radius:8px;}
+.logo-text{font-weight:900;font-size:22px;letter-spacing:-0.03em;color:var(--dark);}
+.logo-text span{color:var(--blue);}
+.logo-sub{font-size:9px;color:var(--muted);letter-spacing:0.12em;text-transform:uppercase;margin-top:1px;}
+nav.main-nav{display:flex;align-items:center;gap:2px;margin-left:12px;}
+nav.main-nav a{color:var(--text);font-size:13px;font-weight:600;padding:6px 12px;border-radius:6px;transition:all 0.2s;white-space:nowrap;}
+nav.main-nav a:hover,nav.main-nav a.active{background:#eff6ff;color:var(--blue);text-decoration:none;}
+.nav-right{margin-left:auto;display:flex;align-items:center;gap:10px;}
+.search-box{display:flex;align-items:center;background:var(--bg);border:1px solid var(--border);border-radius:8px;overflow:hidden;}
+.search-box input{border:none;background:transparent;padding:7px 14px;font-size:13px;color:var(--text);outline:none;width:200px;}
+.search-box button{background:var(--blue);color:#fff;border:none;padding:7px 14px;cursor:pointer;font-size:13px;font-weight:600;}
+.btn-subscribe{background:var(--blue);color:#fff;border:none;border-radius:8px;padding:8px 18px;font-size:13px;font-weight:700;cursor:pointer;white-space:nowrap;}
+.btn-subscribe:hover{background:#1558d1;}
+.hamburger{display:none;background:none;border:1px solid var(--border);border-radius:6px;padding:6px 10px;cursor:pointer;font-size:18px;}
+
+/* TRENDING BAR */
+.trending-bar{background:#fff;border-bottom:1px solid var(--border);padding:0 20px;}
+.trending-inner{max-width:1280px;margin:0 auto;display:flex;align-items:center;gap:0;overflow-x:auto;scrollbar-width:none;}
+.trending-inner::-webkit-scrollbar{display:none;}
+.trending-label{font-size:12px;font-weight:800;color:var(--orange);white-space:nowrap;padding:10px 14px 10px 0;border-right:1px solid var(--border);margin-right:4px;display:flex;align-items:center;gap:5px;}
+.cat-nav-item{font-size:12.5px;font-weight:600;color:var(--muted);padding:10px 14px;cursor:pointer;white-space:nowrap;border-bottom:2px solid transparent;transition:all 0.2s;}
+.cat-nav-item:hover,.cat-nav-item.active{color:var(--blue);border-bottom-color:var(--blue);}
+
+/* LAYOUT */
+.wrap{max-width:1280px;margin:0 auto;padding:0 20px;}
+.page-layout{display:grid;grid-template-columns:1fr 310px;gap:28px;padding:24px 0 60px;}
+
+/* HERO GRID */
+.hero-grid{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:auto auto;gap:4px;border-radius:14px;overflow:hidden;margin-bottom:24px;}
+.hero-main{grid-row:1/3;position:relative;cursor:pointer;}
+.hero-main img{width:100%;height:480px;object-fit:cover;}
+.hero-sm{position:relative;cursor:pointer;}
+.hero-sm img{width:100%;height:236px;object-fit:cover;}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(180deg,transparent 30%,rgba(0,0,0,0.85) 100%);padding:16px;}
+.hero-overlay-content{position:absolute;bottom:0;left:0;right:0;padding:16px 18px;}
+.hero-badge{display:inline-block;padding:2px 8px;border-radius:3px;font-size:10px;font-weight:800;letter-spacing:0.06em;text-transform:uppercase;margin-bottom:6px;}
+.hero-main .hero-overlay-content h2{color:#fff;font-size:22px;font-weight:800;line-height:1.35;margin-bottom:8px;}
+.hero-sm .hero-overlay-content h4{color:#fff;font-size:14px;font-weight:700;line-height:1.4;}
+.hero-meta{color:rgba(255,255,255,0.7);font-size:11px;margin-top:5px;display:flex;align-items:center;gap:8px;}
+.hero-meta img{width:20px;height:20px;border-radius:50%;border:1px solid rgba(255,255,255,0.5);}
+
+/* TRENDING STRIP */
+.trending-strip{background:#fff;border:1px solid var(--border);border-radius:12px;padding:16px 20px;margin-bottom:24px;}
+.trending-strip-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;}
+.trending-strip-head h3{font-size:15px;font-weight:800;color:var(--dark);display:flex;align-items:center;gap:6px;}
+.trending-cards{display:grid;grid-template-columns:repeat(5,1fr);gap:14px;}
+.trending-card{cursor:pointer;}
+.trending-card img{width:100%;height:80px;object-fit:cover;border-radius:8px;margin-bottom:6px;}
+.trending-card p{font-size:12px;font-weight:600;color:var(--text);line-height:1.4;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;}
+.trending-card small{color:var(--muted);font-size:10px;margin-top:3px;display:block;}
+
+/* SECTION HEADERS */
+.sec-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;padding-bottom:10px;border-bottom:2px solid var(--border);}
+.sec-head h2{font-size:17px;font-weight:800;color:var(--dark);display:flex;align-items:center;gap:6px;}
+.view-all{font-size:12px;font-weight:700;color:var(--blue);}
+.view-all:hover{text-decoration:none;color:#1558d1;}
+
+/* ARTICLE GRID */
+.art-grid-4{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:28px;}
+.art-grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:24px;}
+.art-card{background:var(--white);border:1px solid var(--border);border-radius:10px;overflow:hidden;cursor:pointer;transition:all 0.22s;}
+.art-card:hover{border-color:var(--blue);transform:translateY(-3px);box-shadow:0 8px 24px rgba(26,110,245,0.12);}
+.art-card-img{position:relative;overflow:hidden;}
+.art-card-img img{width:100%;height:160px;object-fit:cover;transition:transform 0.3s;}
+.art-card:hover .art-card-img img{transform:scale(1.05);}
+.art-card-body{padding:12px 14px;}
+.art-card-body .badge{display:inline-block;padding:2px 8px;border-radius:3px;font-size:10px;font-weight:800;letter-spacing:0.05em;text-transform:uppercase;margin-bottom:7px;}
+.art-card-body h4{font-size:14px;font-weight:700;color:var(--dark);line-height:1.45;margin-bottom:7px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;}
+.art-card-body p{font-size:12px;color:var(--muted);line-height:1.55;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;margin-bottom:10px;}
+.art-meta{display:flex;align-items:center;gap:6px;font-size:11px;color:var(--muted);}
+.art-meta img{width:18px;height:18px;border-radius:50%;}
+
+/* INLINE ROW (3-col list style) */
+.art-row{display:flex;gap:14px;padding:12px 0;border-bottom:1px solid var(--border);cursor:pointer;}
+.art-row:last-child{border-bottom:none;}
+.art-row img{width:90px;height:68px;border-radius:8px;object-fit:cover;flex-shrink:0;}
+.art-row-body{flex:1;min-width:0;}
+.art-row-body .badge{display:inline-block;padding:1px 7px;border-radius:3px;font-size:10px;font-weight:800;letter-spacing:0.05em;text-transform:uppercase;margin-bottom:4px;}
+.art-row-body h5{font-size:13px;font-weight:700;color:var(--dark);line-height:1.4;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;}
+.art-row-body small{color:var(--muted);font-size:11px;margin-top:3px;display:block;}
+
+/* SIDEBAR */
+.sidebar{}
+.sb-card{background:#fff;border:1px solid var(--border);border-radius:12px;padding:18px;margin-bottom:18px;}
+.sb-card h3{font-size:14px;font-weight:800;color:var(--dark);margin-bottom:14px;padding-bottom:10px;border-bottom:2px solid var(--border);display:flex;align-items:center;gap:5px;}
+.trending-list .t-item{display:flex;gap:10px;align-items:flex-start;padding:9px 0;border-bottom:1px solid #f1f5f9;cursor:pointer;}
+.trending-list .t-item:last-child{border-bottom:none;}
+.t-num{font-size:20px;font-weight:900;color:var(--blue);width:28px;flex-shrink:0;line-height:1;}
+.t-text{font-size:12.5px;font-weight:600;color:var(--text);line-height:1.4;}
+.t-text small{color:var(--muted);font-size:11px;display:block;margin-top:2px;}
+.cat-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;}
+.cat-item{background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:10px 12px;cursor:pointer;transition:all 0.2s;text-decoration:none;display:flex;flex-direction:column;gap:2px;}
+.cat-item:hover{border-color:var(--blue);background:#eff6ff;text-decoration:none;}
+.cat-item strong{color:var(--dark);font-size:13px;}
+.cat-item span{color:var(--muted);font-size:11px;}
+.tag-cloud{display:flex;flex-wrap:wrap;gap:7px;}
+.tag-pill{background:var(--bg);border:1px solid var(--border);border-radius:20px;padding:4px 12px;font-size:12px;color:var(--muted);cursor:pointer;transition:all 0.2s;}
+.tag-pill:hover{background:#eff6ff;border-color:var(--blue);color:var(--blue);}
+.sb-follow{display:grid;grid-template-columns:1fr 1fr;gap:8px;}
+.follow-item{border:1px solid var(--border);border-radius:8px;padding:10px 12px;display:flex;align-items:center;gap:8px;font-size:13px;cursor:pointer;transition:all 0.2s;}
+.follow-item:hover{border-color:var(--blue);}
+.follow-item strong{font-size:12px;color:var(--dark);}
+.follow-item span{color:var(--muted);font-size:10px;}
+.adsense-box{background:var(--bg);border:2px dashed var(--border);border-radius:10px;padding:36px 16px;text-align:center;color:var(--muted);font-size:12px;}
+
+/* NEWSLETTER BANNER */
+.newsletter-banner{background:linear-gradient(135deg,#1a6ef5,#0ea5e9);border-radius:14px;padding:32px 36px;margin:28px 0;display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;}
+.newsletter-banner h3{color:#fff;font-size:20px;font-weight:800;margin-bottom:4px;}
+.newsletter-banner p{color:#bae6fd;font-size:13px;}
+.newsletter-form{display:flex;gap:10px;flex-wrap:wrap;}
+.newsletter-form input{background:rgba(255,255,255,0.15);border:1px solid rgba(255,255,255,0.3);border-radius:8px;padding:10px 16px;color:#fff;font-size:13px;outline:none;min-width:240px;}
+.newsletter-form input::placeholder{color:rgba(255,255,255,0.6);}
+.newsletter-form button{background:#fff;color:var(--blue);border:none;border-radius:8px;padding:10px 20px;font-size:13px;font-weight:800;cursor:pointer;white-space:nowrap;}
+
+/* FOOTER */
+footer{background:var(--dark);color:#64748b;padding:48px 20px 0;}
+.footer-inner{max-width:1280px;margin:0 auto;}
+.footer-grid{display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;gap:40px;margin-bottom:40px;}
+.footer-brand .logo-text{color:#fff;font-size:20px;}
+.footer-brand p{font-size:13px;line-height:1.7;margin-top:10px;margin-bottom:16px;}
+.footer-social{display:flex;gap:8px;}
+.social-btn{width:34px;height:34px;background:#1e293b;border:1px solid #334155;border-radius:7px;display:flex;align-items:center;justify-content:center;font-size:15px;cursor:pointer;text-decoration:none;}
+.footer-col h4{color:#fff;font-size:13px;font-weight:700;letter-spacing:0.05em;text-transform:uppercase;margin-bottom:14px;}
+.footer-col a{display:block;color:#64748b;font-size:13px;padding:4px 0;border-bottom:1px solid #1e293b;transition:color 0.2s;}
+.footer-col a:hover{color:#38bdf8;text-decoration:none;}
+.footer-bottom{border-top:1px solid #1e293b;padding:18px 0;text-align:center;font-size:12px;}
+.footer-bottom p{margin-bottom:8px;}
+.footer-bottom .legal-links{display:flex;justify-content:center;flex-wrap:wrap;gap:6px 16px;}
+.footer-bottom .legal-links a{color:#475569;font-size:12px;}
+.footer-bottom .legal-links a:hover{color:#38bdf8;}
+
+/* BACK TO TOP */
+.back-top{position:fixed;bottom:24px;right:24px;width:40px;height:40px;background:var(--blue);color:#fff;border:none;border-radius:50%;font-size:18px;cursor:pointer;display:none;align-items:center;justify-content:center;box-shadow:0 4px 14px rgba(26,110,245,0.4);z-index:999;}
+.back-top.show{display:flex;}
+
+/* TOAST */
+.toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(20px);background:var(--dark);color:#fff;padding:10px 22px;border-radius:8px;font-size:13px;opacity:0;transition:all 0.3s;pointer-events:none;z-index:9999;}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(0);}
+
+/* RESPONSIVE */
+@media(max-width:1024px){
+  .art-grid-4{grid-template-columns:repeat(2,1fr);}
+  .footer-grid{grid-template-columns:1fr 1fr;}
+  .page-layout{grid-template-columns:1fr;}
+  .sidebar{display:none;}
+  .trending-cards{grid-template-columns:repeat(3,1fr);}
+}
+@media(max-width:768px){
+  .hero-grid{grid-template-columns:1fr;}
+  .hero-main img{height:280px;}
+  .hero-sm img{height:180px;}
+  .art-grid-3,.art-grid-4{grid-template-columns:1fr;}
+  .trending-cards{grid-template-columns:repeat(2,1fr);}
+  nav.main-nav{display:none;}
+  nav.main-nav.open{display:flex;flex-direction:column;position:absolute;top:62px;left:0;right:0;background:#fff;border-bottom:1px solid var(--border);padding:12px 20px;gap:4px;z-index:199;}
+  .hamburger{display:block;}
+  .search-box{display:none;}
+  .newsletter-banner{padding:22px;}
+  .newsletter-form input{min-width:180px;}
+  .footer-grid{grid-template-columns:1fr;}
+  .topbar-right{display:none;}
+}
+</style>
 </head>
 <body>
-  <div class="topbar">
-    <div class="wrap">
-      <span class="badge">LIVE</span>
-      <div class="ticker" id="ticker">Breaking: AI tools, smartphone launches, and creator economy updates are trending today.</div>
+
+<!-- TOPBAR -->
+<div class="topbar">
+  <div class="topbar-left">
+    <span class="breaking-badge">Breaking News</span>
+  </div>
+  <div class="topbar-ticker">
+    <div class="ticker-inner" id="tickerInner">
+      PM Kisan 20वीं किस्त जारी — ₹2000 सीधे बैंक में &nbsp;●&nbsp; SSC CGL 2025: 17,727 पद — Apply Now &nbsp;●&nbsp; CBSE Result 2025 — 5 June को घोषित होगा &nbsp;●&nbsp; UPSC Prelims Result OUT &nbsp;●&nbsp; Delhi Heatwave: IMD Red Alert 44°C &nbsp;●&nbsp; IBPS PO Admit Card जारी &nbsp;●&nbsp; Railway Group D 2025 Notification जल्द &nbsp;●&nbsp; India AI Mission: ₹10,000 Crore Fund Approved
+    </div>
+  </div>
+  <div class="topbar-right">
+    <span>Follow Us:</span>
+    <a href="#">📘</a><a href="#">🐦</a><a href="#">📸</a><a href="#">▶️</a><a href="#">💼</a>
+  </div>
+</div>
+
+<!-- HEADER -->
+<header>
+  <div class="header-wrap">
+    <a href="/" class="logo">
+      <img src="favicon.png" alt="TechNexiss Logo"/>
+      <div>
+        <div class="logo-text">Tech<span>Nexiss</span></div>
+        <div class="logo-sub">Sarkari · Jobs · Weather · Tech</div>
+      </div>
+    </a>
+    <nav class="main-nav" id="mainNav">
+      <a href="/" class="active">Home</a>
+      <a href="/pm-kisan-20th-installment.html">Sarkari Yojana</a>
+      <a href="/ssc-cgl-2025.html">Govt Jobs</a>
+      <a href="/cbse-result-2025.html">Results</a>
+      <a href="/delhi-heatwave-2025.html">Weather</a>
+      <a href="/about.html">About</a>
+      <a href="/contact.html">Contact</a>
+    </nav>
+    <div class="nav-right">
+      <div class="search-box">
+        <input type="text" id="searchInput" placeholder="Search yojana, jobs, results..."/>
+        <button onclick="doSearch()">🔍</button>
+      </div>
+      <button class="btn-subscribe">Subscribe</button>
+      <button class="hamburger" id="hamburger" onclick="toggleMenu()">☰</button>
+    </div>
+  </div>
+</header>
+
+<!-- CATEGORY NAV BAR -->
+<div class="trending-bar">
+  <div class="trending-inner">
+    <div class="trending-label">🔥 Trending Now:</div>
+    <span class="cat-nav-item active" onclick="filterCat('all',this)">All</span>
+    <span class="cat-nav-item" onclick="filterCat('yojana',this)">Sarkari Yojana</span>
+    <span class="cat-nav-item" onclick="filterCat('jobs',this)">Govt Jobs</span>
+    <span class="cat-nav-item" onclick="filterCat('results',this)">Results</span>
+    <span class="cat-nav-item" onclick="filterCat('admit',this)">Admit Card</span>
+    <span class="cat-nav-item" onclick="filterCat('exams',this)">Exams</span>
+    <span class="cat-nav-item" onclick="filterCat('weather',this)">Weather</span>
+    <span class="cat-nav-item" onclick="filterCat('tech',this)">Technology</span>
+    <span class="cat-nav-item" onclick="filterCat('education',this)">Education</span>
+  </div>
+</div>
+
+<!-- MAIN CONTENT -->
+<div class="wrap">
+<div class="page-layout">
+
+<!-- LEFT: MAIN CONTENT -->
+<main>
+
+  <!-- HERO GRID -->
+  <div class="hero-grid">
+    <!-- Main big article -->
+    <div class="hero-main" onclick="location.href='/pm-kisan-20th-installment.html'">
+      <img src="https://images.unsplash.com/photo-1574943320219-553eb213f72d?w=900&q=80" alt="PM Kisan 20th Installment"/>
+      <div class="hero-overlay">
+        <div class="hero-overlay-content">
+          <span class="hero-badge" style="background:#f97316;color:#fff;">🏛️ Sarkari Yojana</span>
+          <span class="hero-badge" style="background:#ef4444;color:#fff;margin-left:6px;">🔴 LIVE</span>
+          <h2>PM Kisan 20वीं किस्त 2025: ₹2000 जारी — अभी Check करें अपना Status</h2>
+          <p style="color:rgba(255,255,255,0.8);font-size:13px;margin-bottom:10px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;">9.5 करोड़ किसानों के बैंक खाते में ₹2000 DBT के ज़रिए transfer हो चुके हैं। pmkisan.gov.in पर status check करें।</p>
+          <div class="hero-meta">
+            <img src="https://i.pravatar.cc/20?img=11" alt="Rajesh Kumar"/>
+            <span>Rajesh Kumar</span><span>•</span><span>⏱ 5 min read</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Small articles -->
+    <div class="hero-sm" onclick="location.href='/ssc-cgl-2025.html'">
+      <img src="https://images.unsplash.com/photo-1568667256549-094345857ea5?w=600&q=80" alt="SSC CGL 2025"/>
+      <div class="hero-overlay">
+        <div class="hero-overlay-content">
+          <span class="hero-badge" style="background:#1a6ef5;color:#fff;">💼 Govt Jobs</span>
+          <h4>SSC CGL 2025: 17,727 पदों पर भर्ती — Last Date 31 July</h4>
+          <div class="hero-meta"><span>Priya Sharma</span><span>•</span><span>29 May 2025</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="hero-sm" onclick="location.href='/cbse-result-2025.html'">
+      <img src="https://images.unsplash.com/photo-1546410531-bb4caa6b424d?w=600&q=80" alt="CBSE Result 2025"/>
+      <div class="hero-overlay">
+        <div class="hero-overlay-content">
+          <span class="hero-badge" style="background:#059669;color:#fff;">📊 Results</span>
+          <h4>CBSE Board Result 2025 — Class 10 & 12 Result 5 June को</h4>
+          <div class="hero-meta"><span>Sunita Verma</span><span>•</span><span>29 May 2025</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="hero-sm" onclick="location.href='/delhi-heatwave-2025.html'">
+      <img src="https://images.unsplash.com/photo-1504370805625-d32c054b24ba?w=600&q=80" alt="Delhi Heatwave"/>
+      <div class="hero-overlay">
+        <div class="hero-overlay-content">
+          <span class="hero-badge" style="background:#ef4444;color:#fff;">🌡️ Weather</span>
+          <h4>Delhi Heatwave: IMD Red Alert — 44°C, 8 राज्यों में Warning</h4>
+          <div class="hero-meta"><span>Amit Tiwari</span><span>•</span><span>30 May 2025</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="hero-sm" onclick="location.href='/upsc-result-2025.html'">
+      <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=600&q=80" alt="UPSC Result"/>
+      <div class="hero-overlay">
+        <div class="hero-overlay-content">
+          <span class="hero-badge" style="background:#7c3aed;color:#fff;">📊 Results</span>
+          <h4>UPSC CSE Prelims 2025 Result — 14,624 Qualified for Mains</h4>
+          <div class="hero-meta"><span>Exam Desk</span><span>•</span><span>28 May 2025</span></div>
+        </div>
+      </div>
     </div>
   </div>
 
-  <header>
-    <div class="wrap nav">
-      <a href="#home" class="logo">
-  <img src="favicon.png" alt="TechNexiss Logo">
-  <span>TechNexiss</span>
+  <!-- TRENDING NOW STRIP -->
+  <div class="trending-strip">
+    <div class="trending-strip-head">
+      <h3>🔥 Trending Now</h3>
+      <div style="display:flex;gap:8px;">
+        <button style="background:none;border:1px solid var(--border);border-radius:6px;padding:4px 10px;cursor:pointer;font-size:13px;">‹</button>
+        <button style="background:none;border:1px solid var(--border);border-radius:6px;padding:4px 10px;cursor:pointer;font-size:13px;">›</button>
+      </div>
+    </div>
+    <div class="trending-cards">
+      <div class="trending-card" onclick="location.href='/pm-kisan-20th-installment.html'">
+        <img src="https://images.unsplash.com/photo-1574943320219-553eb213f72d?w=300&q=70" alt="PM Kisan"/>
+        <p>PM Kisan 20वीं किस्त — ₹2000 जारी</p>
+        <small>5 min read</small>
+      </div>
+      <div class="trending-card" onclick="location.href='/ssc-cgl-2025.html'">
+        <img src="https://images.unsplash.com/photo-1568667256549-094345857ea5?w=300&q=70" alt="SSC CGL"/>
+        <p>SSC CGL 2025 Notification — 17,727 पद</p>
+        <small>6 min read</small>
+      </div>
+      <div class="trending-card" onclick="location.href='/cbse-result-2025.html'">
+        <img src="https://images.unsplash.com/photo-1546410531-bb4caa6b424d?w=300&q=70" alt="CBSE"/>
+        <p>CBSE Result 2025 — 5 June को घोषित</p>
+        <small>5 min read</small>
+      </div>
+      <div class="trending-card" onclick="location.href='/delhi-heatwave-2025.html'">
+        <img src="https://images.unsplash.com/photo-1504370805625-d32c054b24ba?w=300&q=70" alt="Heatwave"/>
+        <p>Delhi Heatwave — IMD Red Alert 44°C</p>
+        <small>4 min read</small>
+      </div>
+      <div class="trending-card" onclick="location.href='/upsc-result-2025.html'">
+        <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=300&q=70" alt="UPSC"/>
+        <p>UPSC Prelims 2025 Result — Cut-off Marks</p>
+        <small>5 min read</small>
+      </div>
+    </div>
+  </div>
+
+  <!-- ADSENSE BANNER -->
+  <div class="adsense-box" style="margin-bottom:24px;">📢 Advertisement — 728×90 Leaderboard AdSense</div>
+
+  <!-- LATEST SARKARI YOJANA -->
+  <section style="margin-bottom:28px;" data-section="yojana">
+    <div class="sec-head">
+      <h2>🏛️ Latest Sarkari Yojana</h2>
+      <a href="/pm-kisan-20th-installment.html" class="view-all">View all &rsaquo;</a>
+    </div>
+    <div class="art-grid-4">
+      <div class="art-card" onclick="location.href='/pm-kisan-20th-installment.html'">
+        <div class="art-card-img"><img src="https://images.unsplash.com/photo-1574943320219-553eb213f72d?w=400&q=75" alt="PM Kisan"/></div>
+        <div class="art-card-body">
+          <span class="badge" style="background:#fff7ed;color:#c2410c;border:1px solid #fed7aa;">Sarkari Yojana</span>
+          <h4>PM Kisan 20वीं किस्त 2025: ₹2000 जारी — Status Check करें</h4>
+          <div class="art-meta"><img src="https://i.pravatar.cc/18?img=11" alt=""/>Rajesh Kumar <span>• 30 May</span></div>
+        </div>
+      </div>
+      <div class="art-card" onclick="location.href='/pm-awas-yojana-2025.html'">
+        <div class="art-card-img"><img src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=400&q=75" alt="PM Awas"/></div>
+        <div class="art-card-body">
+          <span class="badge" style="background:#fff7ed;color:#c2410c;border:1px solid #fed7aa;">Sarkari Yojana</span>
+          <h4>PM Awas Yojana 2025: नई Beneficiary List जारी — 15 लाख घर</h4>
+          <div class="art-meta"><img src="https://i.pravatar.cc/18?img=12" alt=""/>Policy Desk <span>• 28 May</span></div>
+        </div>
+      </div>
+      <div class="art-card">
+        <div class="art-card-img"><img src="https://images.unsplash.com/photo-1541625602330-2277a4c46182?w=400&q=75" alt="Free Cycle"/></div>
+        <div class="art-card-body">
+          <span class="badge" style="background:#fff7ed;color:#c2410c;border:1px solid #fed7aa;">Sarkari Yojana</span>
+          <h4>MP Free Cycle Yojana 2025: Class 6 छात्राओं को Free Cycle</h4>
+          <div class="art-meta"><img src="https://i.pravatar.cc/18?img=12" alt=""/>Policy Desk <span>• 26 May</span></div>
+        </div>
+      </div>
+      <div class="art-card">
+        <div class="art-card-img"><img src="https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=400&q=75" alt="Digital Rupee"/></div>
+        <div class="art-card-body">
+          <span class="badge" style="background:#f0fdf4;color:#15803d;border:1px solid #bbf7d0;">Finance</span>
+          <h4>Digital Rupee (e₹) Wallet: RBI ने सबके लिए Launch किया</h4>
+          <div class="art-meta"><img src="https://i.pravatar.cc/18?img=14" alt=""/>Finance Desk <span>• 30 May</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GOVT JOBS -->
+  <section style="margin-bottom:28px;" data-section="jobs">
+    <div class="sec-head">
+      <h2>💼 Latest Govt Jobs</h2>
+      <a href="/ssc-cgl-2025.html" class="view-all">View all &rsaquo;</a>
+    </div>
+    <div style="background:#fff;border:1px solid var(--border);border-radius:12px;padding:4px 16px;">
+      <div class="art-row" onclick="location.href='/ssc-cgl-2025.html'">
+        <img src="https://images.unsplash.com/photo-1568667256549-094345857ea5?w=200&q=70" alt="SSC CGL"/>
+        <div class="art-row-body">
+          <span class="badge" style="background:#eff6ff;color:#1d4ed8;border:1px solid #bfdbfe;">Govt Jobs</span>
+          <h5>SSC CGL 2025 Notification: 17,727 पद — Eligibility, Dates, Apply Online</h5>
+          <small>Priya Sharma • 29 May 2025 • 6 min read • 👁 8.9L views</small>
+        </div>
+      </div>
+      <div class="art-row" onclick="location.href='/upsc-result-2025.html'">
+        <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=200&q=70" alt="UPSC"/>
+        <div class="art-row-body">
+          <span class="badge" style="background:#f5f3ff;color:#7c3aed;border:1px solid #ddd6fe;">Results</span>
+          <h5>UPSC CSE Prelims 2025 Result: 14,624 Qualified — Cut-off Marks Check करें</h5>
+          <small>Exam Desk • 28 May 2025 • 5 min read • 👁 21.3L views</small>
+        </div>
+      </div>
+      <div class="art-row" onclick="location.href='/railway-group-d-2025.html'">
+        <img src="https://images.unsplash.com/photo-1474487548417-781cb71495f3?w=200&q=70" alt="Railway"/>
+        <div class="art-row-body">
+          <span class="badge" style="background:#eff6ff;color:#1d4ed8;border:1px solid #bfdbfe;">Govt Jobs</span>
+          <h5>Railway Group D 2025: 32,000 पदों की भर्ती जल्द — Notification आने वाला है</h5>
+          <small>Jobs Desk • 25 May 2025 • 5 min read • 👁 14.2L views</small>
+        </div>
+      </div>
+      <div class="art-row" onclick="location.href='/ibps-po-admit-card-2025.html'">
+        <img src="https://images.unsplash.com/photo-1606326608606-aa0b62935f2b?w=200&q=70" alt="IBPS"/>
+        <div class="art-row-body">
+          <span class="badge" style="background:#fffbeb;color:#b45309;border:1px solid #fde68a;">Admit Card</span>
+          <h5>IBPS PO 2025 Admit Card जारी — Download करें Hall Ticket, Exam 20 June</h5>
+          <small>Banking Desk • 27 May 2025 • 3 min read • 👁 7.8L views</small>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- RESULTS & EXAMS -->
+  <section style="margin-bottom:28px;" data-section="results">
+    <div class="sec-head">
+      <h2>📊 Results & Exams</h2>
+      <a href="/cbse-result-2025.html" class="view-all">View all &rsaquo;</a>
+    </div>
+    <div class="art-grid-3">
+      <div class="art-card" onclick="location.href='/cbse-result-2025.html'">
+        <div class="art-card-img"><img src="https://images.unsplash.com/photo-1546410531-bb4caa6b424d?w=400&q=75" alt="CBSE Result"/></div>
+        <div class="art-card-body">
+          <span class="badge" style="background:#f0fdf4;color:#15803d;border:1px solid #bbf7d0;">Results</span>
+          <h4>CBSE Board Result 2025 — Class 10 & 12, Date: 5 June</h4>
+          <div class="art-meta"><img src="https://i.pravatar.cc/18?img=9" alt=""/>Sunita Verma <span>• 29 May</span></div>
+        </div>
+      </div>
+      <div class="art-card" onclick="location.href='/neet-ug-2025.html'">
+        <div class="art-card-img"><img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=400&q=75" alt="NEET"/></div>
+        <div class="art-card-body">
+          <span class="badge" style="background:#ecfeff;color:#0e7490;border:1px solid #a5f3fc;">Exams</span>
+          <h4>NEET UG 2025: Result 14 June को — Expected Cutoff & Counselling</h4>
+          <div class="art-meta"><img src="https://i.pravatar.cc/18?img=3" alt=""/>Exam Desk <span>• 27 May</span></div>
+        </div>
+      </div>
+      <div class="art-card" onclick="location.href='/upsc-result-2025.html'">
+        <div class="art-card-img"><img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=400&q=75" alt="UPSC"/></div>
+        <div class="art-card-body">
+          <span class="badge" style="background:#f5f3ff;color:#7c3aed;border:1px solid #ddd6fe;">Results</span>
+          <h4>UPSC CSE Prelims 2025 Result — Cut-off & Qualified List</h4>
+          <div class="art-meta"><img src="https://i.pravatar.cc/18?img=3" alt=""/>Exam Desk <span>• 28 May</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WEATHER -->
+  <section style="margin-bottom:28px;" data-section="weather">
+    <div class="sec-head">
+      <h2>🌤️ Weather Updates</h2>
+      <a href="/delhi-heatwave-2025.html" class="view-all">View all &rsaquo;</a>
+    </div>
+    <div class="art-grid-3">
+      <div class="art-card" onclick="location.href='/delhi-heatwave-2025.html'">
+        <div class="art-card-img"><img src="https://images.unsplash.com/photo-1504370805625-d32c054b24ba?w=400&q=75" alt="Heatwave"/></div>
+        <div class="art-card-body">
+          <span class="badge" style="background:#fef2f2;color:#dc2626;border:1px solid #fecaca;">🔴 Red Alert</span>
+          <h4>Delhi Heatwave: 44°C — IMD Red Alert, 8 राज्यों में Warning</h4>
+          <div class="art-meta"><img src="https://i.pravatar.cc/18?img=8" alt=""/>Amit Tiwari <span>• 30 May</span></div>
+        </div>
+      </div>
+      <div class="art-card">
+        <div class="art-card-img"><img src="https://images.unsplash.com/photo-1534274988757-a28bf1a57c17?w=400&q=75" alt="Monsoon"/></div>
+        <div class="art-card-body">
+          <span class="badge" style="background:#ecfeff;color:#0e7490;border:1px solid #a5f3fc;">Weather</span>
+          <h4>Monsoon 2025: Kerala में Entry — पूरे भारत में कब पहुंचेगा?</h4>
+          <div class="art-meta"><img src="https://i.pravatar.cc/18?img=8" alt=""/>Weather Desk <span>• 28 May</span></div>
+        </div>
+      </div>
+      <div class="art-card">
+        <div class="art-card-img"><img src="https://images.unsplash.com/photo-1561553873-e8491a564fd0?w=400&q=75" alt="Rain"/></div>
+        <div class="art-card-body">
+          <span class="badge" style="background:#eff6ff;color:#1d4ed8;border:1px solid #bfdbfe;">Weather</span>
+          <h4>Mumbai Rain Alert: BMC ने जारी किया Yellow Alert — जानें क्या करें</h4>
+          <div class="art-meta"><img src="https://i.pravatar.cc/18?img=8" alt=""/>Weather Desk <span>• 27 May</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TECHNOLOGY -->
+  <section style="margin-bottom:28px;" data-section="tech">
+    <div class="sec-head">
+      <h2>💻 Technology News</h2>
+      <a href="#" class="view-all">View all &rsaquo;</a>
+    </div>
+    <div style="background:#fff;border:1px solid var(--border);border-radius:12px;padding:4px 16px;">
+      <div class="art-row">
+        <img src="https://images.unsplash.com/photo-1677442135703-1787eea5ce01?w=200&q=70" alt="AI India"/>
+        <div class="art-row-body">
+          <span class="badge" style="background:#f5f3ff;color:#7c3aed;border:1px solid #ddd6fe;">Technology</span>
+          <h5>India AI Mission: Cabinet ने ₹10,000 Crore Fund को दी मंजूरी — 5 लाख Jobs आएंगी</h5>
+          <small>Tech Desk • 30 May 2025 • 7 min read</small>
+        </div>
+      </div>
+      <div class="art-row">
+        <img src="https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=200&q=70" alt="Digital Rupee"/>
+        <div class="art-row-body">
+          <span class="badge" style="background:#f0fdf4;color:#15803d;border:1px solid #bbf7d0;">Finance Tech</span>
+          <h5>RBI Digital Rupee (e₹) सबके लिए Launch — Zero Fee, Offline भी काम करेगा</h5>
+          <small>Finance Desk • 30 May 2025 • 6 min read</small>
+        </div>
+      </div>
+      <div class="art-row">
+        <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=200&q=70" alt="Tech"/>
+        <div class="art-row-body">
+          <span class="badge" style="background:#f5f3ff;color:#7c3aed;border:1px solid #ddd6fe;">Technology</span>
+          <h5>TRAI New Rules 2025: Telecom Fraud रोकने के लिए नया नियम लागू — Users को फायदा</h5>
+          <small>Tech Desk • 27 May 2025 • 5 min read</small>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- NEWSLETTER BANNER -->
+  <div class="newsletter-banner">
+    <div>
+      <h3>📩 Stay Updated with TechNexiss</h3>
+      <p>Get the latest Sarkari Yojana, Govt Jobs, Results & Tech News straight to your inbox</p>
+    </div>
+    <form class="newsletter-form" id="newsletterForm" onsubmit="subscribeNL(event)">
+      <input type="email" placeholder="Enter your email address" required/>
+      <button type="submit">Subscribe Now</button>
+    </form>
+  </div>
+
+</main>
+
+<!-- RIGHT: SIDEBAR -->
+<aside class="sidebar">
+
+  <!-- Trending Posts -->
+  <div class="sb-card">
+    <h3>🔥 Trending Posts</h3>
+    <div class="trending-list">
+      <div class="t-item" onclick="location.href='/pm-kisan-20th-installment.html'">
+        <div class="t-num">01</div>
+        <div class="t-text">PM Kisan 20वीं किस्त — ₹2000 जारी, Status Check करें<small>30 May 2025 • 👁 12.4L</small></div>
+      </div>
+      <div class="t-item" onclick="location.href='/cbse-result-2025.html'">
+        <div class="t-num">02</div>
+        <div class="t-text">CBSE Board Result 2025 — 5 June को घोषित होगा<small>29 May 2025 • 👁 34.1L</small></div>
+      </div>
+      <div class="t-item" onclick="location.href='/upsc-result-2025.html'">
+        <div class="t-num">03</div>
+        <div class="t-text">UPSC CSE Prelims 2025 Result — Cut-off & Qualified List<small>28 May 2025 • 👁 21.3L</small></div>
+      </div>
+      <div class="t-item" onclick="location.href='/ssc-cgl-2025.html'">
+        <div class="t-num">04</div>
+        <div class="t-text">SSC CGL 2025 — 17,727 Vacancies Notification<small>29 May 2025 • 👁 8.9L</small></div>
+      </div>
+      <div class="t-item" onclick="location.href='/delhi-heatwave-2025.html'">
+        <div class="t-num">05</div>
+        <div class="t-text">Delhi Heatwave — IMD Red Alert 44°C Warning<small>30 May 2025 • 👁 6.5L</small></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- AdSense 300x250 -->
+  <div class="adsense-box">📢 Advertisement<br><span style="font-size:11px;">300×250 AdSense</span></div>
+
+  <!-- Popular Categories -->
+  <div class="sb-card">
+    <h3>📂 Popular Categories</h3>
+    <div class="cat-grid">
+      <a class="cat-item" href="/pm-kisan-20th-installment.html">
+        <strong>🏛️ Sarkari Yojana</strong><span>45 Posts</span>
       </a>
+      <a class="cat-item" href="/ssc-cgl-2025.html">
+        <strong>💼 Govt Jobs</strong><span>62 Posts</span>
+      </a>
+      <a class="cat-item" href="/cbse-result-2025.html">
+        <strong>📊 Results</strong><span>38 Posts</span>
+      </a>
+      <a class="cat-item" href="#">
+        <strong>🪪 Admit Card</strong><span>29 Posts</span>
+      </a>
+      <a class="cat-item" href="/delhi-heatwave-2025.html">
+        <strong>🌤️ Weather</strong><span>24 Posts</span>
+      </a>
+      <a class="cat-item" href="#">
+        <strong>💻 Technology</strong><span>41 Posts</span>
+      </a>
+      <a class="cat-item" href="/neet-ug-2025.html">
+        <strong>📝 Exams</strong><span>33 Posts</span>
+      </a>
+      <a class="cat-item" href="#">
+        <strong>🎓 Education</strong><span>27 Posts</span>
+      </a>
+    </div>
+    <a href="#" style="display:block;text-align:center;margin-top:12px;font-size:13px;font-weight:700;color:var(--blue);">Explore All Categories →</a>
+  </div>
 
-      <nav class="navlinks" id="navlinks">
-        <a href="#home" class="active">Home</a>
-        <a href="#latest">Latest</a>
-        <a href="#categories">Categories</a>
-        <a href="#about.html">About</a>
-        <a href="#contact.html">Contact</a>
-      </nav>
+  <!-- Popular Tags -->
+  <div class="sb-card">
+    <h3>🏷️ Popular Tags</h3>
+    <div class="tag-cloud">
+      <span class="tag-pill">#PMKisan</span><span class="tag-pill">#SSCCGL</span>
+      <span class="tag-pill">#UPSC</span><span class="tag-pill">#CBSEResult</span>
+      <span class="tag-pill">#Railway</span><span class="tag-pill">#NEET</span>
+      <span class="tag-pill">#Heatwave</span><span class="tag-pill">#IBPS</span>
+      <span class="tag-pill">#PMAwas</span><span class="tag-pill">#Scholarship</span>
+      <span class="tag-pill">#AIIndia</span><span class="tag-pill">#Aadhaar</span>
+    </div>
+  </div>
 
-      <div class="nav-actions">
-        <button class="icon-btn menu-toggle" id="menuToggle" aria-label="Open menu">☰</button>
-        <button class="icon-btn" id="themeButton" aria-label="Light theme">☼</button>
-        <a class="btn filled" href="#latest">Read News</a>
+  <!-- Follow Us -->
+  <div class="sb-card">
+    <h3>👥 Follow Us</h3>
+    <div class="sb-follow">
+      <div class="follow-item">
+        <span style="font-size:20px;">📘</span>
+        <div><strong>Facebook</strong><span>12.4K Likes</span></div>
+      </div>
+      <div class="follow-item">
+        <span style="font-size:20px;">🐦</span>
+        <div><strong>Twitter</strong><span>6.7K Followers</span></div>
+      </div>
+      <div class="follow-item">
+        <span style="font-size:20px;">▶️</span>
+        <div><strong>YouTube</strong><span>20.1K Subs</span></div>
+      </div>
+      <div class="follow-item">
+        <span style="font-size:20px;">📸</span>
+        <div><strong>Instagram</strong><span>10.3K Followers</span></div>
       </div>
     </div>
-  </header>
+  </div>
 
-  <main id="home" class="wrap">
-    <section class="hero">
-      <div class="hero-grid">
-        <article class="hero-card">
-          <span class="eyebrow">⚡ Daily Tech News & Smart Guides</span>
-          <h2>Build a blog people actually want to visit every day.</h2>
-          <p>
-            A clean white-theme tech news layout designed for fast reading, SEO-friendly publishing, and AdSense-ready content sections.
-            Use it for AI news, mobile updates, apps, gaming, tutorials, and evergreen how-to posts.
-          </p>
+  <!-- AdSense 300x250 #2 -->
+  <div class="adsense-box">📢 Advertisement<br><span style="font-size:11px;">300×250 AdSense</span></div>
 
-          <div class="searchbar" role="search">
-            <input id="searchInput" type="search" placeholder="Search posts like AI tools, mobile news, WhatsApp, ChatGPT..." />
-            <button class="btn filled" id="searchBtn">Search</button>
-          </div>
+</aside>
+</div>
+</div>
 
-          <div class="hero-actions">
-            <a class="btn filled" href="#latest">Explore Latest</a>
-            <a class="btn-outline" href="#categories">Browse Categories</a>
-          </div>
-
-          <div class="hero-stats">
-            <div class="stat-card">
-              <strong>6+</strong>
-              <span>Post formats per day</span>
-            </div>
-            <div class="stat-card">
-              <strong>SEO</strong>
-              <span>Structured for ranking</span>
-            </div>
-            <div class="stat-card">
-              <strong>AdSense</strong>
-              <span>Clean content layout</span>
-            </div>
-          </div>
-        </article>
-
-        <aside class="side-stack">
-          <section class="side-card">
-            <h3>Why readers return</h3>
-            <p>Mix news with useful explainers so the site gets both trending traffic and long-tail search traffic.</p>
-            <ul class="feature-list">
-              <li><span class="dot"></span><div><b>AI & Tech news</b><small>Short updates with high interest.</small></div></li>
-              <li><span class="dot"></span><div><b>How-to guides</b><small>Evergreen posts for Google traffic.</small></div></li>
-              <li><span class="dot"></span><div><b>Review style articles</b><small>Comparison posts that earn clicks.</small></div></li>
-            </ul>
-          </section>
-
-          <section class="side-card">
-            <h3>Trending now</h3>
-            <div class="chips" id="trendChips">
-              <button class="chip active" data-filter="all">All</button>
-              <button class="chip" data-filter="ai">AI</button>
-              <button class="chip" data-filter="mobile">Mobile</button>
-              <button class="chip" data-filter="apps">Apps</button>
-              <button class="chip" data-filter="gaming">Gaming</button>
-            </div>
-          </section>
-        </aside>
-      </div>
-    </section>
-
-    <section id="categories">
-      <div class="section-head">
-        <div class="left">
-          <h3>Popular Categories</h3>
-          <p>Use these as your main content buckets for consistent publishing.</p>
-        </div>
-        <div class="right">
-          <button class="btn-outline">AI News</button>
-          <button class="btn-outline">Tech Updates</button>
-          <button class="btn-outline">How-to Guides</button>
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="logo-text">Tech<span style="color:#38bdf8;">Nexiss</span></div>
+        <p>India's most trusted portal for Sarkari Yojana, Government Jobs, Exam Results, Admit Cards, Weather Updates & Technology News. Serving 5M+ readers daily.</p>
+        <div class="footer-social">
+          <a class="social-btn" href="#">📘</a>
+          <a class="social-btn" href="#">🐦</a>
+          <a class="social-btn" href="#">📸</a>
+          <a class="social-btn" href="#">▶️</a>
+          <a class="social-btn" href="#">💼</a>
         </div>
       </div>
-
-      <div class="content-grid">
-        <div class="post-grid" id="postGrid">
-          <article class="post-card" data-category="ai" data-title="best free ai tools for creators">
-            <div class="thumb"><img alt="AI tools" src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=1200&q=80" /></div>
-            <div class="post-body">
-              <div class="meta"><span class="tag">AI</span><span>• 5 min read</span><span>• Today</span></div>
-              <h4>Best Free AI Tools for Creators in 2026</h4>
-              <p>List tools for writing, image generation, voice, video, and productivity with simple use cases.</p>
-              <div class="post-actions"><button class="btn-outline read-btn">Read More</button><button class="btn-outline save-btn">Save</button></div>
-            </div>
-          </article>
-
-          <article class="post-card" data-category="mobile" data-title="best smartphones under 20000">
-            <div class="thumb"><img alt="Smartphone" src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&w=1200&q=80" /></div>
-            <div class="post-body">
-              <div class="meta"><span class="tag">Mobile</span><span>• 4 min read</span><span>• Today</span></div>
-              <h4>Best Smartphones Under ₹20,000</h4>
-              <p>A comparison post that helps users choose budget phones with strong search demand.</p>
-              <div class="post-actions"><button class="btn-outline read-btn">Read More</button><button class="btn-outline save-btn">Save</button></div>
-            </div>
-          </article>
-
-          <article class="post-card" data-category="apps" data-title="whatsapp new features explained">
-            <div class="thumb"><img alt="Apps" src="https://images.unsplash.com/photo-1512941937669-90a1b58e7e9d?auto=format&fit=crop&w=1200&q=80" /></div>
-            <div class="post-body">
-              <div class="meta"><span class="tag">Apps</span><span>• 3 min read</span><span>• This week</span></div>
-              <h4>WhatsApp New Features Explained Simply</h4>
-              <p>Short news article plus benefits, screenshots, and what users should know right away.</p>
-              <div class="post-actions"><button class="btn-outline read-btn">Read More</button><button class="btn-outline save-btn">Save</button></div>
-            </div>
-          </article>
-
-          <article class="post-card" data-category="gaming" data-title="top gaming updates this month">
-            <div class="thumb"><img alt="Gaming" src="https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&w=1200&q=80" /></div>
-            <div class="post-body">
-              <div class="meta"><span class="tag">Gaming</span><span>• 6 min read</span><span>• Trending</span></div>
-              <h4>Top Gaming Updates to Watch This Month</h4>
-              <p>Game launch stories, patch notes, and esports news can bring repeat visits fast.</p>
-              <div class="post-actions"><button class="btn-outline read-btn">Read More</button><button class="btn-outline save-btn">Save</button></div>
-            </div>
-          </article>
-        </div>
-
-        <aside class="sidebar">
-          <section class="mini-card">
-            <h3>Editor’s Picks</h3>
-            <p>These are the types of posts that usually build traffic over time.</p>
-            <div class="mini-list">
-              <div class="mini-item">
-                <img alt="Guide" src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=600&q=80" />
-                <div><strong>How to Get More Traffic</strong><small>SEO guide for beginners</small></div>
-              </div>
-              <div class="mini-item">
-                <img alt="Laptop" src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=600&q=80" />
-                <div><strong>Best Free Tools for Bloggers</strong><small>Useful roundup article</small></div>
-              </div>
-              <div class="mini-item">
-                <img alt="Android" src="https://images.unsplash.com/photo-1512941937669-90a1b58e7e9d?auto=format&fit=crop&w=600&q=80" />
-                <div><strong>Android Update News</strong><small>Fast-moving tech traffic</small></div>
-              </div>
-            </div>
-          </section>
-
-          <section class="mini-card">
-            <h3>AdSense-friendly tip</h3>
-            <p>Use original summaries, comparison tables, FAQs, and clear navigation. Keep the content helpful, not copied.</p>
-          </section>
-        </aside>
+      <div class="footer-col">
+        <h4>Categories</h4>
+        <a href="/pm-kisan-20th-installment.html">Sarkari Yojana</a>
+        <a href="/ssc-cgl-2025.html">Govt Jobs</a>
+        <a href="/cbse-result-2025.html">Results</a>
+        <a href="#">Admit Card</a>
+        <a href="/neet-ug-2025.html">Exams</a>
+        <a href="/delhi-heatwave-2025.html">Weather</a>
+        <a href="#">Technology</a>
+        <a href="#">Education</a>
       </div>
-    </section>
-
-    <section id="latest">
-      <div class="section-head">
-        <div class="left">
-          <h3>Latest Articles</h3>
-          <p>Filter posts instantly using search and category chips.</p>
-        </div>
-        <div class="right">
-          <button class="btn-outline" id="clearFilter">Clear Filters</button>
-        </div>
+      <div class="footer-col">
+        <h4>Quick Links</h4>
+        <a href="/about.html">About Us</a>
+        <a href="/contact.html">Contact Us</a>
+        <a href="/privacy-policy.html">Privacy Policy</a>
+        <a href="/terms.html">Terms & Conditions</a>
+        <a href="/disclaimer.html">Disclaimer</a>
+        <a href="#">Sitemap</a>
       </div>
-
-      <div class="section-card" style="padding:18px;">
-        <div class="post-grid" id="latestGrid">
-          <article class="post-card" data-category="ai" data-title="chatgpt tips and tricks for students">
-            <div class="thumb"><img alt="ChatGPT" src="https://images.unsplash.com/photo-1526378722484-bd91ca387e72?auto=format&fit=crop&w=1200&q=80" /></div>
-            <div class="post-body">
-              <div class="meta"><span class="tag">AI Guide</span><span>• 7 min read</span></div>
-              <h4>ChatGPT Tips and Tricks for Students</h4>
-              <p>Practical prompts, study workflows, and examples that are easy to rank for search.</p>
-              <div class="post-actions"><button class="btn-outline read-btn">Open Article</button></div>
-            </div>
-          </article>
-
-          <article class="post-card" data-category="mobile" data-title="android latest update explained">
-            <div class="thumb"><img alt="Android" src="https://images.unsplash.com/photo-1592899677977-9c10ca588bbd?auto=format&fit=crop&w=1200&q=80" /></div>
-            <div class="post-body">
-              <div class="meta"><span class="tag">Mobile News</span><span>• 4 min read</span></div>
-              <h4>Android Latest Update Explained</h4>
-              <p>Write what changed, why it matters, and which phones get it first.</p>
-              <div class="post-actions"><button class="btn-outline read-btn">Open Article</button></div>
-            </div>
-          </article>
-
-          <article class="post-card" data-category="apps" data-title="instagram reels growth guide">
-            <div class="thumb"><img alt="Instagram" src="https://images.unsplash.com/photo-1485217988980-11786ced9454?auto=format&fit=crop&w=1200&q=80" /></div>
-            <div class="post-body">
-              <div class="meta"><span class="tag">Apps</span><span>• 6 min read</span></div>
-              <h4>Instagram Reels Growth Guide</h4>
-              <p>Great for evergreen traffic and very useful for creators and marketers.</p>
-              <div class="post-actions"><button class="btn-outline read-btn">Open Article</button></div>
-            </div>
-          </article>
-
-          <article class="post-card" data-category="gaming" data-title="new pc games and launch dates">
-            <div class="thumb"><img alt="PC gaming" src="https://images.unsplash.com/photo-1511512578047-dfb367046420?auto=format&fit=crop&w=1200&q=80" /></div>
-            <div class="post-body">
-              <div class="meta"><span class="tag">Gaming</span><span>• 5 min read</span></div>
-              <h4>New PC Games and Launch Dates</h4>
-              <p>Simple launch calendar posts can pull repeat visits and time-sensitive clicks.</p>
-              <div class="post-actions"><button class="btn-outline read-btn">Open Article</button></div>
-            </div>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section>
-      <div class="newsletter">
-        <div>
-          <span class="eyebrow">📬 Newsletter</span>
-          <h3>Grow your audience with daily updates.</h3>
-          <p>Collect emails and send your best tech news, tools, and guides straight to readers.</p>
-        </div>
-        <form id="subscribeForm">
-          <div class="row">
-            <input type="email" id="emailInput" placeholder="Enter your email address" required />
-            <button class="btn filled" type="submit">Subscribe</button>
-          </div>
-          <small style="color:var(--muted)">No spam. Just useful tech updates.</small>
-        </form>
-      </div>
-    </section>
-
-    <section id="about">
-      <div class="about-grid">
-        <div class="about-card">
-          <span class="eyebrow">About Technexiss</span>
-          <h3>A clean blog built for trust and clicks.</h3>
-          <p style="color:var(--muted)">
-            The goal is simple: publish useful tech news, add how-to guides, and keep the design easy to read on mobile.
-            That creates better user experience and stronger SEO signals.
-          </p>
-          <ul class="bullets">
-            <li>Fast layout with focused sections.</li>
-            <li>Search and filter interaction.</li>
-            <li>Professional white theme with blue accents.</li>
-            <li>Flexible enough for future pages and categories.</li>
-          </ul>
-        </div>
-
-        <div class="about-card" id="contact">
-          <span class="eyebrow">Contact</span>
-          <h3>Send a message</h3>
-          <p style="color:var(--muted)">Use this form for feedback, article requests, or collaboration.</p>
-          <form class="contact" id="contactForm">
-            <input type="text" id="nameInput" placeholder="Your name" required />
-            <input type="email" id="contactEmail" placeholder="Your email" required />
-            <textarea id="messageInput" placeholder="Write your message" required></textarea>
-            <button class="btn filled" type="submit">Send Message</button>
-          </form>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <footer>
-    <div class="wrap">
-      <div class="footer-grid">
-        <div>
-          <div class="brand" style="margin-bottom:10px;">
-            <div class="mark">T</div>
-            <div>
-              <h1 style="font-size:20px;margin:0;">Technexiss</h1>
-              <p>Tech News • AI • Guides</p>
-            </div>
-          </div>
-          <p>Professional white-theme tech blog template for fast publishing and clean browsing.</p>
-        </div>
-        <div>
-          <h4>Quick Links</h4>
-          <a href="#latest">Latest</a>
-          <a href="#categories">Categories</a>
-          <a href="#about">About</a>
-          <a href="#contact">Contact</a>
-        </div>
-        <div>
-          <h4>Content Ideas</h4>
-          <a href="#">AI News</a>
-          <a href="#">Mobile Launches</a>
-          <a href="#">App Updates</a>
-          <a href="#">Evergreen Guides</a>
-        </div>
-      </div>
-
-      <div class="copyright">
-  <p>© 2026 TechNexiss. All Rights Reserved. | India</p>
-
-  <p style="margin-top:10px;">
-    <a href="/about.html">About Us</a> &nbsp;|&nbsp;
-    <a href="/contact.html">Contact Us</a> &nbsp;|&nbsp;
-    <a href="/privacy-policy.html">Privacy Policy</a> &nbsp;|&nbsp;
-    <a href="/disclaimer.html">Disclaimer</a> &nbsp;|&nbsp;
-    <a href="/terms.html">Terms &amp; Conditions</a>
-  </p>
+      <div class="footer-col">
+        <h4>Contact Us</h4>
+        <a href="mailto:technexiss@gmail.com">✉️ technexiss@gmail.com</a>
+        <a href="#">📞 +91-XXXX-XXXXXX</a>
+        <a href="#">🏢 New Delhi, India</a>
+        <br/>
+        <h4 style="margin-top:14px;">Popular Links</h4>
+        <a href="https://pmkisan.gov.in" target="_blank">pmkisan.gov.in</a>
+        <a href="https://ssc.gov.in" target="_blank">ssc.gov.in</a>
+        <a href="https://upsc.gov.in" target="_blank">upsc.gov.in</a>
       </div>
     </div>
-  </footer>
+    <div class="footer-bottom">
+      <p>© 2025 TechNexiss. All Rights Reserved. | New Delhi, India</p>
+      <div class="legal-links">
+        <a href="/about.html">About Us</a>
+        <a href="/contact.html">Contact Us</a>
+        <a href="/privacy-policy.html">Privacy Policy</a>
+        <a href="/disclaimer.html">Disclaimer</a>
+        <a href="/terms.html">Terms & Conditions</a>
+      </div>
+      <p style="color:#334155;margin-top:10px;font-size:11px;">⚠️ Disclaimer: Informational content only. Always verify from official government .gov.in portals.</p>
+    </div>
+  </div>
+</footer>
 
-  <button class="backtop btn-filled icon-btn" id="backTop" aria-label="Back to top">↑</button>
+<button class="back-top" id="backTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+<div class="toast" id="toast"></div>
 
-  <div class="toast" id="toast">Saved successfully</div>
+<script>
+// Hamburger
+function toggleMenu(){
+  document.getElementById('mainNav').classList.toggle('open');
+}
 
-  <script>
-    const navlinks = document.getElementById('navlinks');
-    const menuToggle = document.getElementById('menuToggle');
-    const themeButton = document.getElementById('themeButton');
-    const searchInput = document.getElementById('searchInput');
-    const searchBtn = document.getElementById('searchBtn');
-    const clearFilter = document.getElementById('clearFilter');
-    const backTop = document.getElementById('backTop');
-    const toast = document.getElementById('toast');
-    const posts = [...document.querySelectorAll('[data-category]')];
-    const chips = [...document.querySelectorAll('.chip')];
-    const saveBtns = [...document.querySelectorAll('.save-btn')];
-    const readBtns = [...document.querySelectorAll('.read-btn')];
-    const subscribeForm = document.getElementById('subscribeForm');
-    const contactForm = document.getElementById('contactForm');
-    let currentCategory = 'all';
+// Back to top
+window.addEventListener('scroll',()=>{
+  document.getElementById('backTop').classList.toggle('show', window.scrollY > 500);
+});
 
-    function showToast(message) {
-      toast.textContent = message;
-      toast.classList.add('show');
-      clearTimeout(window.toastTimer);
-      window.toastTimer = setTimeout(() => toast.classList.remove('show'), 2200);
-    }
+// Toast
+function showToast(msg){
+  const t=document.getElementById('toast');
+  t.textContent=msg; t.classList.add('show');
+  setTimeout(()=>t.classList.remove('show'),2200);
+}
 
-    function applyFilters() {
-      const q = searchInput.value.trim().toLowerCase();
-      posts.forEach((post) => {
-        const text = (post.dataset.title || '').toLowerCase();
-        const cat = post.dataset.category;
-        const matchesQuery = !q || text.includes(q);
-        const matchesCategory = currentCategory === 'all' || cat === currentCategory;
-        post.style.display = matchesQuery && matchesCategory ? '' : 'none';
-      });
-    }
+// Search
+function doSearch(){
+  const q=document.getElementById('searchInput').value.trim();
+  if(q) showToast('Searching: '+q);
+}
+document.getElementById('searchInput').addEventListener('keydown',e=>{if(e.key==='Enter')doSearch();});
 
-    chips.forEach((chip) => {
-      chip.addEventListener('click', () => {
-        chips.forEach((c) => c.classList.remove('active'));
-        chip.classList.add('active');
-        currentCategory = chip.dataset.filter;
-        applyFilters();
-      });
-    });
+// Category filter (visual only)
+function filterCat(cat, el){
+  document.querySelectorAll('.cat-nav-item').forEach(e=>e.classList.remove('active'));
+  el.classList.add('active');
+}
 
-    searchBtn.addEventListener('click', applyFilters);
-    searchInput.addEventListener('input', applyFilters);
+// Newsletter
+function subscribeNL(e){
+  e.preventDefault();
+  showToast('✅ Subscribed successfully!');
+  e.target.reset();
+}
 
-    clearFilter.addEventListener('click', () => {
-      searchInput.value = '';
-      currentCategory = 'all';
-      chips.forEach((c) => c.classList.toggle('active', c.dataset.filter === 'all'));
-      applyFilters();
-      showToast('Filters cleared');
-    });
-
-    saveBtns.forEach(btn => btn.addEventListener('click', () => showToast('Post saved')));
-    readBtns.forEach(btn => btn.addEventListener('click', () => showToast('Demo article opened')));
-
-    subscribeForm.addEventListener('submit', (e) => {
-      e.preventDefault();
-      const email = document.getElementById('emailInput').value.trim();
-      if (!email) return;
-      showToast('Subscribed: ' + email);
-      subscribeForm.reset();
-    });
-
-    contactForm.addEventListener('submit', (e) => {
-      e.preventDefault();
-      showToast('Message sent successfully');
-      contactForm.reset();
-    });
-
-    menuToggle.addEventListener('click', () => {
-      navlinks.classList.toggle('mobile-open');
-    });
-
-    document.addEventListener('click', (e) => {
-      if (!navlinks.contains(e.target) && !menuToggle.contains(e.target)) {
-        navlinks.classList.remove('mobile-open');
-      }
-    });
-
-    const topbarText = [
-      'Breaking: AI news and new app launches are attracting fast traffic today.',
-      'Trending: How-to guides and comparison articles can bring long-term Google visits.',
-      'Smart publishing tip: combine daily news with evergreen explainers for balance.'
-    ];
-    let tickerIndex = 0;
-    setInterval(() => {
-      tickerIndex = (tickerIndex + 1) % topbarText.length;
-      document.getElementById('ticker').textContent = topbarText[tickerIndex];
-    }, 4500);
-
-    window.addEventListener('scroll', () => {
-      backTop.classList.toggle('show', window.scrollY > 500);
-    });
-
-    backTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
-
-    themeButton.addEventListener('click', () => {
-      showToast('White theme is active');
-    });
-
-    applyFilters();
-  </script>
+// Close nav on outside click
+document.addEventListener('click',e=>{
+  const nav=document.getElementById('mainNav');
+  const ham=document.getElementById('hamburger');
+  if(nav.classList.contains('open') && !nav.contains(e.target) && !ham.contains(e.target)){
+    nav.classList.remove('open');
+  }
+});
+</script>
 </body>
-              </html>
+</html>
