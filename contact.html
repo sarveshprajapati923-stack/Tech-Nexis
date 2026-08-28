@@ -1,214 +1,65 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="hi">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Contact Us – TechNexiss</title>
-  <meta name="description" content="Contact TechNexiss editorial team for news tips, advertising, DMCA requests, or general support. We respond within 48 hours." />
-  <link rel="icon" type="image/png" href="/favicon.png" />
-  <style>
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    body { font-family: 'Segoe UI', Arial, sans-serif; background: #f5f7fa; color: #334155; line-height: 1.8; }
-    a { color: #0369a1; text-decoration: none; }
-    a:hover { text-decoration: underline; }
-    header { background: #0f172a; padding: 0 20px; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 12px #00000044; }
-    .header-inner { max-width: 1200px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; height: 60px; }
-    .logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
-    .logo-icon { width: 36px; height: 36px; background: linear-gradient(135deg, #0ea5e9, #0369a1); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 18px; }
-    .logo-text { color: #fff; font-weight: 900; font-size: 20px; }
-    .logo-text span { color: #38bdf8; }
-    nav a { color: #94a3b8; font-size: 13px; font-weight: 500; margin-left: 20px; transition: color 0.2s; }
-    nav a:hover { color: #38bdf8; text-decoration: none; }
-    .breadcrumb { background: #fff; border-bottom: 1px solid #e2e8f0; padding: 10px 20px; font-size: 13px; color: #64748b; }
-    .breadcrumb a { color: #0369a1; }
-    .breadcrumb span { margin: 0 6px; }
-    .page-hero { background: linear-gradient(135deg, #0c4a6e, #0369a1, #0ea5e9); padding: 60px 20px; text-align: center; }
-    .page-hero h1 { color: #fff; font-size: 36px; font-weight: 900; margin-bottom: 12px; }
-    .page-hero p { color: #bae6fd; font-size: 16px; max-width: 600px; margin: 0 auto; }
-    .container { max-width: 1000px; margin: 0 auto; padding: 40px 20px 80px; }
-    .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
-    @media(max-width:700px){ .grid-2 { grid-template-columns: 1fr; } }
-    .card { background: #fff; border-radius: 16px; padding: 32px; box-shadow: 0 2px 16px #0001; border: 1px solid #e2e8f0; }
-    h2 { color: #0f172a; font-size: 20px; font-weight: 800; margin-bottom: 20px; padding-bottom: 10px; border-bottom: 2px solid #e2e8f0; }
-    .contact-item { display: flex; align-items: flex-start; gap: 14px; padding: 14px 0; border-bottom: 1px solid #f1f5f9; }
-    .contact-item:last-child { border-bottom: none; }
-    .contact-icon { font-size: 24px; width: 44px; height: 44px; background: #eff6ff; border-radius: 10px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
-    .contact-label { color: #64748b; font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; }
-    .contact-value { color: #0f172a; font-size: 15px; font-weight: 600; }
-    .contact-desc { color: #64748b; font-size: 13px; margin-top: 2px; }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact Us | Tech Nexis</title>
+<meta name="description" content="Tech Nexis से संपर्क करें और website, content correction या अन्य सुझाव भेजें।">
 
-    /* FORM */
-    .form-group { margin-bottom: 18px; }
-    label { display: block; color: #374151; font-size: 14px; font-weight: 600; margin-bottom: 6px; }
-    input, select, textarea { width: 100%; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 11px 14px; font-size: 14px; color: #334155; font-family: inherit; outline: none; transition: border-color 0.2s; }
-    input:focus, select:focus, textarea:focus { border-color: #0369a1; background: #fff; }
-    textarea { resize: vertical; min-height: 130px; }
-    .btn { background: linear-gradient(135deg, #0369a1, #0ea5e9); color: #fff; border: none; border-radius: 10px; padding: 13px 28px; font-size: 15px; font-weight: 700; cursor: pointer; width: 100%; font-family: inherit; transition: opacity 0.2s; }
-    .btn:hover { opacity: 0.9; }
-    .info-box { background: #eff6ff; border: 1px solid #bfdbfe; border-radius: 10px; padding: 14px 18px; margin-top: 16px; font-size: 13px; color: #1e40af; }
+<style>
+*{box-sizing:border-box}body{margin:0;font-family:Arial,'Noto Sans Devanagari',sans-serif;background:#f5f7fb;color:#202124;line-height:1.75}
+.wrap{max-width:900px;margin:auto;background:#fff;min-height:100vh}.top{background:linear-gradient(135deg,#086b3b,#16a05d);color:#fff;padding:30px 22px}
+.logo{font-size:25px;font-weight:800}.tag{opacity:.92;font-size:14px}main{padding:28px 22px}h1{font-size:32px;line-height:1.3;color:#086b3b;margin-top:0}h2{font-size:22px;color:#086b3b;margin-top:30px}
+.card{background:#f1f8f4;border-radius:12px;padding:18px;margin:18px 0}a{color:#086b3b;font-weight:600}ul{padding-left:25px}
+.footer{border-top:1px solid #ddd;margin-top:35px;padding:22px;color:#666;font-size:14px}.nav{margin-top:15px;font-size:14px}.nav a{color:#fff;margin-right:14px;text-decoration:none;font-weight:500}
+small{color:#666}@media(max-width:600px){h1{font-size:27px}main{padding:20px 16px}.nav a{display:inline-block;margin:4px 10px 4px 0}}
+</style>
 
-    footer { background: #0f172a; color: #64748b; padding: 40px 20px 20px; }
-    .footer-inner { max-width: 1200px; margin: 0 auto; }
-    .footer-links { display: flex; gap: 20px; flex-wrap: wrap; margin-bottom: 20px; font-size: 13px; }
-    .footer-links a { color: #64748b; }
-    .footer-links a:hover { color: #38bdf8; text-decoration: none; }
-    .footer-copy { border-top: 1px solid #1e293b; padding-top: 16px; font-size: 12px; text-align: center; }
-  </style>
 </head>
 <body>
+<div class="wrap">
+<header class="top">
+<div class="logo">Tech Nexis</div>
+<div class="tag">Technology, Education, Jobs और Government Updates</div>
+<nav class="nav">
+<a href="/index.html">Home</a>
+<a href="/about.html">About Us</a>
+<a href="/contact.html">Contact</a>
+<a href="/privacy-policy.html">Privacy Policy</a>
+<a href="/disclaimer.html">Disclaimer</a>
+<a href="/terms.html">Terms</a>
+</nav>
+</header>
+<main>
 
-  <header>
-    <div class="header-inner">
-      <a href="/" class="logo">
-        <div class="logo-icon">⚡</div>
-        <div class="logo-text">Tech<span>Nexiss</span></div>
-      </a>
-      <nav>
-        <a href="/">Home</a>
-        <a href="/about-us.html">About</a>
-        <a href="/contact-us.html">Contact</a>
-        <a href="/privacy-policy.html">Privacy</a>
-      </nav>
-    </div>
-  </header>
+<h1>Contact Us</h1>
+<p>Tech Nexis को बेहतर बनाने के लिए आपके सुझाव, feedback और content correction requests हमारे लिए महत्वपूर्ण हैं।</p>
 
-  <div class="breadcrumb">
-    <div style="max-width:1200px;margin:0 auto;">
-      <a href="/">Home</a><span>›</span> Contact Us
-    </div>
-  </div>
+<h2>किस तरह की जानकारी भेज सकते हैं?</h2>
+<ul>
+<li>किसी article में गलत या पुरानी जानकारी की सूचना</li>
+<li>Broken link की सूचना</li>
+<li>Website से संबंधित technical समस्या</li>
+<li>Content suggestion या feedback</li>
+<li>Business या advertising enquiry</li>
+</ul>
 
-  <div class="page-hero">
-    <h1>📬 Contact Us</h1>
-    <p>Have a question, news tip, or feedback? Our team is here to help. We respond within 48 business hours.</p>
-  </div>
+<div class="card">
+<strong>Content correction:</strong><br>
+किसी article में correction चाहिए तो article का नाम, गलत जानकारी और सही जानकारी का source साथ में भेजें।
+</div>
 
-  <div class="container">
-    <div class="grid-2">
+<h2>Contact Information</h2>
+<p>संपर्क के लिए इस website पर उपलब्ध official contact channel का उपयोग करें। यदि आपने website में अपना business email configure किया है, तो उसे इसी section में प्रकाशित करें।</p>
 
-      <!-- Contact Info -->
-      <div class="card">
-        <h2>Get In Touch</h2>
+<p><strong>महत्वपूर्ण:</strong> इस page पर बिना verification के कोई personal phone number, address या अन्य निजी जानकारी प्रकाशित न करें।</p>
 
-        <div class="contact-item">
-          <div class="contact-icon">✏️</div>
-          <div>
-            <div class="contact-label">Editorial Inquiries</div>
-            <div class="contact-value"><a href="mailto:technexiss@gmail.com">technexiss@gmail.com</a></div>
-            <div class="contact-desc">For corrections, article feedback, press releases</div>
-          </div>
-        </div>
+<p><small>Last updated: 28 August 2026</small></p>
 
-        <div class="contact-item">
-          <div class="contact-icon">🛠️</div>
-          <div>
-            <div class="contact-label">Reader Support</div>
-            <div class="contact-value"><a href="mailto:technexiss@gmail.com">technexiss@gmail.com</a></div>
-            <div class="contact-desc">For general questions, website issues</div>
-          </div>
-        </div>
-
-        <div class="contact-item">
-          <div class="contact-icon">📰</div>
-          <div>
-            <div class="contact-label">News Tips</div>
-            <div class="contact-value"><a href="mailto:technexiss@gmail.com">technexiss@gmail.com</a></div>
-            <div class="contact-desc">Submit news tips, government scheme updates</div>
-          </div>
-        </div>
-
-        <div class="contact-item">
-          <div class="contact-icon">💰</div>
-          <div>
-            <div class="contact-label">Advertising</div>
-            <div class="contact-value"><a href="mailto:technexiss@gmail.com">technexiss@gmail.com</a></div>
-            <div class="contact-desc">Banner ads, sponsored content, partnerships</div>
-          </div>
-        </div>
-
-        <div class="contact-item">
-          <div class="contact-icon">⚖️</div>
-          <div>
-            <div class="contact-label">DMCA / Copyright</div>
-            <div class="contact-value"><a href="mailto:technexiss@gmail.com">technexiss@gmail.com</a></div>
-            <div class="contact-desc">Copyright infringement reports</div>
-          </div>
-        </div>
-
-        <div class="contact-item">
-          <div class="contact-icon">🏢</div>
-          <div>
-            <div class="contact-label">Office Address</div>
-            <div class="contact-value">TechNexiss Media</div>
-            <div class="contact-desc">New Delhi, India — 110001</div>
-          </div>
-        </div>
-
-        <div class="info-box">
-          ⏰ <strong>Response Time:</strong> We aim to respond to all emails within <strong>48 business hours</strong> (Monday–Saturday, 10 AM – 6 PM IST).
-        </div>
-      </div>
-
-      <!-- Contact Form -->
-      <div class="card">
-        <h2>Send Us a Message</h2>
-
-        <div class="form-group">
-          <label for="name">Your Full Name *</label>
-          <input type="text" id="name" name="name" placeholder="Enter your full name" required />
-        </div>
-
-        <div class="form-group">
-          <label for="email">Email Address *</label>
-          <input type="email" id="email" name="email" placeholder="your@email.com" required />
-        </div>
-
-        <div class="form-group">
-          <label for="subject">Subject *</label>
-          <select id="subject" name="subject">
-            <option value="">-- Select Subject --</option>
-            <option>General Inquiry</option>
-            <option>News Tip / Correction</option>
-            <option>Advertising / Sponsorship</option>
-            <option>DMCA / Copyright Issue</option>
-            <option>Technical Support</option>
-            <option>Feedback / Suggestion</option>
-          </select>
-        </div>
-
-        <div class="form-group">
-          <label for="message">Your Message *</label>
-          <textarea id="message" name="message" placeholder="Write your message here..." required></textarea>
-        </div>
-
-        <button class="btn" type="button" onclick="alert('Thank you! We will reply within 48 hours.')">
-          📤 Send Message
-        </button>
-
-        <div class="info-box" style="margin-top:14px;">
-          📌 <strong>Note:</strong> This website is for informational purposes only. For official government scheme details, please visit the respective <strong>.gov.in</strong> portals.
-        </div>
-      </div>
-
-    </div>
-  </div>
-
-  <footer>
-    <div class="footer-inner">
-      <div class="footer-links">
-        <a href="/">Home</a>
-        <a href="/about-us.html">About Us</a>
-        <a href="/contact-us.html">Contact Us</a>
-        <a href="/privacy-policy.html">Privacy Policy</a>
-        <a href="/disclaimer.html">Disclaimer</a>
-        <a href="/terms-and-conditions.html">Terms & Conditions</a>
-      </div>
-      <div class="footer-copy">
-        © 2025 TechNexiss. All Rights Reserved. | New Delhi, India<br>
-        <span style="color:#475569;">Disclaimer: Informational content only. Always verify from official .gov.in portals.</span>
-      </div>
-    </div>
-  </footer>
-
+</main>
+<footer class="footer">
+© 2026 Tech Nexis. सभी अधिकार सुरक्षित।
+</footer>
+</div>
 </body>
 </html>
