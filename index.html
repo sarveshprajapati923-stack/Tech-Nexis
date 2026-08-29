@@ -212,32 +212,241 @@ footer{background:var(--dark);color:#64748b;padding:48px 20px 0;}
 </style>
 </head>
 <body>
-<div class="topbar"><div class="topbar-left"><span class="breaking-badge">Latest Update</span></div><div class="topbar-ticker"><div class="ticker-inner" id="tickerInner">PM Kisan 2026 — 23वीं किस्त जारी &nbsp;●&nbsp; e-KYC और Beneficiary Status की जानकारी &nbsp;●&nbsp; TechNexiss पर उपयोगी जानकारी और Guides</div></div><div class="topbar-right"><span>Follow Us:</span><a href="#">📘</a><a href="#">🐦</a><a href="#">📸</a><a href="#">▶️</a><a href="#">💼</a></div></div>
-<header><div class="header-wrap"><a href="/" class="logo"><img src="favicon.png" alt="TechNexiss Logo"/><div><div class="logo-text">Tech<span>Nexiss</span></div><div class="logo-sub">Sarkari · Education · Tech</div></div></a><nav class="main-nav" id="mainNav"><a href="/" class="active">Home</a><a href="/about.html">About</a><a href="/contact.html">Contact</a></nav><div class="nav-right"><div class="search-box"><input type="text" id="searchInput" placeholder="Search articles..."/><button onclick="doSearch()">🔍</button></div><button class="btn-subscribe">Subscribe</button><button class="hamburger" id="hamburger" onclick="toggleMenu()">☰</button></div></div></header>
-<div class="trending-bar"><div class="trending-inner"><div class="trending-label">🔥 Topics:</div><span class="cat-nav-item active" onclick="filterCat('all',this)">All</span><span class="cat-nav-item" onclick="filterCat('yojana',this)">Sarkari Yojana</span><span class="cat-nav-item" onclick="filterCat('education',this)">Education</span><span class="cat-nav-item" onclick="filterCat('tech',this)">Technology</span><span class="cat-nav-item" onclick="filterCat('safety',this)">Digital Safety</span></div></div>
-<div class="wrap"><div class="page-layout"><main>
-<div class="hero-grid">
-<div class="hero-main" onclick="location.href='/pm-kisan-2026-blog.html'"><img src="https://images.unsplash.com/photo-1574943320219-553eb213f72d?w=900&q=80" alt="PM Kisan 2026"/><div class="hero-overlay"><div class="hero-overlay-content"><span class="hero-badge" style="background:#f97316;color:#fff;">🏛️ Sarkari Yojana</span><span class="hero-badge" style="background:#059669;color:#fff;margin-left:6px;">2026 UPDATE</span><h2>PM Kisan 2026: 23वीं किस्त, e-KYC और Beneficiary Status कैसे चेक करें?</h2><p style="color:rgba(255,255,255,0.8);font-size:13px;margin-bottom:10px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;">आधिकारिक जानकारी के आधार पर PM-KISAN payment status, e-KYC और beneficiary list देखने का आसान तरीका।</p><div class="hero-meta"><span>TechNexiss Desk</span><span>•</span><span>⏱ Detailed Guide</span></div></div></div></div>
-<div class="hero-sm" onclick="location.href='/pm-kisan-2026-blog.html'"><img src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=600&q=80" alt="PM Kisan किसान"/><div class="hero-overlay"><div class="hero-overlay-content"><span class="hero-badge" style="background:#1a6ef5;color:#fff;">📋 Guide</span><h4>Payment Status और Beneficiary List कैसे देखें?</h4><div class="hero-meta"><span>28 Aug 2026</span></div></div></div></div>
-<div class="hero-sm" onclick="location.href='/pm-kisan-2026-blog.html'"><img src="https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?w=600&q=80" alt="Online information guide"/><div class="hero-overlay"><div class="hero-overlay-content"><span class="hero-badge" style="background:#7c3aed;color:#fff;">💡 Useful Info</span><h4>e-KYC जरूरी क्यों है और क्या करें?</h4><div class="hero-meta"><span>28 Aug 2026</span></div></div></div></div>
-<div class="hero-sm" onclick="location.href='/pm-kisan-2026-blog.html'"><img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=600&q=80" alt="Students and online information"/><div class="hero-overlay"><div class="hero-overlay-content"><span class="hero-badge" style="background:#059669;color:#fff;">📚 Information</span><h4>Official portal से जानकारी verify करना क्यों जरूरी है?</h4><div class="hero-meta"><span>TechNexiss</span></div></div></div></div>
-<div class="hero-sm" onclick="location.href='/pm-kisan-2026-blog.html'"><img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=600&q=80" alt="Digital guide"/><div class="hero-overlay"><div class="hero-overlay-content"><span class="hero-badge" style="background:#0ea5e9;color:#fff;">🌐 Online Guide</span><h4>सरकारी जानकारी के लिए official website का उपयोग करें</h4><div class="hero-meta"><span>TechNexiss Desk</span></div></div></div></div>
+
+<!-- TOPBAR -->
+<div class="topbar">
+  <div class="topbar-left">
+    <span class="breaking-badge">Breaking News</span>
+  </div>
+  <div class="topbar-ticker">
+    <div class="ticker-inner" id="tickerInner">PM Kisan 2026 Update &nbsp;●&nbsp; TechNexiss Latest Updates</div>
+  </div>
+  <div class="topbar-right">
+    <span>Follow Us:</span>
+    <a href="#">📘</a><a href="#">🐦</a><a href="#">📸</a><a href="#">▶️</a><a href="#">💼</a>
+  </div>
 </div>
-<div class="trending-strip"><div class="trending-strip-head"><h3>🔥 Featured Article</h3><div><button onclick="location.href='/pm-kisan-2026-blog.html'" style="background:none;border:1px solid var(--border);border-radius:6px;padding:4px 10px;cursor:pointer;font-size:13px;">Open →</button></div></div><div class="trending-cards"><div class="trending-card" onclick="location.href='/pm-kisan-2026-blog.html'"><img src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=300&q=70" alt="PM Kisan 2026"/><p>PM Kisan 2026 — 23वीं किस्त, e-KYC और Status</p><small>Updated 28 Aug 2026</small></div></div></div>
-<div style="margin-bottom:24px;text-align:center;min-height:90px;background:#f8fafc;border:1px solid #e2e8f0;border-radius:8px;display:flex;align-items:center;justify-content:center;overflow:hidden;"><span style="color:#94a3b8;font-size:12px;">Advertisement</span></div>
-<section style="margin-bottom:28px;"><div class="sec-head"><h2>🏛️ Latest Sarkari Yojana</h2><a href="/pm-kisan-2026-blog.html" class="view-all">Read article →</a></div><div class="art-grid-4"><div class="art-card" onclick="location.href='/pm-kisan-2026-blog.html'"><div class="art-card-img"><img src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=400&q=75" alt="PM Kisan 2026"/></div><div class="art-card-body"><span class="badge" style="background:#fff7ed;color:#c2410c;border:1px solid #fed7aa;">Sarkari Yojana</span><h4>PM Kisan 2026: 23वीं किस्त, e-KYC और Beneficiary Status</h4><div class="art-meta">TechNexiss Desk <span>• 28 Aug 2026</span></div></div></div></div></section>
-<section style="margin-bottom:28px;"><div class="sec-head"><h2>📌 About This Website</h2></div><div style="background:#fff;border:1px solid var(--border);border-radius:12px;padding:20px;"><p>TechNexiss पर सरकारी योजनाओं, शिक्षा, digital safety और technology से जुड़ी उपयोगी जानकारी सरल भाषा में प्रकाशित की जाती है। हर महत्वपूर्ण जानकारी को संबंधित official source से verify करने की सलाह दी जाती है।</p></div></section>
-<div class="newsletter-banner"><div><h3>📩 Stay Updated with TechNexiss</h3><p>Useful Sarkari Yojana, Education & Technology guides के updates पाएँ।</p></div><form class="newsletter-form" id="newsletterForm" onsubmit="subscribeNL(event)"><input type="email" placeholder="Enter your email address" required/><button type="submit">Subscribe Now</button></form></div>
+
+<!-- HEADER -->
+<header>
+  <div class="header-wrap">
+    <a href="/" class="logo">
+      <img src="favicon.png" alt="TechNexiss Logo"/>
+      <div>
+        <div class="logo-text">Tech<span>Nexiss</span></div>
+        <div class="logo-sub">Sarkari · Jobs · Weather · Tech</div>
+      </div>
+    </a>
+    <nav class="main-nav" id="mainNav">
+      <a href="/" class="active">Home</a>
+      <a href="/pm-kisan-2026-blog.html">Sarkari Yojana</a>
+      <a href="#">Govt Jobs</a>
+      <a href="#">Results</a>
+      <a href="#">Weather</a>
+      <a href="/about.html">About</a>
+      <a href="/contact.html">Contact</a>
+    </nav>
+    <div class="nav-right">
+      <div class="search-box">
+        <input type="text" id="searchInput" placeholder="Search yojana, jobs, results..."/>
+        <button onclick="doSearch()">🔍</button>
+      </div>
+      <button class="btn-subscribe">Subscribe</button>
+      <button class="hamburger" id="hamburger" onclick="toggleMenu()">☰</button>
+    </div>
+  </div>
+</header>
+
+<!-- CATEGORY NAV BAR -->
+<div class="trending-bar">
+  <div class="trending-inner">
+    <div class="trending-label">🔥 Trending Now:</div>
+    <span class="cat-nav-item active" onclick="filterCat('all',this)">All</span>
+    <span class="cat-nav-item" onclick="filterCat('yojana',this)">Sarkari Yojana</span>
+    <span class="cat-nav-item" onclick="filterCat('jobs',this)">Govt Jobs</span>
+    <span class="cat-nav-item" onclick="filterCat('results',this)">Results</span>
+    <span class="cat-nav-item" onclick="filterCat('admit',this)">Admit Card</span>
+    <span class="cat-nav-item" onclick="filterCat('exams',this)">Exams</span>
+    <span class="cat-nav-item" onclick="filterCat('weather',this)">Weather</span>
+    <span class="cat-nav-item" onclick="filterCat('tech',this)">Technology</span>
+    <span class="cat-nav-item" onclick="filterCat('education',this)">Education</span>
+  </div>
+</div>
+
+<!-- MAIN CONTENT -->
+<div class="wrap">
+<div class="page-layout">
+
+<!-- LEFT: MAIN CONTENT -->
+<main>
+
+  <!-- HERO GRID -->
+  <div class="hero-grid">
+    <!-- Main big article -->
+    <div class="hero-main" onclick="location.href='/pm-kisan-2026-blog.html'">
+      <img src="https://images.unsplash.com/photo-1574943320219-553eb213f72d?w=900&q=80" alt="PM Kisan 2026"/>
+      <div class="hero-overlay">
+        <div class="hero-overlay-content">
+          <span class="hero-badge" style="background:#f97316;color:#fff;">🏛️ Sarkari Yojana</span>
+          <span class="hero-badge" style="background:#ef4444;color:#fff;margin-left:6px;">🔴 LIVE</span>
+          <h2>PM Kisan 2026: 23वीं किस्त, e-KYC और Beneficiary Status कैसे चेक करें?</h2>
+          <p style="color:rgba(255,255,255,0.8);font-size:13px;margin-bottom:10px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;">PM-KISAN की 23वीं किस्त 20 जून 2026 को जारी हुई। e-KYC और Payment Status की जानकारी आधिकारिक पोर्टल पर देखें।</p>
+          <div class="hero-meta">
+            <img src="https://i.pravatar.cc/20?img=11" alt="TechNexiss Desk"/>
+            <span>TechNexiss Desk</span><span>•</span><span>⏱ 5 min read</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TRENDING NOW STRIP -->
+  <div class="trending-strip">
+    <div class="trending-strip-head">
+      <h3>🔥 Trending Now</h3>
+      <div style="display:flex;gap:8px;">
+        <button style="background:none;border:1px solid var(--border);border-radius:6px;padding:4px 10px;cursor:pointer;font-size:13px;">‹</button>
+        <button style="background:none;border:1px solid var(--border);border-radius:6px;padding:4px 10px;cursor:pointer;font-size:13px;">›</button>
+      </div>
+    </div>
+    <div class="trending-cards">
+      <div class="trending-card" onclick="location.href='/pm-kisan-2026-blog.html'">
+        <img src="https://images.unsplash.com/photo-1574943320219-553eb213f72d?w=300&q=70" alt="PM Kisan"/>
+        <p>PM Kisan 2026 — 23वीं किस्त की जानकारी</p>
+        <small>5 min read</small>
+      </div>
+    </div>
+  </div>
+
+  <!-- ADSENSE BANNER -->
+  <!-- Google AdSense — Leaderboard 728x90 -->
+<div style="margin-bottom:24px;text-align:center;min-height:90px;background:#f8fafc;border:1px solid #e2e8f0;border-radius:8px;display:flex;align-items:center;justify-content:center;overflow:hidden;">
+  <!-- AdSense code yahan paste karein: -->
+  <!-- <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXX" crossorigin="anonymous"></script>
+  <ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-XXXXXXXXXXXXXXXX" data-ad-slot="XXXXXXXXXX"></ins>
+  <script>(adsbygoogle = window.adsbygoogle || []).push({});</script> -->
+  <span style="color:#94a3b8;font-size:12px;">Advertisement</span>
+</div>
+
+  <!-- NEWSLETTER BANNER -->
+  <div class="newsletter-banner">
+    <div>
+      <h3>📩 Stay Updated with TechNexiss</h3>
+      <p>Get the latest Sarkari Yojana, Govt Jobs, Results & Tech News straight to your inbox</p>
+    </div>
+    <form class="newsletter-form" id="newsletterForm" onsubmit="subscribeNL(event)">
+      <input type="email" placeholder="Enter your email address" required/>
+      <button type="submit">Subscribe Now</button>
+    </form>
+  </div>
+
 </main>
-<aside class="sidebar"><div class="sb-card"><h3>🔥 Featured Post</h3><div class="trending-list"><div class="t-item" onclick="location.href='/pm-kisan-2026-blog.html'"><div class="t-num">01</div><div class="t-text">PM Kisan 2026 — 23वीं किस्त, e-KYC और Status Check<small>28 Aug 2026</small></div></div></div></div><div style="min-height:250px;text-align:center;background:#f8fafc;border:1px solid #e2e8f0;border-radius:10px;display:flex;align-items:center;justify-content:center;margin-bottom:18px;overflow:hidden;"><span style="color:#94a3b8;font-size:12px;">Advertisement</span></div><div class="sb-card"><h3>📂 Topics</h3><div class="cat-grid"><a class="cat-item" href="/pm-kisan-2026-blog.html"><strong>🏛️ Sarkari Yojana</strong><span>1 Article</span></a><a class="cat-item" href="#"><strong>🎓 Education</strong><span>Coming soon</span></a><a class="cat-item" href="#"><strong>💻 Technology</strong><span>Coming soon</span></a><a class="cat-item" href="#"><strong>🛡️ Digital Safety</strong><span>Coming soon</span></a></div></div><div class="sb-card"><h3>🏷️ Topics</h3><div class="tag-cloud"><span class="tag-pill">#PMKisan</span><span class="tag-pill">#eKYC</span><span class="tag-pill">#Scholarship</span><span class="tag-pill">#AI</span><span class="tag-pill">#UPI</span><span class="tag-pill">#CyberSafety</span></div></div><div class="sb-card"><h3>👥 About TechNexiss</h3><p style="font-size:13px;color:var(--muted);">Useful information और practical guides के लिए TechNexiss को follow करें।</p></div><div style="min-height:250px;text-align:center;background:#f8fafc;border:1px solid #e2e8f0;border-radius:10px;display:flex;align-items:center;justify-content:center;margin-bottom:18px;overflow:hidden;"><span style="color:#94a3b8;font-size:12px;">Advertisement</span></div></aside>
-</div></div>
+
+<!-- RIGHT: SIDEBAR -->
+<aside class="sidebar">
+
+  <!-- Trending Posts -->
+   <div class="sb-card">
+    <h3>🔥 Trending Posts</h3>
+    <div class="trending-list">
+      <div class="t-item" onclick="location.href='/pm-kisan-2026-blog.html'">
+        <div class="t-num">01</div>
+        <div class="t-text">PM Kisan 2026 — 23वीं किस्त, e-KYC और Status Check</div>
+      </div>
+    </div>
+   </div>
+
+   <!-- Google AdSense — Rectangle 300x250 -->
+  <div style="min-height:250px;text-align:center;background:#f8fafc;border:1px solid #e2e8f0;border-radius:10px;display:flex;align-items:center;justify-content:center;margin-bottom:18px;overflow:hidden;">
+    <!-- AdSense code yahan paste karein -->
+    <span style="color:#94a3b8;font-size:12px;">Advertisement</span>
+  </div>
+
+  <!-- Popular Categories -->
+  <div class="sb-card">
+    <h3>📂 Popular Categories</h3>
+    <div class="cat-grid">
+      <a class="cat-item" href="/pm-kisan-2026-blog.html">
+        <strong>🏛️ Sarkari Yojana</strong><span>Latest posts</span>
+      </a>
+      <a class="cat-item" href="#">
+        <strong>💼 Govt Jobs</strong><span>Latest posts</span>
+      </a>
+      <a class="cat-item" href="#">
+        <strong>📊 Results</strong><span>Latest posts</span>
+      </a>
+      <a class="cat-item" href="#">
+        <strong>🪪 Admit Card</strong><span>Latest posts</span>
+      </a>
+      <a class="cat-item" href="#">
+        <strong>🌤️ Weather</strong><span>Latest posts</span>
+      </a>
+      <a class="cat-item" href="#">
+        <strong>💻 Technology</strong><span>Latest posts</span>
+      </a>
+      <a class="cat-item" href="#">
+        <strong>📝 Exams</strong><span>Latest posts</span>
+      </a>
+      <a class="cat-item" href="#">
+        <strong>🎓 Education</strong><span>Latest posts</span>
+      </a>
+    </div>
+    <a href="/about.html" style="display:block;text-align:center;margin-top:12px;font-size:13px;font-weight:700;color:var(--blue);">Explore All Categories →</a>
+  </div>
+
+  <!-- Popular Tags -->
+  <div class="sb-card">
+    <h3>🏷️ Popular Tags</h3>
+    <div class="tag-cloud">
+      <span class="tag-pill">#PMKisan</span><span class="tag-pill">#SSCCGL</span>
+      <span class="tag-pill">#UPSC</span><span class="tag-pill">#CBSEResult</span>
+      <span class="tag-pill">#Railway</span><span class="tag-pill">#NEET</span>
+      <span class="tag-pill">#Heatwave</span><span class="tag-pill">#IBPS</span>
+      <span class="tag-pill">#PMAwas</span><span class="tag-pill">#Scholarship</span>
+      <span class="tag-pill">#AIIndia</span><span class="tag-pill">#Aadhaar</span>
+    </div>
+  </div>
+
+  <!-- Follow Us -->
+  <div class="sb-card">
+    <h3>👥 Follow Us</h3>
+    <div class="sb-follow">
+      <div class="follow-item">
+        <span style="font-size:20px;">📘</span>
+        <div><strong>Facebook</strong><span>Follow TechNexiss</span></div>
+      </div>
+      <div class="follow-item">
+        <span style="font-size:20px;">🐦</span>
+        <div><strong>Twitter</strong><span>Follow TechNexiss</span></div>
+      </div>
+      <div class="follow-item">
+        <span style="font-size:20px;">▶️</span>
+        <div><strong>YouTube</strong><span>Follow TechNexiss</span></div>
+      </div>
+      <div class="follow-item">
+        <span style="font-size:20px;">📸</span>
+        <div><strong>Instagram</strong><span>Follow TechNexiss</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Google AdSense — Rectangle 300x250 -->
+  <div style="min-height:250px;text-align:center;background:#f8fafc;border:1px solid #e2e8f0;border-radius:10px;display:flex;align-items:center;justify-content:center;margin-bottom:18px;overflow:hidden;">
+    <!-- AdSense code yahan paste karein -->
+    <span style="color:#94a3b8;font-size:12px;">Advertisement</span>
+  </div>
+
+</aside>
+</div>
+</div>
+
 <!-- FOOTER -->
 <footer>
   <div class="footer-inner">
     <div class="footer-grid">
       <div class="footer-brand">
         <div class="logo-text">Tech<span style="color:#38bdf8;">Nexiss</span></div>
-        <p>India's most trusted portal for Sarkari Yojana, Government Jobs, Exam Results, Admit Cards, Weather Updates & Technology News. Serving 5M+ readers daily.</p>
+        <p>Sarkari Yojana, Government Jobs, Exam Results, Weather Updates & Technology News.</p>
         <div class="footer-social">
           <a class="social-btn" href="#">📘</a>
           <a class="social-btn" href="#">🐦</a>
@@ -249,9 +458,13 @@ footer{background:var(--dark);color:#64748b;padding:48px 20px 0;}
       <div class="footer-col">
         <h4>Categories</h4>
         <a href="/pm-kisan-2026-blog.html">Sarkari Yojana</a>
-        <a href="#">Education</a>
+        <a href="#">Govt Jobs</a>
+        <a href="#">Results</a>
+        <a href="#">Admit Card</a>
+        <a href="#">Exams</a>
+        <a href="#">Weather</a>
         <a href="#">Technology</a>
-        <a href="#">Digital Safety</a>
+        <a href="#">Education</a>
       </div>
       <div class="footer-col">
         <h4>Quick Links</h4>
@@ -260,7 +473,7 @@ footer{background:var(--dark);color:#64748b;padding:48px 20px 0;}
         <a href="/privacy-policy.html">Privacy Policy</a>
         <a href="/terms.html">Terms & Conditions</a>
         <a href="/disclaimer.html">Disclaimer</a>
-        
+        <a href="/sitemap.html">Sitemap</a>
       </div>
       <div class="footer-col">
         <h4>Contact Us</h4>
@@ -275,7 +488,7 @@ footer{background:var(--dark);color:#64748b;padding:48px 20px 0;}
       </div>
     </div>
     <div class="footer-bottom">
-      <p>© 2026 TechNexiss. All Rights Reserved. | New Delhi, India</p>
+      <p>© 2025 TechNexiss. All Rights Reserved. | New Delhi, India</p>
       <div class="legal-links">
         <a href="/about.html">About Us</a>
         <a href="/contact.html">Contact Us</a>
